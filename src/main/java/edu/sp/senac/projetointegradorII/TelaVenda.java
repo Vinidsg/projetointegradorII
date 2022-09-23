@@ -50,7 +50,6 @@ public class TelaVenda extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtItensEstoque = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtCarrinho = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
@@ -215,8 +214,6 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setText("Cancelar");
-
         jLabel10.setText("Qtde. Itens Estoque");
 
         txtCarrinho.setEditable(false);
@@ -241,8 +238,7 @@ public class TelaVenda extends javax.swing.JFrame {
                             .addComponent(txtItensEstoque)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(txtCarrinho)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -270,9 +266,7 @@ public class TelaVenda extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -389,7 +383,6 @@ public class TelaVenda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnInterir;
     private javax.swing.JLabel jLabel1;
