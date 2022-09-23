@@ -48,10 +48,8 @@ public class TelaVenda extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtItensEstoque = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         txtCarrinho = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -206,8 +204,6 @@ public class TelaVenda extends javax.swing.JFrame {
 
         jLabel9.setText("Carrinho");
 
-        txtItensEstoque.setEditable(false);
-
         btnFinalizar.setText("Finalizar");
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,8 +213,6 @@ public class TelaVenda extends javax.swing.JFrame {
 
         btnCancelar.setText("Cancelar");
 
-        jLabel10.setText("Qtde. Itens Estoque");
-
         txtCarrinho.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -227,10 +221,6 @@ public class TelaVenda extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(jLabel9)
@@ -238,7 +228,6 @@ public class TelaVenda extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtItensEstoque)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -257,11 +246,7 @@ public class TelaVenda extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtItensEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(98, 98, 98)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -393,7 +378,6 @@ public class TelaVenda extends javax.swing.JFrame {
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnInterir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -412,7 +396,6 @@ public class TelaVenda extends javax.swing.JFrame {
     private javax.swing.JTextField txtCarrinho;
     private javax.swing.JComboBox<String> txtCliente;
     private javax.swing.JFormattedTextField txtDataVenda;
-    private javax.swing.JTextField txtItensEstoque;
     private javax.swing.JComboBox<String> txtProduto;
     private javax.swing.JSpinner txtQtde;
     private javax.swing.JTextField txtTotal;
