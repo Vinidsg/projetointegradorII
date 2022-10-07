@@ -54,6 +54,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        btnRealizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/sp/senac/projetointegradorII/mao.png"))); // NOI18N
         btnRealizarVenda.setText("Realizar Venda");
         btnRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
