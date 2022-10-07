@@ -103,6 +103,9 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="btnRealizarVenda">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/mao.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Realizar Venda"/>
           </Properties>
           <Events>
