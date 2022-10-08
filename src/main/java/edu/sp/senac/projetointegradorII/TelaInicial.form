@@ -88,7 +88,7 @@
         <Component class="javax.swing.JToggleButton" name="btnCadastrarProduto">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/Imagens/produtos.png"/>
+              <Image iconType="3" name="/produtos.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar Produto"/>
           </Properties>
@@ -99,7 +99,7 @@
         <Component class="javax.swing.JToggleButton" name="btnCadastrarCliente">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/Imagens/cliente.png"/>
+              <Image iconType="3" name="/cliente.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar Cliente"/>
           </Properties>
@@ -110,7 +110,7 @@
         <Component class="javax.swing.JToggleButton" name="btnRealizarVenda">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/Imagens/venda.png"/>
+              <Image iconType="3" name="/vendas.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Realizar Venda"/>
           </Properties>
@@ -121,7 +121,7 @@
         <Component class="javax.swing.JToggleButton" name="btnRelatorios">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/Imagens/relatorio.png"/>
+              <Image iconType="3" name="/relatorio.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
