@@ -87,6 +87,9 @@
       <SubComponents>
         <Component class="javax.swing.JToggleButton" name="btnCadastrarProduto">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/Imagens/produtos.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar Produto"/>
           </Properties>
           <Events>
@@ -95,6 +98,9 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="btnCadastrarCliente">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/Imagens/cliente.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar Cliente"/>
           </Properties>
           <Events>
@@ -104,7 +110,7 @@
         <Component class="javax.swing.JToggleButton" name="btnRealizarVenda">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/mao.png"/>
+              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/Imagens/venda.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Realizar Venda"/>
           </Properties>
@@ -114,6 +120,9 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="btnRelatorios">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/edu/sp/senac/projetointegradorII/Imagens/relatorio.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
           <Events>
