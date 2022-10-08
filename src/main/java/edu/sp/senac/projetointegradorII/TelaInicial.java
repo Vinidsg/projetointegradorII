@@ -40,6 +40,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        btnCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/sp/senac/projetointegradorII/Imagens/produtos.png"))); // NOI18N
         btnCadastrarProduto.setText("Cadastrar Produto");
         btnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +48,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        btnCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/sp/senac/projetointegradorII/Imagens/cliente.png"))); // NOI18N
         btnCadastrarCliente.setText("Cadastrar Cliente");
         btnCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,7 +56,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        btnRealizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/sp/senac/projetointegradorII/mao.png"))); // NOI18N
+        btnRealizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/sp/senac/projetointegradorII/Imagens/venda.png"))); // NOI18N
         btnRealizarVenda.setText("Realizar Venda");
         btnRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +64,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/sp/senac/projetointegradorII/Imagens/relatorio.png"))); // NOI18N
         btnRelatorios.setText("Relatórios");
         btnRelatorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
