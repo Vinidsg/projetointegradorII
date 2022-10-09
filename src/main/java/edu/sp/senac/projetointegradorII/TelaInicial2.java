@@ -26,6 +26,21 @@ public class TelaInicial2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        harpa = new javax.swing.JLabel();
+        microfone = new javax.swing.JLabel();
+        teclado = new javax.swing.JLabel();
+        flauta = new javax.swing.JLabel();
+        bateria = new javax.swing.JLabel();
+        baixo = new javax.swing.JLabel();
+        violão = new javax.swing.JLabel();
+        sanfona = new javax.swing.JLabel();
+        pandeiro = new javax.swing.JLabel();
+        violino = new javax.swing.JLabel();
+        trompete = new javax.swing.JLabel();
+        saxofone = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         mnuPrincipal = new javax.swing.JMenuBar();
         mnuCadastro = new javax.swing.JMenu();
         ImnuCliente = new javax.swing.JMenuItem();
@@ -40,11 +55,42 @@ public class TelaInicial2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Principal");
+        setMinimumSize(new java.awt.Dimension(500, 300));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+
+        harpa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/harpa.png"))); // NOI18N
+
+        microfone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microfone-com-fio.png"))); // NOI18N
+
+        teclado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/teclado.png"))); // NOI18N
+
+        flauta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flauta.png"))); // NOI18N
+
+        bateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bateria.png"))); // NOI18N
+
+        baixo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/baixo.png"))); // NOI18N
+
+        violão.setIcon(new javax.swing.ImageIcon(getClass().getResource("/violao.png"))); // NOI18N
+
+        sanfona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/acordeao.png"))); // NOI18N
+
+        pandeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/instrumento-de-percussao-pandeiro.png"))); // NOI18N
+
+        violino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/violino.png"))); // NOI18N
+
+        trompete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trompete.png"))); // NOI18N
+
+        saxofone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/saxofone.png"))); // NOI18N
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/notas-musicais (1).png"))); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/g-clef-nota-musical.png"))); // NOI18N
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/notas-musicais.png"))); // NOI18N
 
         mnuCadastro.setText("Cadastro");
 
@@ -112,11 +158,92 @@ public class TelaInicial2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 667, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(microfone))
+                    .addComponent(teclado))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(harpa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(flauta, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(pandeiro, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(violão, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(violino, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sanfona, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(bateria)
+                .addGap(76, 76, 76)
+                .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(trompete, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(saxofone))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 345, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(microfone)
+                        .addGap(86, 86, 86)
+                        .addComponent(teclado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(harpa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(flauta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(pandeiro, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(violão, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(violino, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(sanfona, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(bateria))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(trompete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(saxofone, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
@@ -157,7 +284,7 @@ public class TelaInicial2 extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -187,11 +314,26 @@ public class TelaInicial2 extends javax.swing.JFrame {
     private javax.swing.JMenuItem ImnuProduto;
     private javax.swing.JMenuItem ImnuRealizarVenda;
     private javax.swing.JMenuItem ImnuSintetico;
+    private javax.swing.JLabel baixo;
+    private javax.swing.JLabel bateria;
+    private javax.swing.JLabel flauta;
+    private javax.swing.JLabel harpa;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JLabel microfone;
     private javax.swing.JMenu mnuCadastro;
     private javax.swing.JMenuBar mnuPrincipal;
     private javax.swing.JMenu mnuRelatorios;
     private javax.swing.JMenu mnuVenda;
+    private javax.swing.JLabel pandeiro;
+    private javax.swing.JLabel sanfona;
+    private javax.swing.JLabel saxofone;
+    private javax.swing.JLabel teclado;
+    private javax.swing.JLabel trompete;
+    private javax.swing.JLabel violino;
+    private javax.swing.JLabel violão;
     // End of variables declaration//GEN-END:variables
 }
