@@ -154,7 +154,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         harpa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/harpa.png"))); // NOI18N
         getContentPane().add(harpa);
-        harpa.setBounds(120, 80, 60, 70);
+        harpa.setBounds(120, 80, 64, 80);
 
         microfone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microfone-com-fio.png"))); // NOI18N
         getContentPane().add(microfone);
