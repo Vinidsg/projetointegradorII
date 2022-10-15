@@ -26,32 +26,34 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        btnCadastrarProduto = new javax.swing.JToggleButton();
-        btnCadastrarCliente = new javax.swing.JToggleButton();
-        btnRealizarVenda = new javax.swing.JToggleButton();
-        btnRelatorios = new javax.swing.JToggleButton();
-        btnSair = new javax.swing.JToggleButton();
+        pnTítulo = new javax.swing.JPanel();
         título = new javax.swing.JLabel();
-        bateria = new javax.swing.JLabel();
-        baixo = new javax.swing.JLabel();
-        saxofone = new javax.swing.JLabel();
-        trompete = new javax.swing.JLabel();
-        violão = new javax.swing.JLabel();
-        violino = new javax.swing.JLabel();
-        teclado = new javax.swing.JLabel();
-        pandeiro = new javax.swing.JLabel();
-        sanfona = new javax.swing.JLabel();
-        harpa = new javax.swing.JLabel();
-        microfone = new javax.swing.JLabel();
-        flauta = new javax.swing.JLabel();
-
-        jLabel1.setText("jLabel1");
+        pnlCadastrarProduto = new javax.swing.JPanel();
+        btnCadastrarProduto = new javax.swing.JToggleButton();
+        pnlCadastrarCliente = new javax.swing.JPanel();
+        btnCadastrarCliente = new javax.swing.JToggleButton();
+        pnlRealizarVenda = new javax.swing.JPanel();
+        btnRealizarVenda = new javax.swing.JToggleButton();
+        pnlRelatórios = new javax.swing.JPanel();
+        btnRelatorios = new javax.swing.JToggleButton();
+        pnlSair = new javax.swing.JPanel();
+        btnSair = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Inicial");
         setMinimumSize(new java.awt.Dimension(700, 450));
-        getContentPane().setLayout(null);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        título.setFont(new java.awt.Font("Segoe UI", 0, 38)); // NOI18N
+        título.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        título.setText("Loja de Instrumentos Musicais");
+        título.setToolTipText("");
+        título.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        pnTítulo.add(título);
 
         btnCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos.png"))); // NOI18N
         btnCadastrarProduto.setText("Cadastrar Produto");
@@ -60,8 +62,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 btnCadastrarProdutoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCadastrarProduto);
-        btnCadastrarProduto.setBounds(210, 80, 230, 43);
+        pnlCadastrarProduto.add(btnCadastrarProduto);
 
         btnCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cliente.png"))); // NOI18N
         btnCadastrarCliente.setText("Cadastrar Cliente");
@@ -70,18 +71,18 @@ public class TelaInicial extends javax.swing.JFrame {
                 btnCadastrarClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCadastrarCliente);
-        btnCadastrarCliente.setBounds(210, 140, 230, 43);
+        pnlCadastrarCliente.add(btnCadastrarCliente);
 
         btnRealizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vendas.png"))); // NOI18N
         btnRealizarVenda.setText("Realizar Venda");
+        btnRealizarVenda.setMaximumSize(new java.awt.Dimension(154, 30));
+        btnRealizarVenda.setMinimumSize(new java.awt.Dimension(154, 30));
         btnRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRealizarVendaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRealizarVenda);
-        btnRealizarVenda.setBounds(210, 200, 230, 43);
+        pnlRealizarVenda.add(btnRealizarVenda);
 
         btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/relatorio.png"))); // NOI18N
         btnRelatorios.setText("Relatórios");
@@ -90,8 +91,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 btnRelatoriosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRelatorios);
-        btnRelatorios.setBounds(210, 260, 230, 43);
+        pnlRelatórios.add(btnRelatorios);
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -105,78 +105,39 @@ public class TelaInicial extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair);
-        btnSair.setBounds(210, 320, 230, 43);
+        pnlSair.add(btnSair);
 
-        título.setFont(new java.awt.Font("Segoe UI", 0, 38)); // NOI18N
-        título.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        título.setText("Loja de Instrumentos Musicais");
-        título.setToolTipText("");
-        título.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(título);
-        título.setBounds(0, 0, 660, 74);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnTítulo, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
+            .addComponent(pnlCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlRealizarVenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlRelatórios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlCadastrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnTítulo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnlCadastrarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlRealizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlRelatórios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
 
-        bateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bateria.png"))); // NOI18N
-        getContentPane().add(bateria);
-        bateria.setBounds(10, 310, 64, 64);
-
-        baixo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/baixo.png"))); // NOI18N
-        getContentPane().add(baixo);
-        baixo.setBounds(110, 260, 70, 70);
-
-        saxofone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/saxofone.png"))); // NOI18N
-        getContentPane().add(saxofone);
-        saxofone.setBounds(590, 310, 64, 60);
-
-        trompete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trompete.png"))); // NOI18N
-        getContentPane().add(trompete);
-        trompete.setBounds(480, 290, 70, 50);
-
-        violão.setIcon(new javax.swing.ImageIcon(getClass().getResource("/violao.png"))); // NOI18N
-        getContentPane().add(violão);
-        violão.setBounds(470, 80, 70, 70);
-
-        violino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/violino.png"))); // NOI18N
-        getContentPane().add(violino);
-        violino.setBounds(570, 220, 70, 70);
-
-        teclado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/teclado.png"))); // NOI18N
-        getContentPane().add(teclado);
-        teclado.setBounds(10, 230, 64, 40);
-
-        pandeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/instrumento-de-percussao-pandeiro.png"))); // NOI18N
-        getContentPane().add(pandeiro);
-        pandeiro.setBounds(470, 180, 70, 70);
-
-        sanfona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/acordeao.png"))); // NOI18N
-        getContentPane().add(sanfona);
-        sanfona.setBounds(570, 120, 70, 80);
-
-        harpa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/harpa.png"))); // NOI18N
-        getContentPane().add(harpa);
-        harpa.setBounds(120, 80, 64, 80);
-
-        microfone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/microfone-com-fio.png"))); // NOI18N
-        getContentPane().add(microfone);
-        microfone.setBounds(10, 130, 64, 64);
-
-        flauta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flauta.png"))); // NOI18N
-        getContentPane().add(flauta);
-        flauta.setBounds(110, 170, 70, 80);
-
-        pack();
+        setSize(new java.awt.Dimension(756, 396));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
-
-    private void btnRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarVendaActionPerformed
-        TelaVenda venda = new TelaVenda();
-
-        venda.setVisible(true);
-    }//GEN-LAST:event_btnRealizarVendaActionPerformed
 
     private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
         // TODO add your handling code here:
@@ -186,13 +147,30 @@ public class TelaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
 
-    private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRelatoriosActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
 
     }//GEN-LAST:event_btnSairMouseClicked
+
+    private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
+        // TODO add your handling code here:
+        TelaRelatorio rel = new TelaRelatorio();
+        rel.setVisible(true);
+    }//GEN-LAST:event_btnRelatoriosActionPerformed
+
+    private void btnRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarVendaActionPerformed
+        TelaVenda venda = new TelaVenda();
+        venda.setVisible(true);
+    }//GEN-LAST:event_btnRealizarVendaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -230,24 +208,17 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel baixo;
-    private javax.swing.JLabel bateria;
     private javax.swing.JToggleButton btnCadastrarCliente;
     private javax.swing.JToggleButton btnCadastrarProduto;
     private javax.swing.JToggleButton btnRealizarVenda;
     private javax.swing.JToggleButton btnRelatorios;
     private javax.swing.JToggleButton btnSair;
-    private javax.swing.JLabel flauta;
-    private javax.swing.JLabel harpa;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel microfone;
-    private javax.swing.JLabel pandeiro;
-    private javax.swing.JLabel sanfona;
-    private javax.swing.JLabel saxofone;
-    private javax.swing.JLabel teclado;
-    private javax.swing.JLabel trompete;
+    private javax.swing.JPanel pnTítulo;
+    private javax.swing.JPanel pnlCadastrarCliente;
+    private javax.swing.JPanel pnlCadastrarProduto;
+    private javax.swing.JPanel pnlRealizarVenda;
+    private javax.swing.JPanel pnlRelatórios;
+    private javax.swing.JPanel pnlSair;
     private javax.swing.JLabel título;
-    private javax.swing.JLabel violino;
-    private javax.swing.JLabel violão;
     // End of variables declaration//GEN-END:variables
 }
