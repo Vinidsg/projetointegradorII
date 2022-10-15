@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/.metadata/.plugins/org.eclipse.jdt.core
+1156531992.index
+1865797976.index
+4168597391.index

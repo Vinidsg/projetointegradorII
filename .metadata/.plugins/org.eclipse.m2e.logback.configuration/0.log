@@ -1,0 +1,17 @@
+2022-10-13 19:53:14,813 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-10-13 19:55:43,608 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-10-13 19:56:21,841 [Worker-8: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mycompany:projetointegradorII:1.0-SNAPSHOT @ /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/pom.xml.
+2022-10-13 19:56:21,841 [Worker-23: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mycompany:projetointegradorII:1.0-SNAPSHOT @ /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/pom.xml.
+2022-10-13 19:56:22,195 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-10-13 19:56:22,195 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/src/main/resources
+2022-10-13 19:56:22,199 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-10-13 19:56:22,199 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/src/test/resources
+2022-10-13 19:56:23,512 [Worker-15: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.mycompany:projetointegradorII:1.0-SNAPSHOT @ /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/pom.xml.
+2022-10-13 19:56:24,392 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-10-13 19:56:24,392 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/src/main/resources
+2022-10-13 19:56:24,394 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-10-13 19:56:24,395 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/src/test/resources
+2022-10-13 19:56:42,126 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-10-13 19:56:42,126 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/src/main/resources
+2022-10-13 19:56:42,129 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-10-13 19:56:42,130 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/vinicius/Documentos/estudos/ads/2semestre/PI/projeto/projetointegradorII/src/test/resources
