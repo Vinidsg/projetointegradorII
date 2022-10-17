@@ -6,7 +6,7 @@ package edu.sp.senac.projetointegradorII.model;
 
 /**
  *
- * @author vinicius
+ * @author Vinicius Lima
  */
 public class Cliente {
     private String Nome;

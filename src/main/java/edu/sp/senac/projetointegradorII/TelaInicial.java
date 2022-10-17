@@ -55,6 +55,7 @@ public class TelaInicial extends javax.swing.JFrame {
         título.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         pnTítulo.add(título);
 
+        btnCadastrarProduto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos.png"))); // NOI18N
         btnCadastrarProduto.setText("Cadastrar Produto");
         btnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +65,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         pnlCadastrarProduto.add(btnCadastrarProduto);
 
+        btnCadastrarCliente.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cliente.png"))); // NOI18N
         btnCadastrarCliente.setText("Cadastrar Cliente");
         btnCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +75,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         pnlCadastrarCliente.add(btnCadastrarCliente);
 
+        btnRealizarVenda.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnRealizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vendas.png"))); // NOI18N
         btnRealizarVenda.setText("Realizar Venda");
         btnRealizarVenda.setMaximumSize(new java.awt.Dimension(154, 30));
@@ -84,6 +87,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         pnlRealizarVenda.add(btnRealizarVenda);
 
+        btnRelatorios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/relatorio.png"))); // NOI18N
         btnRelatorios.setText("Relatórios");
         btnRelatorios.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +97,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         pnlRelatórios.add(btnRelatorios);
 
+        btnSair.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
         btnSair.setText("Sair");
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,15 +129,15 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addComponent(pnTítulo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlCadastrarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlRealizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlRelatórios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(756, 396));
@@ -141,6 +146,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
         // TODO add your handling code here:
+        TelaCliente cliente = new TelaCliente();
+        cliente.setVisible(true);
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
     private void btnCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdutoActionPerformed
