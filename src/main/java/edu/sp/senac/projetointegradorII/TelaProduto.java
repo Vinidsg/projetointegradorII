@@ -60,7 +60,8 @@ public class TelaProduto extends javax.swing.JFrame {
         txtValorProduto = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tela Produto");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -350,6 +351,7 @@ public class TelaProduto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCadatroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCadatroProdutoActionPerformed

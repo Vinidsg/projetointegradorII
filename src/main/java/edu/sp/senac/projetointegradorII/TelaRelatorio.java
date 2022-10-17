@@ -249,12 +249,13 @@ public class TelaRelatorio extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMaisInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMaisInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -286,10 +287,13 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private void btnMaisInformacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisInformacoesActionPerformed
         TelaRelatorioAnalitico relatorioAnalitico = new TelaRelatorioAnalitico();
         relatorioAnalitico.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnMaisInformacoesActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-       this.dispose();
+        TelaInicial telaInicial = new TelaInicial();
+        telaInicial.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
@@ -301,7 +305,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         if ((c<'0')||(c>'9') && (c!=KeyEvent.VK_BACK_SPACE))
         {
             evt.consume();
-            JOptionPane.showMessageDialog(this,"Digite apenas números!");
+            //JOptionPane.showMessageDialog(this,"Digite apenas números!");
         }
 
     }//GEN-LAST:event_numerico

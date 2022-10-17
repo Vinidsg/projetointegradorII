@@ -145,6 +145,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdutoActionPerformed
         // TODO add your handling code here:
+        TelaProduto produto = new TelaProduto();
+        produto.setVisible(true);
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
