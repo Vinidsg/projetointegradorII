@@ -72,7 +72,6 @@ public class TelaCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Cliente");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pesquisa.png"))); // NOI18N
         jLabel1.setText("Busca:");
 
         txtBusca.addActionListener(new java.awt.event.ActionListener() {
@@ -153,10 +152,8 @@ public class TelaCliente extends javax.swing.JFrame {
 
         jLabel12.setText("CEP:");
 
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/excluir.png"))); // NOI18N
         btnExcluir.setText("Excluir");
 
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadastro (2).png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,7 +231,6 @@ public class TelaCliente extends javax.swing.JFrame {
         bgSexo.add(jRadioButton4);
         jRadioButton4.setText("Feminino");
 
-        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar-texto.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +238,6 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botao-de-inicio.png"))); // NOI18N
         jButton1.setText("Início");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

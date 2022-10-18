@@ -83,7 +83,6 @@ public class TelaVenda extends javax.swing.JFrame {
         txtDataVenda.setEditable(false);
         txtDataVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
-        lblBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pesquisa.png"))); // NOI18N
         lblBuscarCliente.setText("Buscar Cliente");
 
         try {
@@ -111,10 +110,8 @@ public class TelaVenda extends javax.swing.JFrame {
         txtValor.setEditable(false);
         txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
 
-        btnInterir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inserir.png"))); // NOI18N
         btnInterir.setText("Inserir");
 
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/excluir.png"))); // NOI18N
         btnExcluir.setText("Excluir");
 
         javax.swing.GroupLayout pnlSuperiorLayout = new javax.swing.GroupLayout(pnlSuperior);
@@ -211,17 +208,14 @@ public class TelaVenda extends javax.swing.JFrame {
 
         pnlDireita.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lblCarrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/carrinhoDeCompras.png"))); // NOI18N
         lblCarrinho.setText("Carrinho");
 
         txtCarrinho.setEditable(false);
 
-        lblTotal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/total.png"))); // NOI18N
         lblTotal.setText("Total");
 
         txtTotal1.setEditable(false);
 
-        btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finalizar.png"))); // NOI18N
         btnFinalizar.setText("Finalizar");
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +223,6 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +230,6 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/início.png"))); // NOI18N
         jButton1.setText("Início");
 
         javax.swing.GroupLayout pnlDireitaLayout = new javax.swing.GroupLayout(pnlDireita);

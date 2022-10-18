@@ -4,6 +4,10 @@
  */
 package edu.sp.senac.projetointegradorII;
 
+import edu.sp.senac.projetointegradorII.background.FundoTela;
+import java.awt.GridLayout;
+import javax.swing.JFrame;
+
 /**
  *
  * @author vinic
@@ -13,8 +17,16 @@ public class TelaInicial extends javax.swing.JFrame {
     /**
      * Creates new form TelaInicial
      */
+    
+    FundoTela tela;
+    
     public TelaInicial() {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLayout(new GridLayout());
+        tela = new FundoTela("src/main/resources/background/Fundo1.png");
+        getContentPane().add(tela);
+       
     }
 
     /**
@@ -26,18 +38,17 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnTítulo = new javax.swing.JPanel();
-        título = new javax.swing.JLabel();
-        pnlCadastrarProduto = new javax.swing.JPanel();
-        btnCadastrarProduto = new javax.swing.JToggleButton();
-        pnlCadastrarCliente = new javax.swing.JPanel();
-        btnCadastrarCliente = new javax.swing.JToggleButton();
-        pnlRealizarVenda = new javax.swing.JPanel();
-        btnRealizarVenda = new javax.swing.JToggleButton();
-        pnlRelatórios = new javax.swing.JPanel();
-        btnRelatorios = new javax.swing.JToggleButton();
-        pnlSair = new javax.swing.JPanel();
-        btnSair = new javax.swing.JToggleButton();
+        BarraMenu = new javax.swing.JMenuBar();
+        Cadastro = new javax.swing.JMenu();
+        Cliente = new javax.swing.JMenuItem();
+        Produtos = new javax.swing.JMenuItem();
+        Venda = new javax.swing.JMenu();
+        RealizarVenda = new javax.swing.JMenuItem();
+        Relatorios = new javax.swing.JMenu();
+        Sintetico = new javax.swing.JMenuItem();
+        Analitico = new javax.swing.JMenuItem();
+        Sair = new javax.swing.JMenu();
+        SairDoPrograma = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Inicial");
@@ -48,138 +59,129 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        título.setFont(new java.awt.Font("Segoe UI", 0, 38)); // NOI18N
-        título.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        título.setText("Loja de Instrumentos Musicais");
-        título.setToolTipText("");
-        título.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        pnTítulo.add(título);
+        Cadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cadastro.png"))); // NOI18N
+        Cadastro.setText("Cadastro");
 
-        btnCadastrarProduto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos.png"))); // NOI18N
-        btnCadastrarProduto.setText("Cadastrar Produto");
-        btnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+        Cliente.setText("Clientes");
+        Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarProdutoActionPerformed(evt);
+                ClienteActionPerformed(evt);
             }
         });
-        pnlCadastrarProduto.add(btnCadastrarProduto);
+        Cadastro.add(Cliente);
 
-        btnCadastrarCliente.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cliente.png"))); // NOI18N
-        btnCadastrarCliente.setText("Cadastrar Cliente");
-        btnCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+        Produtos.setText("Produtos");
+        Produtos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarClienteActionPerformed(evt);
+                ProdutosActionPerformed(evt);
             }
         });
-        pnlCadastrarCliente.add(btnCadastrarCliente);
+        Cadastro.add(Produtos);
 
-        btnRealizarVenda.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnRealizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vendas.png"))); // NOI18N
-        btnRealizarVenda.setText("Realizar Venda");
-        btnRealizarVenda.setMaximumSize(new java.awt.Dimension(154, 30));
-        btnRealizarVenda.setMinimumSize(new java.awt.Dimension(154, 30));
-        btnRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRealizarVendaActionPerformed(evt);
-            }
-        });
-        pnlRealizarVenda.add(btnRealizarVenda);
+        BarraMenu.add(Cadastro);
 
-        btnRelatorios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/relatorio.png"))); // NOI18N
-        btnRelatorios.setText("Relatórios");
-        btnRelatorios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatoriosActionPerformed(evt);
-            }
-        });
-        pnlRelatórios.add(btnRelatorios);
+        Venda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Venda.png"))); // NOI18N
+        Venda.setText("Venda");
 
-        btnSair.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
-        btnSair.setText("Sair");
-        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSairMouseClicked(evt);
-            }
-        });
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        RealizarVenda.setText("Realizar Venda");
+        RealizarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                RealizarVendaActionPerformed(evt);
             }
         });
-        pnlSair.add(btnSair);
+        Venda.add(RealizarVenda);
+
+        BarraMenu.add(Venda);
+
+        Relatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Relatórios.png"))); // NOI18N
+        Relatorios.setText("Relatórios");
+
+        Sintetico.setText("Sintético");
+        Sintetico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SinteticoActionPerformed(evt);
+            }
+        });
+        Relatorios.add(Sintetico);
+
+        Analitico.setText("Analítico");
+        Analitico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnaliticoActionPerformed(evt);
+            }
+        });
+        Relatorios.add(Analitico);
+
+        BarraMenu.add(Relatorios);
+
+        Sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Sair.png"))); // NOI18N
+        Sair.setText("Sair");
+
+        SairDoPrograma.setText("Sair do Programa");
+        SairDoPrograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SairDoProgramaActionPerformed(evt);
+            }
+        });
+        Sair.add(SairDoPrograma);
+
+        BarraMenu.add(Sair);
+
+        setJMenuBar(BarraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnTítulo, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
-            .addComponent(pnlCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlRealizarVenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlRelatórios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlCadastrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 742, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnTítulo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pnlCadastrarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlRealizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlRelatórios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 350, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(756, 396));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
         // TODO add your handling code here:
         TelaCliente cliente = new TelaCliente();
         cliente.setVisible(true);
-    }//GEN-LAST:event_btnCadastrarClienteActionPerformed
+    }//GEN-LAST:event_ClienteActionPerformed
 
-    private void btnCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdutoActionPerformed
+    private void ProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutosActionPerformed
         // TODO add your handling code here:
         TelaProduto produto = new TelaProduto();
         produto.setVisible(true);
-    }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
+    }//GEN-LAST:event_ProdutosActionPerformed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+    private void RealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarVendaActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
-
-    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-
-    }//GEN-LAST:event_btnSairMouseClicked
-
-    private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
-        // TODO add your handling code here:
-        TelaRelatorio rel = new TelaRelatorio();
-        rel.setVisible(true);
-    }//GEN-LAST:event_btnRelatoriosActionPerformed
-
-    private void btnRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarVendaActionPerformed
         TelaVenda venda = new TelaVenda();
         venda.setVisible(true);
-    }//GEN-LAST:event_btnRealizarVendaActionPerformed
+    }//GEN-LAST:event_RealizarVendaActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void SinteticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SinteticoActionPerformed
         // TODO add your handling code here:
-        this.setExtendedState(MAXIMIZED_BOTH);
-    }//GEN-LAST:event_formWindowOpened
+        TelaRelatorio sintetico = new TelaRelatorio();
+        sintetico.setVisible(true);
+    }//GEN-LAST:event_SinteticoActionPerformed
+
+    private void AnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnaliticoActionPerformed
+        // TODO add your handling code here:
+        TelaRelatorioAnalitico analitico = new TelaRelatorioAnalitico();
+        analitico.setVisible(true);
+    }//GEN-LAST:event_AnaliticoActionPerformed
+
+    private void SairDoProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairDoProgramaActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_SairDoProgramaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,17 +219,16 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnCadastrarCliente;
-    private javax.swing.JToggleButton btnCadastrarProduto;
-    private javax.swing.JToggleButton btnRealizarVenda;
-    private javax.swing.JToggleButton btnRelatorios;
-    private javax.swing.JToggleButton btnSair;
-    private javax.swing.JPanel pnTítulo;
-    private javax.swing.JPanel pnlCadastrarCliente;
-    private javax.swing.JPanel pnlCadastrarProduto;
-    private javax.swing.JPanel pnlRealizarVenda;
-    private javax.swing.JPanel pnlRelatórios;
-    private javax.swing.JPanel pnlSair;
-    private javax.swing.JLabel título;
+    private javax.swing.JMenuItem Analitico;
+    private javax.swing.JMenuBar BarraMenu;
+    private javax.swing.JMenu Cadastro;
+    private javax.swing.JMenuItem Cliente;
+    private javax.swing.JMenuItem Produtos;
+    private javax.swing.JMenuItem RealizarVenda;
+    private javax.swing.JMenu Relatorios;
+    private javax.swing.JMenu Sair;
+    private javax.swing.JMenuItem SairDoPrograma;
+    private javax.swing.JMenuItem Sintetico;
+    private javax.swing.JMenu Venda;
     // End of variables declaration//GEN-END:variables
 }
