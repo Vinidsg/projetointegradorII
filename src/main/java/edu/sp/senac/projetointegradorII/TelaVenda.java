@@ -67,8 +67,10 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
+        pnlSuperior.setBackground(new java.awt.Color(251, 250, 248));
         pnlSuperior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        lblNVenda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNVenda.setText("Nº Venda");
 
         txtVenda.setEditable(false);
@@ -78,11 +80,13 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
+        lblDataVenda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDataVenda.setText("Data Venda");
 
         txtDataVenda.setEditable(false);
         txtDataVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
+        lblBuscarCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblBuscarCliente.setText("Buscar Cliente");
 
         try {
@@ -91,27 +95,40 @@ public class TelaVenda extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        lblVendedor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblVendedor.setText("Vendedor");
 
+        txtVendedor.setBackground(new java.awt.Color(234, 215, 206));
         txtVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Vinicius Garcia", "Mateus Felipe", "Vinicius Lima", "Matheus Lima", "William Queiroz", "Miguel Palacio" }));
 
+        lblEstoque.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblEstoque.setText("Estoque");
 
         txtEstoque.setEditable(false);
 
+        lblProduto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProduto.setText("Produto");
 
+        txtProduto.setBackground(new java.awt.Color(234, 215, 206));
         txtProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Violino", "Guitarra", "Piano", "Saxofone", "Viloncelo", "Trompete" }));
 
+        lblQtde.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblQtde.setText("Qtde.");
 
+        lblValor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblValor.setText("Valor");
 
         txtValor.setEditable(false);
         txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
 
+        btnInterir.setBackground(new java.awt.Color(234, 215, 206));
+        btnInterir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnInterir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adicionar-ao-carrinho.png"))); // NOI18N
         btnInterir.setText("Inserir");
 
+        btnExcluir.setBackground(new java.awt.Color(234, 215, 206));
+        btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/excluir.png"))); // NOI18N
         btnExcluir.setText("Excluir");
 
         javax.swing.GroupLayout pnlSuperiorLayout = new javax.swing.GroupLayout(pnlSuperior);
@@ -171,7 +188,7 @@ public class TelaVenda extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnInterir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(9, 9, 9))
         );
         pnlSuperiorLayout.setVerticalGroup(
@@ -203,19 +220,30 @@ public class TelaVenda extends javax.swing.JFrame {
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir)
                     .addComponent(txtEstoque))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        pnlDireita.setBackground(new java.awt.Color(251, 250, 248));
         pnlDireita.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        lblCarrinho.setBackground(new java.awt.Color(251, 250, 248));
+        lblCarrinho.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCarrinho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCarrinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/carrinho-carrinho.png"))); // NOI18N
         lblCarrinho.setText("Carrinho");
 
         txtCarrinho.setEditable(false);
 
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/receive-amount.png"))); // NOI18N
         lblTotal.setText("Total");
 
         txtTotal1.setEditable(false);
 
+        btnFinalizar.setBackground(new java.awt.Color(234, 215, 206));
+        btnFinalizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/carrinho.png"))); // NOI18N
         btnFinalizar.setText("Finalizar");
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +251,9 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(234, 215, 206));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +261,9 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(234, 215, 206));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/casa.png"))); // NOI18N
         jButton1.setText("Início");
 
         javax.swing.GroupLayout pnlDireitaLayout = new javax.swing.GroupLayout(pnlDireita);
@@ -237,33 +271,25 @@ public class TelaVenda extends javax.swing.JFrame {
         pnlDireitaLayout.setHorizontalGroup(
             pnlDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDireitaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDireitaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCarrinho)
-                            .addComponent(txtTotal1)))
-                    .addGroup(pnlDireitaLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addGap(16, 16, 16)
                         .addGroup(pnlDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(20, 20, 20)))
+                        .addGap(20, 20, 20))
+                    .addComponent(txtCarrinho)
+                    .addComponent(lblCarrinho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTotal1)
+                    .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(pnlDireitaLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(lblCarrinho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(49, 49, 49))
-            .addGroup(pnlDireitaLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(61, 61, 61))
         );
         pnlDireitaLayout.setVerticalGroup(
             pnlDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDireitaLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(lblCarrinho)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCarrinho, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,17 +299,33 @@ public class TelaVenda extends javax.swing.JFrame {
                 .addComponent(txtTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnFinalizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlEsquerda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         tbVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -334,13 +376,11 @@ public class TelaVenda extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlDireita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlEsquerda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(pnlEsquerda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();

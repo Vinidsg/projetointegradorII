@@ -43,7 +43,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         try {
             MaskFormatter mask = new MaskFormatter("##/##/####");
             
-            mask.install(jFormattedDeData);
+            mask.install(txtDe);
             
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Informe a data corretamente", "Erro", JOptionPane.ERROR);
@@ -55,7 +55,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         try {
             MaskFormatter mask = new MaskFormatter("##/##/####");
             
-            mask.install(jFormattedAteData);
+            mask.install(txtAte);
             
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Informe a data corretamente", "Erro", JOptionPane.ERROR);
@@ -73,24 +73,26 @@ public class TelaRelatorio extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JToggleButton();
         lblDe = new javax.swing.JLabel();
         lblAte = new javax.swing.JLabel();
-        jFormattedDeData = new javax.swing.JFormattedTextField();
-        jFormattedAteData = new javax.swing.JFormattedTextField();
-        jPanel2 = new javax.swing.JPanel();
+        txtDe = new javax.swing.JFormattedTextField();
+        txtAte = new javax.swing.JFormattedTextField();
         jPanel4 = new javax.swing.JPanel();
-        scrollRelatorioSintetico = new javax.swing.JScrollPane();
+        table = new javax.swing.JScrollPane();
         tbRelatorioSintetico = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        btnMaisInformacoes = new javax.swing.JToggleButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        btnMaisDetalhes = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Relatório Sintético");
 
+        jPanel1.setBackground(new java.awt.Color(251, 250, 248));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pesquisa.png"))); // NOI18N
+        btnConsultar.setBackground(new java.awt.Color(234, 215, 206));
+        btnConsultar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
         btnConsultar.setText("<html> \t<font face=\"Montserrat\"> Consultar </font> </html>");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,32 +100,34 @@ public class TelaRelatorio extends javax.swing.JFrame {
             }
         });
 
-        lblDe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendario.png"))); // NOI18N
+        lblDe.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendario.png"))); // NOI18N
         lblDe.setText("De:");
 
-        lblAte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendario.png"))); // NOI18N
+        lblAte.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblAte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendario.png"))); // NOI18N
         lblAte.setText("Até:");
 
-        jFormattedDeData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jFormattedDeData.addActionListener(new java.awt.event.ActionListener() {
+        txtDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        txtDe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedDeDataActionPerformed(evt);
+                txtDeActionPerformed(evt);
             }
         });
-        jFormattedDeData.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDe.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 numerico(evt);
                 date(evt);
             }
         });
 
-        jFormattedAteData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        jFormattedAteData.addActionListener(new java.awt.event.ActionListener() {
+        txtAte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txtAte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedAteDataActionPerformed(evt);
+                txtAteActionPerformed(evt);
             }
         });
-        jFormattedAteData.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAte.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 numerico(evt);
                 date(evt);
@@ -138,15 +142,15 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblDe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedDeData, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
+                .addComponent(txtDe, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblAte)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedAteData, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAte, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(269, 269, 269)
+                .addComponent(btnConsultar)
                 .addGap(277, 277, 277))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,28 +160,29 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDe)
                     .addComponent(lblAte)
-                    .addComponent(jFormattedDeData)
-                    .addComponent(jFormattedAteData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDe)
+                    .addComponent(txtAte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         tbRelatorioSintetico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -190,47 +195,59 @@ public class TelaRelatorio extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        scrollRelatorioSintetico.setViewportView(tbRelatorioSintetico);
+        table.setViewportView(tbRelatorioSintetico);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollRelatorioSintetico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addComponent(table, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollRelatorioSintetico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+            .addComponent(table, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jPanel5.setBackground(new java.awt.Color(251, 250, 248));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botao-de-inicio.png"))); // NOI18N
-        jToggleButton1.setText("<html><b>Início</b></html>");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
+        txtTotal.setEditable(false);
 
-        btnMaisInformacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MaisDetalhes (2).png"))); // NOI18N
-        btnMaisInformacoes.setText("<html><b>Mais Detalhes</b></html>");
-        btnMaisInformacoes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMaisInformacoesActionPerformed(evt);
-            }
-        });
-
-        jTextField1.setEditable(false);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/moedas.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/money-bag.png"))); // NOI18N
         jLabel1.setText("Total:");
+
+        btnMaisDetalhes.setBackground(new java.awt.Color(234, 215, 206));
+        btnMaisDetalhes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnMaisDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pesquisa.png"))); // NOI18N
+        btnMaisDetalhes.setText("Mais Detalhes");
+        btnMaisDetalhes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaisDetalhesActionPerformed(evt);
+            }
+        });
+
+        btnInicio.setBackground(new java.awt.Color(234, 215, 206));
+        btnInicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/casa.png"))); // NOI18N
+        btnInicio.setText("Início");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -238,13 +255,13 @@ public class TelaRelatorio extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInicio)
                 .addGap(18, 18, 18)
-                .addComponent(btnMaisInformacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMaisDetalhes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -252,49 +269,34 @@ public class TelaRelatorio extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(btnMaisInformacoes)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(btnMaisDetalhes)
+                    .addComponent(btnInicio))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnMaisInformacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisInformacoesActionPerformed
-        TelaRelatorioAnalitico relatorioAnalitico = new TelaRelatorioAnalitico();
-        relatorioAnalitico.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnMaisInformacoesActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        TelaInicial telaInicial = new TelaInicial();
-        telaInicial.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
@@ -319,13 +321,25 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_date
 
-    private void jFormattedDeDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedDeDataActionPerformed
+    private void txtDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedDeDataActionPerformed
+    }//GEN-LAST:event_txtDeActionPerformed
 
-    private void jFormattedAteDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedAteDataActionPerformed
+    private void txtAteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedAteDataActionPerformed
+    }//GEN-LAST:event_txtAteActionPerformed
+
+    private void btnMaisDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisDetalhesActionPerformed
+        // TODO add your handling code here:
+        TelaRelatorioAnalitico relatorioAnalitico = new TelaRelatorioAnalitico();
+        relatorioAnalitico.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMaisDetalhesActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,19 +378,18 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnConsultar;
-    private javax.swing.JToggleButton btnMaisInformacoes;
-    private javax.swing.JFormattedTextField jFormattedAteData;
-    private javax.swing.JFormattedTextField jFormattedDeData;
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnMaisDetalhes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblAte;
     private javax.swing.JLabel lblDe;
-    private javax.swing.JScrollPane scrollRelatorioSintetico;
+    private javax.swing.JScrollPane table;
     private javax.swing.JTable tbRelatorioSintetico;
+    private javax.swing.JFormattedTextField txtAte;
+    private javax.swing.JFormattedTextField txtDe;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

@@ -62,6 +62,7 @@ public class TelaInicial extends javax.swing.JFrame {
         Cadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Cadastro.png"))); // NOI18N
         Cadastro.setText("Cadastro");
 
+        Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cliente (1).png"))); // NOI18N
         Cliente.setText("Clientes");
         Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +71,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         Cadastro.add(Cliente);
 
+        Produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/produtos.png"))); // NOI18N
         Produtos.setText("Produtos");
         Produtos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +85,7 @@ public class TelaInicial extends javax.swing.JFrame {
         Venda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Venda.png"))); // NOI18N
         Venda.setText("Venda");
 
+        RealizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/crescimento.png"))); // NOI18N
         RealizarVenda.setText("Realizar Venda");
         RealizarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +99,7 @@ public class TelaInicial extends javax.swing.JFrame {
         Relatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Relatórios.png"))); // NOI18N
         Relatorios.setText("Relatórios");
 
+        Sintetico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/relatorio.png"))); // NOI18N
         Sintetico.setText("Sintético");
         Sintetico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +108,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         Relatorios.add(Sintetico);
 
+        Analitico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/analytics.png"))); // NOI18N
         Analitico.setText("Analítico");
         Analitico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +122,7 @@ public class TelaInicial extends javax.swing.JFrame {
         Sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Sair.png"))); // NOI18N
         Sair.setText("Sair");
 
+        SairDoPrograma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/saida.png"))); // NOI18N
         SairDoPrograma.setText("Sair do Programa");
         SairDoPrograma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
