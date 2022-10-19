@@ -6,6 +6,7 @@ package edu.sp.senac.projetointegradorII;
 
 import edu.sp.senac.projetointegradorII.background.FundoTela;
 import java.awt.GridLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -26,7 +27,9 @@ public class TelaInicial extends javax.swing.JFrame {
         setLayout(new GridLayout());
         tela = new FundoTela("src/main/resources/background/Fundo1.png");
         getContentPane().add(tela);
-       
+        //Mudar ícone de tela
+        ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
+        this.setIconImage(img.getImage());
     }
 
     /**

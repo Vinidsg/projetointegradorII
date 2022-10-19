@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
@@ -27,8 +28,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
      */
     public TelaRelatorio() {
         initComponents();
-     formatarCampoDataDe(); // Criação de formatação para padrão de data JFormattedField
-     formatarCampoDataAte();
+        formatarCampoDataDe(); // Criação de formatação para padrão de data JFormattedField
+        formatarCampoDataAte();
+        //Mudar ícone das telas
+        ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
+        this.setIconImage(img.getImage());
     }   
 
     /**

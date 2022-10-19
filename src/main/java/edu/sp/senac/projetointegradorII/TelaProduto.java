@@ -5,6 +5,7 @@
 package edu.sp.senac.projetointegradorII;
 
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,9 @@ public class TelaProduto extends javax.swing.JFrame {
      */
     public TelaProduto() {
         initComponents();
+        //Mudar ícone das telas
+        ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
+        this.setIconImage(img.getImage());
     }
 
     /**

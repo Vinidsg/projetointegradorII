@@ -4,6 +4,8 @@
  */
 package edu.sp.senac.projetointegradorII;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author vinic
@@ -15,6 +17,9 @@ public class TelaVenda extends javax.swing.JFrame {
      */
     public TelaVenda() {
         initComponents();
+        //Mudar ícone das telas
+        ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
+        this.setIconImage(img.getImage());
     }
 
     /**
