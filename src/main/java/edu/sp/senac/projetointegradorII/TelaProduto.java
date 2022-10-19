@@ -259,10 +259,15 @@ public class TelaProduto extends javax.swing.JFrame {
         txtPrateleiraProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "A", "B", "C", "D" }));
 
         try {
-            txtValorProduto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###,##")));
+            txtValorProduto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#.###,##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtValorProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorProdutoActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setBackground(new java.awt.Color(234, 215, 206));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -493,6 +498,10 @@ public class TelaProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtValorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorProdutoActionPerformed
 
     /**
      * @param args the command line arguments

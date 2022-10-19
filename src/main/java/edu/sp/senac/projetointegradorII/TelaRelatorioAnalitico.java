@@ -93,6 +93,12 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(251, 250, 248));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        txtAnaliticoNome.setEditable(false);
+
+        txtAnaliticoData.setEditable(false);
+
+        txtAnaliticoValorTotal.setEditable(false);
+
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/do-utilizador.png"))); // NOI18N
         lblNome.setText("Nome:");
@@ -113,14 +119,16 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(lblData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAnaliticoData, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtAnaliticoData, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAnaliticoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAnaliticoNome)))
+                .addGap(18, 18, 18)
                 .addComponent(lblValorTotal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAnaliticoValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)

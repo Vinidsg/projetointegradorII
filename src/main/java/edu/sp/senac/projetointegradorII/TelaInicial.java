@@ -46,7 +46,6 @@ public class TelaInicial extends javax.swing.JFrame {
         RealizarVenda = new javax.swing.JMenuItem();
         Relatorios = new javax.swing.JMenu();
         Sintetico = new javax.swing.JMenuItem();
-        Analitico = new javax.swing.JMenuItem();
         Sair = new javax.swing.JMenu();
         SairDoPrograma = new javax.swing.JMenuItem();
 
@@ -107,15 +106,6 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         Relatorios.add(Sintetico);
-
-        Analitico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/analytics.png"))); // NOI18N
-        Analitico.setText("Analítico");
-        Analitico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnaliticoActionPerformed(evt);
-            }
-        });
-        Relatorios.add(Analitico);
 
         BarraMenu.add(Relatorios);
 
@@ -178,12 +168,6 @@ public class TelaInicial extends javax.swing.JFrame {
         sintetico.setVisible(true);
     }//GEN-LAST:event_SinteticoActionPerformed
 
-    private void AnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnaliticoActionPerformed
-        // TODO add your handling code here:
-        TelaRelatorioAnalitico analitico = new TelaRelatorioAnalitico();
-        analitico.setVisible(true);
-    }//GEN-LAST:event_AnaliticoActionPerformed
-
     private void SairDoProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairDoProgramaActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -225,7 +209,6 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Analitico;
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JMenu Cadastro;
     private javax.swing.JMenuItem Cliente;
