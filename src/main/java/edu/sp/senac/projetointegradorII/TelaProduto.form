@@ -45,8 +45,13 @@
           <Color blue="f8" green="fa" red="fb" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-            <EtchetBorder/>
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Pesquisar Produto">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+              <Font PropertyName="font" name="Segoe UI" size="12" style="1"/>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -57,13 +62,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="573" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="txtCadatroProduto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtBuscaProduto" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnBuscaProduto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnBuscaProduto" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -73,14 +78,13 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtCadatroProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtBuscaProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnBuscaProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtBuscaProduto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnBuscaProduto" max="32767" attributes="0"/>
+                      <Component id="txtCadatroProduto" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="134" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="98" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -96,10 +100,11 @@
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Nome do Produto"/>
-                <StringItem index="1" value="C&#xf3;digo do Produto"/>
-                <StringItem index="2" value="Marca"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Selecione..."/>
+                <StringItem index="1" value="Nome do Produto"/>
+                <StringItem index="2" value="C&#xf3;digo do Produto"/>
+                <StringItem index="3" value="Marca"/>
               </StringArray>
             </Property>
           </Properties>
@@ -123,7 +128,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="OK"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icons/search.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscaProdutoActionPerformed"/>
@@ -181,6 +188,16 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f8" green="fa" red="fb" type="rgb"/>
         </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Cadastrar Produto">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+              <Font PropertyName="font" name="Segoe UI" size="12" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
       </Properties>
 
       <Layout>
@@ -190,50 +207,38 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                          <Component id="jButton1" max="32767" attributes="0"/>
+                          <Component id="btnInício" pref="92" max="32767" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnExcluirProduto" max="32767" attributes="0"/>
+                          <Component id="btnExcluirProduto" pref="96" max="32767" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAlterarProd" max="32767" attributes="0"/>
+                          <Component id="btnAlterarProd" pref="98" max="32767" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCadastroProd" max="32767" attributes="0"/>
+                          <Component id="btnCadastroProd" pref="93" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel3" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
+                              <Component id="lblDescricao" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMarca" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblValor" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCodigo" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNome" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtDescricaoProduto" pref="188" max="32767" attributes="0"/>
+                              <Component id="txtDescricaoProduto" max="32767" attributes="0"/>
                               <Component id="txtMarcaProduto" alignment="1" max="32767" attributes="0"/>
                               <Component id="txtNomeProduto" alignment="1" max="32767" attributes="0"/>
                               <Component id="txtCodigoProduto" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtValorProduto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtValorProduto" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblDtCompra" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblFornecedor" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -242,17 +247,17 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCategoria" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblQtde" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPrateleira" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtPrateleiraProd" pref="180" max="32767" attributes="0"/>
                                       <Component id="txtQuantProd" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" max="32767" attributes="0"/>
+                                      <Component id="txtCategoria" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -267,41 +272,41 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDtCompra" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtDtCompraProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtNomeProduto" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCodigoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFornecedorProd" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCodigoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtFornecedorProd" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblValor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtQuantProd" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblQtde" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtValorProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMarcaProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtDescricaoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPrateleira" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtPrateleiraProd" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -309,7 +314,7 @@
                       <Component id="btnExcluirProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAlterarProd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCadastroProd" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnInício" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -317,44 +322,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblNome">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nome:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Valor:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Marca:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
+            <Property name="text" type="java.lang.String" value="Nome:*"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeProduto">
@@ -363,12 +336,88 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeProdutoKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="lblCodigo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Data Compra:"/>
+            <Property name="text" type="java.lang.String" value="C&#xf3;digo:*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCodigoProduto">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoProdutoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoProdutoKeyTyped"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblValor">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Valor:*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtValorProduto">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="#.###,##" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorProdutoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblMarca">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Marca:*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtMarcaProduto">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMarcaProdutoKeyTyped"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDescricao">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtDescricaoProduto">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDescricaoProdutoKeyTyped"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDtCompra">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Data Compra:*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtDtCompraProduto">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="##/##/####" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="TelaProduto_jFormattedTextField1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblFornecedor">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Fornecedor:*"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFornecedorProd">
@@ -377,11 +426,13 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFornecedorProdKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCodigoProduto">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoProdutoActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoProdutoKeyTyped"/>
-          </Events>
+        <Component class="javax.swing.JLabel" name="lblQtde">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Qtde.:*"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtQuantProd">
           <Events>
@@ -389,47 +440,81 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQuantProdKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMarcaProduto">
+        <Component class="javax.swing.JLabel" name="lblCategoria">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Categoria:*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="txtCategoria">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ce" green="d7" red="ea" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Selecione..."/>
+                <StringItem index="1" value="Corda"/>
+                <StringItem index="2" value="Percuss&#xe3;o"/>
+                <StringItem index="3" value="Sopro"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPrateleira">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Prateleira:*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="txtPrateleiraProd">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ce" green="d7" red="ea" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Selecione..."/>
+                <StringItem index="1" value="A"/>
+                <StringItem index="2" value="B"/>
+                <StringItem index="3" value="C"/>
+                <StringItem index="4" value="D"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnIn&#xed;cio">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ce" green="d7" red="ea" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icons/casa.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="In&#xed;cio"/>
+          </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMarcaProdutoKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIn&#xed;cioActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDescricaoProduto">
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDescricaoProdutoKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Fornecedor:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Qtde.:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Categoria:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Prateleira:"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnExcluirProduto">
           <Properties>
@@ -472,85 +557,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtDtCompraProduto">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="##/##/####" subtype="-1" type="5"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="TelaProduto_jFormattedTextField1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="txtPrateleiraProd">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ce" green="d7" red="ea" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Selecione..."/>
-                <StringItem index="1" value="A"/>
-                <StringItem index="2" value="B"/>
-                <StringItem index="3" value="C"/>
-                <StringItem index="4" value="D"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtValorProduto">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="#.###,##" subtype="-1" type="5"/>
-            </Property>
-          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorProdutoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ce" green="d7" red="ea" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Selecione..."/>
-                <StringItem index="1" value="Corda"/>
-                <StringItem index="2" value="Percuss&#xe3;o"/>
-                <StringItem index="3" value="Sopro"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ce" green="d7" red="ea" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="1"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icons/casa.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="In&#xed;cio"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastroProdActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

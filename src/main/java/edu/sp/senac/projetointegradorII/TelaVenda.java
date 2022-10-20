@@ -5,6 +5,7 @@
 package edu.sp.senac.projetointegradorII;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -270,6 +271,11 @@ public class TelaVenda extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/casa.png"))); // NOI18N
         jButton1.setText("Início");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDireitaLayout = new javax.swing.GroupLayout(pnlDireita);
         pnlDireita.setLayout(pnlDireitaLayout);
@@ -394,6 +400,7 @@ public class TelaVenda extends javax.swing.JFrame {
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Compra Finalizada!");
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void txtVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVendaActionPerformed
@@ -402,12 +409,17 @@ public class TelaVenda extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        JOptionPane.showMessageDialog(null, "Compra Cancelada!");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
