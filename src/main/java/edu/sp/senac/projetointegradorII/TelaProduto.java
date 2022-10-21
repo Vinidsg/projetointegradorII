@@ -73,7 +73,7 @@ public class TelaProduto extends javax.swing.JFrame {
         setTitle("Tela Produto");
 
         jPanel1.setBackground(new java.awt.Color(251, 250, 248));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pesquisar Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Buscar Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         txtCadatroProduto.setBackground(new java.awt.Color(234, 215, 206));
         txtCadatroProduto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

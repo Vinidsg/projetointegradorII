@@ -4,11 +4,14 @@
  */
 package edu.sp.senac.projetointegradorII;
 
+import edu.sp.senac.projetointegradorII.validadores.ValidadorRelatorio;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +49,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
     {
         try {
             MaskFormatter mask = new MaskFormatter("##/##/####");
-            
             mask.install(txtDe);
             
         } catch (ParseException ex) {
@@ -57,17 +59,13 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private void formatarCampoDataAte()          // Criação de formatação para padrão de data JFormattedField
     {
         try {
-            MaskFormatter mask = new MaskFormatter("##/##/####");
-            
+            MaskFormatter mask = new MaskFormatter("##/##/####");     
             mask.install(txtAte);
             
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Informe a data corretamente", "Erro", JOptionPane.ERROR);
         }
     }
-    
-    
-    
     
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -98,6 +96,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
         btnConsultar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
         btnConsultar.setText("<html> \t<font face=\"Montserrat\"> Consultar </font> </html>");
+        btnConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnValidadorRangeData(evt);
+            }
+        });
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
@@ -304,29 +307,43 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
+        ValidadorRelatorio validar = new ValidadorRelatorio();
+        validar.ValidarVazioJ(txtDe);
+        validar.ValidarVazioJ(txtAte);
+        validar.mensagem();
+        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void numerico(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numerico
         char c  = evt.getKeyChar();
+     
         if ((c<'0')||(c>'9') && (c!=KeyEvent.VK_BACK_SPACE))
         {
             evt.consume();
             //JOptionPane.showMessageDialog(this,"Digite apenas números!");
         }
-
+        
+        
+        
+        
     }//GEN-LAST:event_numerico
 
     private void date(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_date
-//        if(txtDeData.getText().length()>=6)
+        
+       
+
+           // if(txtDeData.getText().length()>=6)
 //        {
 //            evt.consume();
 //            JOptionPane.showMessageDialog(this,"Máximo de 6 caractéres atingido");
 //        }
 
+        
     }//GEN-LAST:event_date
 
     private void txtDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtDeActionPerformed
 
     private void txtAteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAteActionPerformed
@@ -344,6 +361,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnValidadorRangeData(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValidadorRangeData
+        
+            }//GEN-LAST:event_btnValidadorRangeData
 
     /**
      * @param args the command line arguments

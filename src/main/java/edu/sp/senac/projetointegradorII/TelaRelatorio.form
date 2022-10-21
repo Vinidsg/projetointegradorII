@@ -107,6 +107,7 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;font face=&quot;Montserrat&quot;&gt; Consultar &lt;/font&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnValidadorRangeData"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarActionPerformed"/>
           </Events>
         </Component>
