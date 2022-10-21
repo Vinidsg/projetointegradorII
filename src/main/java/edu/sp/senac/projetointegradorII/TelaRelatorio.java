@@ -5,6 +5,8 @@
 package edu.sp.senac.projetointegradorII;
 
 import edu.sp.senac.projetointegradorII.validadores.ValidadorRelatorio;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
@@ -48,7 +50,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private void formatarCampoDataDe()          // Criação de formatação para padrão de data JFormattedField
     {
         try {
-            MaskFormatter mask = new MaskFormatter("##/##/####");
+            MaskFormatter mask = new MaskFormatter("##-##-####");
             mask.install(txtDe);
             
         } catch (ParseException ex) {
@@ -59,7 +61,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private void formatarCampoDataAte()          // Criação de formatação para padrão de data JFormattedField
     {
         try {
-            MaskFormatter mask = new MaskFormatter("##/##/####");     
+            MaskFormatter mask = new MaskFormatter("##-##-####");     
             mask.install(txtAte);
             
         } catch (ParseException ex) {
@@ -115,7 +117,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         lblAte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendario.png"))); // NOI18N
         lblAte.setText("Até:");
 
-        txtDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        txtDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
         txtDe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDeActionPerformed(evt);
@@ -128,7 +130,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
             }
         });
 
-        txtAte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txtAte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-y"))));
         txtAte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAteActionPerformed(evt);
@@ -187,12 +189,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -214,6 +210,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbRelatorioSintetico.setFocusable(false);
+        tbRelatorioSintetico.setRowHeight(25);
+        tbRelatorioSintetico.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tbRelatorioSintetico.setShowHorizontalLines(true);
+        tbRelatorioSintetico.getTableHeader().setReorderingAllowed(false);
         table.setViewportView(tbRelatorioSintetico);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -312,6 +313,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
         validar.ValidarVazioJ(txtAte);
         validar.mensagem();
         
+        validar.findDifference(txtDe.getText(), txtAte.getText());
+        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void numerico(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numerico
@@ -366,6 +369,20 @@ public class TelaRelatorio extends javax.swing.JFrame {
         
             }//GEN-LAST:event_btnValidadorRangeData
 
+    public void tabel() {
+
+        initComponents();
+        setBackground(new Color(0,0,0,0));
+
+        tbRelatorioSintetico.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tbRelatorioSintetico.getTableHeader().setOpaque(false);
+        tbRelatorioSintetico.getTableHeader().setBackground(new Color(32,136,203));
+        tbRelatorioSintetico.getTableHeader().setForeground(new Color(255,255,255));
+        tbRelatorioSintetico.setRowHeight(25);
+
+
+}
+    
     /**
      * @param args the command line arguments
      */
