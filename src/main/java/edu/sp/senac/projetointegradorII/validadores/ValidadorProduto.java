@@ -30,7 +30,7 @@ public class ValidadorProduto {
     }
     
     public void ValidarVazioJ(JFormattedTextField txt){
-        String text = txt.getText().replace(".", "").replace("-", "").replace("/", "").replace("(", "").replace(")", "").trim();
+        String text = txt.getText().replace(".", "").replace("-", "").replace("/", "").replace("(", "").replace(")", "").replace(",", "").trim();
                try {
             if (text.equals("")) {
                 throw new IllegalArgumentException();
