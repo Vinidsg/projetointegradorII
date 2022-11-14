@@ -8,7 +8,7 @@ package edu.sp.senac.projetointegradorII.model;
  *
  * @author William
  */
-public class CadastroProduto {    
+public class Produto {    
     
     private int codigoProduto;
     private String descricaoProduto;
@@ -20,7 +20,7 @@ public class CadastroProduto {
     private int quantProd;
     private int valorProduto;
     
-    public CadastroProduto(){    
+    public Produto(){    
     }
     
     public int getCodigoProduto(){
