@@ -17,7 +17,7 @@ public class Cliente {
     private String Tel;    
     private String Sexo;
     private String Endereco;
-    private int Numero;    
+    private String Numero;    
     private String CEP;
     private String Bairro;
     private String UF;
@@ -99,11 +99,11 @@ public class Cliente {
         this.Email = Email;
     }
     
-    public int getNumero(){
+    public String getNumero(){
         return Numero;
     }
     
-    public void setNumero(int Numero){
+    public void setNumero(String Numero){
         this.Numero = Numero;
     }
 

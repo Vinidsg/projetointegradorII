@@ -4,6 +4,7 @@
  */
 package edu.sp.senac.projetointegradorII;
 
+import edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO;
 import edu.sp.senac.projetointegradorII.model.Cliente;
 import edu.sp.senac.projetointegradorII.validadores.ValidadorCliente;
 import java.awt.event.KeyEvent;
@@ -551,35 +552,23 @@ public class TelaCliente extends javax.swing.JFrame {
             String dataNasc = (txtDataNascimento.getText());
             String Email = (txtEmail.getText());
             String EstadoCivil = (jcbEstadoCivil.getSelectedItem().toString());
-            String Tel = (txtNome.getText());
-            String Sexo = (txtNome.getText());
-            String Endereco = (txtNome.getText());
-            String Numero = (txtNome.getText());
-            String CEP = (txtNome.getText());
-            String Bairro = (txtNome.getText());
-            String UF = (txtNome.getText());
-            String Cidade = (txtNome.getText());
+            String Tel = (txtTel.getText());
+            String Sexo = (jcbSexo.getSelectedItem().toString());
+            String Endereco = (txtEndereco.getText());
+            String Numero = (txtN.getText());
+            String CEP = (txtCEP.getText());
+            String Bairro = (txtBairro.getText());
+            String UF = (jcbUF.getSelectedItem().toString());
+            String Cidade = (txtCidade.getText());
             String Buscar = (txtNome.getText());
             
-            
-            
-            objCliente = new Cliente(Nome, Cpf, dataNasc, Email, EstadoCivil, Tel);
-            boolean retorno = ComputadorDAO.salvar(objComputador);
+            objCliente = new Cliente(Nome);
+            boolean retorno = TelaClienteDAO.salvar(objCliente);
             if(retorno){
                 JOptionPane.showMessageDialog(this,"Cliente Cadastrado!");
             }else{
                 JOptionPane.showMessageDialog(this,"Falha no cadastro!");
             }   
-        } else {
-            //Modo de alteração
-            //TODO: Chamar a DAO de alteração (método alterar)
-            String marca = (txtMarca.getText());
-            int hd = Integer.parseInt(txtHD.getText());
-            String processador = (txtProcessador.getText());
-            
-            objComputador.setMarca(marca);
-            objComputador.setHd(hd);
-            objComputador.setProcessador(processador);
         }
     	
     }//GEN-LAST:event_btnCadastrarActionPerformed
