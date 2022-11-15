@@ -8,6 +8,6 @@ package edu.sp.senac.projetointegradorII.DAO;
  *
  * @author vinic
  */
-public class TelaVendaDAO {
+public class TelaProdutoDAO {
     
 }

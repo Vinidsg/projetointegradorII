@@ -11,15 +11,19 @@ package edu.sp.senac.projetointegradorII.model;
 public class Cliente {
     private String Nome;
     private String Cpf;
-    private String Endereco;
-    private String Tel;
-    private String Bairro;
-    private String CEP;
-    private String Cidade;
+    private String dataNasc;
     private String Email;
-    private int Numero;
+    private String EstadoCivil;
+    private String Tel;    
+    private String Sexo;
+    private String Endereco;
+    private int Numero;    
+    private String CEP;
+    private String Bairro;
+    private String UF;
+    private String Cidade;
     private String Buscar;
-    
+
     public Cliente(){
         
     }
@@ -102,4 +106,36 @@ public class Cliente {
     public void setNumero(int Numero){
         this.Numero = Numero;
     }
+
+    public String getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+
+    public String getEstadoCivil() {
+        return EstadoCivil;
+    }
+
+    public void setEstadoCivil(String EstadoCivil) {
+        this.EstadoCivil = EstadoCivil;
+    }
+
+    public String getSexo() {
+        return Sexo;
+    }
+
+    public void setSexo(String Sexo) {
+        this.Sexo = Sexo;
+    }
+
+    public String getUF() {
+        return UF;
+    }
+
+    public void setUF(String UF) {
+        this.UF = UF;
+    }    
 }
