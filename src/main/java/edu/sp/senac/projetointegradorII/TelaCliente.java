@@ -42,11 +42,11 @@ public class TelaCliente extends javax.swing.JFrame {
         this.txtTel.setText(String.valueOf(obj.getTel()));
         this.jcbSexo.setSelectedItem(String.valueOf(obj.getSexo()));
         this.txtEndereco.setText(String.valueOf(obj.getEndereco()));
-        this.txtN.setInt(Integer.valueOf(obj.getNumero()));
-        this.txtCEP.setText(String.valueOf(obj.getDataNasc()));
-        this.txtBairro.setText(String.valueOf(obj.getDataNasc()));
-        this.jcbUF.setText(String.valueOf(obj.getDataNasc()));
-        this.txtCidade.setText(String.valueOf(obj.getDataNasc()));        
+        this.txtN.setText(String.valueOf(obj.getNumero()));
+        this.txtCEP.setText(String.valueOf(obj.getCEP()));
+        this.txtBairro.setText(String.valueOf(obj.getBairro()));
+        this.jcbUF.setSelectedItem(String.valueOf(obj.getUF()));
+        this.txtCidade.setText(String.valueOf(obj.getCidade()));        
     }
 
     /**
@@ -542,8 +542,45 @@ public class TelaCliente extends javax.swing.JFrame {
         validar.ValidarVazioJ(txtCEP);
         validar.ValidarVazioJCB(jcbEstadoCivil);
         validar.ValidarVazioJCB(jcbUF);
+        validar.ValidarVazioJCB(jcbSexo);
         validar.mensagem();
         
+        if (this.objCliente == null) {
+            String Nome = (txtNome.getText());
+            String Cpf = (txtCPF.getText());
+            String dataNasc = (txtDataNascimento.getText());
+            String Email = (txtEmail.getText());
+            String EstadoCivil = (jcbEstadoCivil.getSelectedItem().toString());
+            String Tel = (txtNome.getText());
+            String Sexo = (txtNome.getText());
+            String Endereco = (txtNome.getText());
+            String Numero = (txtNome.getText());
+            String CEP = (txtNome.getText());
+            String Bairro = (txtNome.getText());
+            String UF = (txtNome.getText());
+            String Cidade = (txtNome.getText());
+            String Buscar = (txtNome.getText());
+            
+            
+            
+            objCliente = new Cliente(Nome, Cpf, dataNasc, Email, EstadoCivil, Tel);
+            boolean retorno = ComputadorDAO.salvar(objComputador);
+            if(retorno){
+                JOptionPane.showMessageDialog(this,"Cliente Cadastrado!");
+            }else{
+                JOptionPane.showMessageDialog(this,"Falha no cadastro!");
+            }   
+        } else {
+            //Modo de alteração
+            //TODO: Chamar a DAO de alteração (método alterar)
+            String marca = (txtMarca.getText());
+            int hd = Integer.parseInt(txtHD.getText());
+            String processador = (txtProcessador.getText());
+            
+            objComputador.setMarca(marca);
+            objComputador.setHd(hd);
+            objComputador.setProcessador(processador);
+        }
     	
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
