@@ -1,13 +1,18 @@
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\Venda.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaCliente.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\RelatorioAnalitico.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\Cliente.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaVenda.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\background\FundoTela.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\Validador.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaProduto.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\RelatorioSintetico.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaInicial.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaRelatorio.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaRelatorioAnalitico.java
-C:\Users\vinicius.sgarcia2\Documents\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\CadastroProduto.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\DAO\TelaVendaDao.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\Produto.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\background\FundoTela.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\RelatorioSintetico.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaInicial.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\RelatorioAnalitico.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaProduto.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaVenda.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaRelatorioAnalitico.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\validadores\ValidadorCliente.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\DAO\TelaClienteDAO.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\Cliente.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaRelatorio.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaCliente.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\validadores\ValidadorRelatorio.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\Venda.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\validadores\ValidadorProduto.java
+C:\Users\MATHEUS FELIPE\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\DAO\TelaProdutoDAO.java

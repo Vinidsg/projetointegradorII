@@ -47,12 +47,8 @@ public class ValidadorCliente {
     }
 
     public void mensagem() {
-        if (cont == 0) {
-            JOptionPane.showMessageDialog(null, "Cliente cadastrado");
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        if (cont != 0) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");        
         }
     }
-
 }

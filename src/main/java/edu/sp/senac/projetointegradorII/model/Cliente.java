@@ -4,14 +4,17 @@
  */
 package edu.sp.senac.projetointegradorII.model;
 
+import java.util.Date;
+
 /**
  *
  * @author Vinicius Lima
  */
 public class Cliente {
+    private int cod_cliente;
     private String Nome;
     private String Cpf;
-    private String dataNasc;
+    private Date dataNasc;
     private String Email;
     private String EstadoCivil;
     private String Tel;    
@@ -24,10 +27,51 @@ public class Cliente {
     private String Cidade;
     private String Buscar;
 
-    public Cliente(){
-        
+    public Cliente(){     
+    }
+
+    public Cliente(String Nome, String Cpf, Date dataNasc, String Email, String EstadoCivil, String Tel, String Sexo, String Endereco, String Numero, String CEP, String Bairro, String UF, String Cidade) {
+        this.Nome = Nome;
+        this.Cpf = Cpf;
+        this.dataNasc = dataNasc;
+        this.Email = Email;
+        this.EstadoCivil = EstadoCivil;
+        this.Tel = Tel;
+        this.Sexo = Sexo;
+        this.Endereco = Endereco;
+        this.Numero = Numero;
+        this.CEP = CEP;
+        this.Bairro = Bairro;
+        this.UF = UF;
+        this.Cidade = Cidade;       
     }
     
+        public Cliente(int cod_cliente, String Nome, String Cpf, Date dataNasc, String Email, String EstadoCivil, String Tel, String Sexo, String Endereco, String Numero, String CEP, String Bairro, String UF, String Cidade) {
+        
+        this.cod_cliente = cod_cliente;    
+        this.Nome = Nome;
+        this.Cpf = Cpf;
+        this.dataNasc = dataNasc;
+        this.Email = Email;
+        this.EstadoCivil = EstadoCivil;
+        this.Tel = Tel;
+        this.Sexo = Sexo;
+        this.Endereco = Endereco;
+        this.Numero = Numero;
+        this.CEP = CEP;
+        this.Bairro = Bairro;
+        this.UF = UF;
+        this.Cidade = Cidade;   
+    }
+
+    public int getCod_cliente() {
+        return cod_cliente;
+    }
+
+    public void setCod_cliente(int cod_cliente) {
+        this.cod_cliente = cod_cliente;
+    }
+       
     public String getBuscar(){
         return Buscar;
     }
@@ -42,8 +86,7 @@ public class Cliente {
     public void setNome(String Nome){
         this.Nome = Nome;
     }
-
-    
+ 
     public String getCpf(){
         return Cpf;
     }
@@ -107,11 +150,11 @@ public class Cliente {
         this.Numero = Numero;
     }
 
-    public String getDataNasc() {
+    public Date getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(String dataNasc) {
+    public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
 
