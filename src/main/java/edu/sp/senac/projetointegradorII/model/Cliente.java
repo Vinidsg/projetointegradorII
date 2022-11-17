@@ -11,7 +11,7 @@ import java.util.Date;
  * @author Vinicius Lima
  */
 public class Cliente {
-    private int cod_cliente;
+    private int codCliente;
     private String Nome;
     private String Cpf;
     private Date dataNasc;
@@ -48,7 +48,7 @@ public class Cliente {
     
         public Cliente(int cod_cliente, String Nome, String Cpf, Date dataNasc, String Email, String EstadoCivil, String Tel, String Sexo, String Endereco, String Numero, String CEP, String Bairro, String UF, String Cidade) {
         
-        this.cod_cliente = cod_cliente;    
+        this.codCliente = cod_cliente;    
         this.Nome = Nome;
         this.Cpf = Cpf;
         this.dataNasc = dataNasc;
@@ -65,11 +65,11 @@ public class Cliente {
     }
 
     public int getCod_cliente() {
-        return cod_cliente;
+        return codCliente;
     }
 
     public void setCod_cliente(int cod_cliente) {
-        this.cod_cliente = cod_cliente;
+        this.codCliente = cod_cliente;
     }
        
     public String getBuscar(){

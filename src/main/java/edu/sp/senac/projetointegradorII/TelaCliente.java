@@ -10,11 +10,13 @@ import edu.sp.senac.projetointegradorII.validadores.ValidadorCliente;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,7 +42,7 @@ public class TelaCliente extends javax.swing.JFrame {
         this.txtId.setText(String.valueOf(obj.getCod_cliente()));
         this.txtNome.setText(String.valueOf(obj.getNome()));
         this.txtCPF.setText(String.valueOf(obj.getCpf()));
-        this.txtDataNascimento.setText(sdf.format(obj.getDataNasc()));
+        this.jdcDataNascimento.setDate(obj.getDataNasc());
         this.txtEmail.setText(String.valueOf(obj.getDataNasc()));
         this.jcbEstadoCivil.setSelectedItem(String.valueOf(obj.getEstadoCivil()));
         this.txtTel.setText(String.valueOf(obj.getTel()));
@@ -79,7 +81,6 @@ public class TelaCliente extends javax.swing.JFrame {
         lblUF = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtCPF = new javax.swing.JFormattedTextField();
-        txtDataNascimento = new javax.swing.JFormattedTextField();
         txtEmail = new javax.swing.JTextField();
         jcbEstadoCivil = new javax.swing.JComboBox<>();
         txtTel = new javax.swing.JFormattedTextField();
@@ -96,12 +97,13 @@ public class TelaCliente extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         lblNome1 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        jdcDataNascimento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         txtBusca = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbCliente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Cliente");
@@ -167,12 +169,6 @@ public class TelaCliente extends javax.swing.JFrame {
 
         try {
             txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            txtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -287,7 +283,7 @@ public class TelaCliente extends javax.swing.JFrame {
         btnCadastrar.setBackground(new java.awt.Color(234, 215, 206));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/registrado.png"))); // NOI18N
-        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.setText("Salvar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
@@ -325,7 +321,7 @@ public class TelaCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblUF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbUF, 0, 53, Short.MAX_VALUE))
+                        .addComponent(jcbUF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(btnInicio)
@@ -343,17 +339,17 @@ public class TelaCliente extends javax.swing.JFrame {
                                 .addGap(4, 4, 4)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(68, 68, 68)
-                                .addComponent(lblEstadoCivil))
+                                .addComponent(lblEstadoCivil)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jcbEstadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblNome)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbEstadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDataNascimento)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(lblDataNasc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jdcDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -383,21 +379,22 @@ public class TelaCliente extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblNome1))
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblDataNasc))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblNome)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNome1)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDataNasc)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(lblNome))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jdcDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -477,36 +474,29 @@ public class TelaCliente extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Nome Cliente", "CPF Cliente" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Código do Cliente", "Nome do Cliente"
+                "Cód", "Nome", "CPF"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbCliente);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -533,8 +523,8 @@ public class TelaCliente extends javax.swing.JFrame {
                     .addComponent(txtBusca)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -549,7 +539,7 @@ public class TelaCliente extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -564,6 +554,29 @@ public class TelaCliente extends javax.swing.JFrame {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         // TODO add your handling code here:
+        ArrayList<Cliente> lista = TelaClienteDAO.listar();
+       DefaultTableModel modelo = (DefaultTableModel) tbCliente.getModel();
+       
+       modelo.setRowCount(0);
+       
+       for (Cliente item : lista) {            
+            modelo.addRow(new String[]{String.valueOf(item.getCod_cliente()),
+                                       String.valueOf(item.getNome()),
+                                       String.valueOf(item.getCpf()),
+                                       String.valueOf(item.getDataNasc()),
+                                       String.valueOf(item.getEmail()),
+                                       String.valueOf(item.getEstadoCivil()),
+                                       String.valueOf(item.getTel()),
+                                       String.valueOf(item.getSexo()),
+                                       String.valueOf(item.getEndereco()),
+                                       String.valueOf(item.getNumero()),
+                                       String.valueOf(item.getCEP()),
+                                       String.valueOf(item.getBairro()),
+                                       String.valueOf(item.getUF()),
+                                       String.valueOf(item.getCidade()),
+                                       String.valueOf(item.getNome()), 
+                                    });
+        }
         
     }//GEN-LAST:event_btnOkActionPerformed
 
@@ -585,7 +598,7 @@ public class TelaCliente extends javax.swing.JFrame {
         validar.ValidarVazio(txtBairro);
         validar.ValidarVazio(txtCidade);
         validar.ValidarVazioJ(txtCPF);
-        validar.ValidarVazioJ(txtDataNascimento);
+        validar.ValidarVazioJDC(jdcDataNascimento);
         validar.ValidarVazioJ(txtTel);
         validar.ValidarVazioJ(txtCEP);
         validar.ValidarVazioJCB(jcbEstadoCivil);
@@ -597,12 +610,7 @@ public class TelaCliente extends javax.swing.JFrame {
             
             String Nome = (txtNome.getText());
             String Cpf = (txtCPF.getText());
-            Date dataNasc = null;
-            try {
-                dataNasc = (sdf.parse(txtDataNascimento.getText()));
-            } catch (ParseException ex) {
-                System.out.println("Erro ao converter um texto para Date!");
-            }
+            Date data = jdcDataNascimento.getDate();
             String Email = (txtEmail.getText());
             String EstadoCivil = (jcbEstadoCivil.getSelectedItem().toString());
             String Tel = (txtTel.getText());
@@ -614,19 +622,112 @@ public class TelaCliente extends javax.swing.JFrame {
             String UF = (jcbUF.getSelectedItem().toString());
             String Cidade = (txtCidade.getText());
                 
-            objCliente = new Cliente(Nome, Cpf, dataNasc, Email, EstadoCivil, Tel, Sexo, Endereco, Numero, CEP, Bairro, UF, Cidade);
+            objCliente = new Cliente(Nome, Cpf, data, Email, EstadoCivil, Tel, Sexo, Endereco, Numero, CEP, Bairro, UF, Cidade);
             boolean retorno = TelaClienteDAO.salvar(objCliente);
-            if(retorno) {
+            
+        if(retorno) {
                 JOptionPane.showMessageDialog(this,"Cliente Cadastrado!");
             } else {
                 JOptionPane.showMessageDialog(this,"Falha no cadastro!");
-            }
+            } 
+        } else {
+            String Nome = (txtNome.getText());
+            String Cpf = (txtCPF.getText());
+            Date data = jdcDataNascimento.getDate();
+            String Email = (txtEmail.getText());
+            String EstadoCivil = (jcbEstadoCivil.getSelectedItem().toString());
+            String Tel = (txtTel.getText());
+            String Sexo = (jcbSexo.getSelectedItem().toString());
+            String Endereco = (txtEndereco.getText());
+            String Numero = (txtN.getText());
+            String CEP = (txtCEP.getText());
+            String Bairro = (txtBairro.getText());
+            String UF = (jcbUF.getSelectedItem().toString());
+            String Cidade = (txtCidade.getText());
             
+            objCliente.setNome(Nome);
+            objCliente.setCpf(Cpf);
+            objCliente.setDataNasc(data);
+            objCliente.setEmail(Email);
+            objCliente.setEstadoCivil(EstadoCivil);
+            objCliente.setTel(Tel);
+            objCliente.setSexo(Sexo);
+            objCliente.setEndereco(Endereco);
+            objCliente.setNumero(Numero);
+            objCliente.setCEP(CEP);
+            objCliente.setBairro(Bairro);
+            objCliente.setUF(UF);
+            objCliente.setCidade(Cidade);
+            
+            boolean retorno = TelaClienteDAO.atualizar(objCliente);
+            
+            if(retorno){
+                JOptionPane.showMessageDialog(this,"Cliente alterado com sucesso!");
+            } else{
+                JOptionPane.showMessageDialog(this,"Falha na alteração!");
+            }
         }
+            
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
+        
+        int linhaSelecionada = tbCliente.getSelectedRow();
+        
+        if (linhaSelecionada > 0) {
+            Cliente obj = new Cliente();
+            
+            obj.setCod_cliente(Integer.parseInt(tbCliente.getValueAt(linhaSelecionada, 0).toString()));
+            obj.setNome(tbCliente.getValueAt(linhaSelecionada, 1).toString());
+            
+            TelaCliente novaTela = new TelaCliente(obj);
+            novaTela.setVisible(true);
+            
+        }
+        
+        
+        
+        
+        if (this.objCliente == null) {
+            
+            String Nome = (txtNome.getText());
+            String Cpf = (txtCPF.getText());
+            Date data = jdcDataNascimento.getDate();
+            String Email = (txtEmail.getText());
+            String EstadoCivil = (jcbEstadoCivil.getSelectedItem().toString());
+            String Tel = (txtTel.getText());
+            String Sexo = (jcbSexo.getSelectedItem().toString());
+            String Endereco = (txtEndereco.getText());
+            String Numero = (txtN.getText());
+            String CEP = (txtCEP.getText());
+            String Bairro = (txtBairro.getText());
+            String UF = (jcbUF.getSelectedItem().toString());
+            String Cidade = (txtCidade.getText());
+            
+            objCliente.setNome(Nome);
+            objCliente.setCpf(Cpf);
+            objCliente.setDataNasc(data);
+            objCliente.setEmail(Email);
+            objCliente.setEstadoCivil(EstadoCivil);
+            objCliente.setTel(Tel);
+            objCliente.setSexo(Sexo);
+            objCliente.setEndereco(Endereco);
+            objCliente.setNumero(Numero);
+            objCliente.setCEP(CEP);
+            objCliente.setBairro(Bairro);
+            objCliente.setUF(UF);
+            objCliente.setCidade(Cidade);
+            
+            boolean retorno = TelaClienteDAO.atualizar(objCliente);
+                    
+            if(retorno){
+                JOptionPane.showMessageDialog(this,"Cliente alterado com sucesso!");
+            } else{
+                JOptionPane.showMessageDialog(this,"Falha na alteração!");
+            }
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
@@ -776,10 +877,10 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<Object> jcbEstadoCivil;
     private javax.swing.JComboBox<String> jcbSexo;
     private javax.swing.JComboBox<String> jcbUF;
+    private com.toedter.calendar.JDateChooser jdcDataNascimento;
     private javax.swing.JLabel lblBairro;
     private javax.swing.JLabel lblCEP;
     private javax.swing.JLabel lblCPF;
@@ -794,12 +895,12 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblSexo;
     private javax.swing.JLabel lblTel;
     private javax.swing.JLabel lblUF;
+    private javax.swing.JTable tbCliente;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtBusca;
     private javax.swing.JFormattedTextField txtCEP;
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JTextField txtCidade;
-    private javax.swing.JFormattedTextField txtDataNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtId;
