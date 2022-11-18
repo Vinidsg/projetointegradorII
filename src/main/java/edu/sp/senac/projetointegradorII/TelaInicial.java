@@ -41,16 +41,40 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        jFrame2 = new javax.swing.JFrame();
         BarraMenu = new javax.swing.JMenuBar();
         Cadastro = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenuItem();
-        Produtos = new javax.swing.JMenuItem();
+        Produto = new javax.swing.JMenuItem();
         Venda = new javax.swing.JMenu();
         RealizarVenda = new javax.swing.JMenuItem();
         Relatorios = new javax.swing.JMenu();
         Sintetico = new javax.swing.JMenuItem();
         Sair = new javax.swing.JMenu();
         SairDoPrograma = new javax.swing.JMenuItem();
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Inicial");
@@ -73,14 +97,14 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         Cadastro.add(Cliente);
 
-        Produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/produtos.png"))); // NOI18N
-        Produtos.setText("Produtos");
-        Produtos.addActionListener(new java.awt.event.ActionListener() {
+        Produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/produtos.png"))); // NOI18N
+        Produto.setText("Produtos");
+        Produto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProdutosActionPerformed(evt);
+                ProdutoActionPerformed(evt);
             }
         });
-        Cadastro.add(Produtos);
+        Cadastro.add(Produto);
 
         BarraMenu.add(Cadastro);
 
@@ -136,7 +160,7 @@ public class TelaInicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGap(0, 321, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(756, 396));
@@ -153,11 +177,11 @@ public class TelaInicial extends javax.swing.JFrame {
         cliente.setVisible(true);
     }//GEN-LAST:event_ClienteActionPerformed
 
-    private void ProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutosActionPerformed
+    private void ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdutoActionPerformed
         // TODO add your handling code here:
         TelaProduto produto = new TelaProduto();
         produto.setVisible(true);
-    }//GEN-LAST:event_ProdutosActionPerformed
+    }//GEN-LAST:event_ProdutoActionPerformed
 
     private void RealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarVendaActionPerformed
         // TODO add your handling code here:
@@ -215,12 +239,14 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JMenu Cadastro;
     private javax.swing.JMenuItem Cliente;
-    private javax.swing.JMenuItem Produtos;
+    private javax.swing.JMenuItem Produto;
     private javax.swing.JMenuItem RealizarVenda;
     private javax.swing.JMenu Relatorios;
     private javax.swing.JMenu Sair;
     private javax.swing.JMenuItem SairDoPrograma;
     private javax.swing.JMenuItem Sintetico;
     private javax.swing.JMenu Venda;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
     // End of variables declaration//GEN-END:variables
 }
