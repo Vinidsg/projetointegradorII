@@ -19,8 +19,13 @@ public class Produto {
     private String prateleiraProd;
     private int quantProd;
     private int valorProduto;
+    private String categoriaProd;
     
     public Produto(){    
+    }
+
+    public Produto(int codigoProduto, int valorProduto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public int getCodigoProduto(){
@@ -76,5 +81,12 @@ public class Produto {
     }
     public void setValorProduto(int valorProduto){
         this.valorProduto = valorProduto;
+    }
+    
+    public String getCategoriaProd (){
+        return categoriaProd;
+    }
+    public void setCategoriaProd(String categoriaProd){
+        this.categoriaProd = categoriaProd;
     }
 }

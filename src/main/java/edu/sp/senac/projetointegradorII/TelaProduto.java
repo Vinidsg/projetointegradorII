@@ -8,6 +8,8 @@ import edu.sp.senac.projetointegradorII.validadores.ValidadorProduto;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import edu.sp.senac.projetointegradorII.DAO.TelaProdutoDAO;
+import edu.sp.senac.projetointegradorII.model.Produto;
 
 /**
  *
@@ -23,6 +25,29 @@ public class TelaProduto extends javax.swing.JFrame {
         //Mudar ícone das telas
         ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
         this.setIconImage(img.getImage());
+    }
+    
+    Produto objProduto = null;
+
+
+    /**
+    * Construtor que recebe parâmetros (Modo de Alteração)
+    */
+    public TelaProduto(Produto obj){
+        initComponents();
+        this.objProduto = obj;
+
+        //Atribuo os valores do objeto aos campos do formulário
+        this.txtNomeProduto.setText(String.valueOf(obj.getNomeProduto()));
+        this.txtValorProduto.setText(String.valueOf(obj.getValorProduto()));
+        this.txtMarcaProduto.setText(String.valueOf(obj.getMarcaProduto()));
+        this.txtDescricaoProduto.setText(String.valueOf(obj.getDescricaoProduto()));
+        this.txtDtCompraProduto.setText(String.valueOf(obj.getDescricaoProduto()));
+        this.txtFornecedorProd.setText(String.valueOf(obj.getFornecedorProd()));
+        this.txtCategoria.setSelectedItem(String.valueOf(obj.getCategoriaProd()));
+        this.txtPrateleiraProd.setText(String.valueOf(obj.getPrateleiraProd()));
+        
+        
     }
 
     /**
@@ -187,7 +212,7 @@ public class TelaProduto extends javax.swing.JFrame {
         lblValor.setText("Valor:*");
 
         try {
-            txtValorProduto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#.###,##")));
+            txtValorProduto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -511,6 +536,38 @@ public class TelaProduto extends javax.swing.JFrame {
 
     private void btnCadastroProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProdActionPerformed
         // TODO add your handling code here:
+        
+        if(this.objProduto == null){
+            //Modo de inclusão
+            //TODO: Chamar a DAO de inclusão (método salvar)
+            int codigoProduto = Integer.parseInt(txtCodigoProduto.getText());
+            int valorProduto = Integer.parseInt(txtValorProduto.getText());
+            
+            objProduto = new Produto(codigoProduto,valorProduto);
+            boolean retorno = TelaProdutoDAO.salvar(objProduto);
+            if(retorno){
+                JOptionPane.showMessageDialog(this,"Produto gravado com sucesso!");
+            }else{
+                JOptionPane.showMessageDialog(this,"Falha na gravação!");
+            }
+            
+        }else{
+            //Modo de alteração
+            //TODO: Chamar a DAO de alteração (método alterar)
+            int codigoProduto = Integer.parseInt(txtCodigoProduto.getText());
+            int valorProduto = Integer.parseInt(txtValorProduto.getText());
+            
+            objProduto.setCodigoProduto(codigoProduto);
+            objProduto.setValorProduto(valorProduto);
+            
+            boolean retorno = TelaProdutoDAO.atualizar(objProduto);
+            if(retorno){
+                JOptionPane.showMessageDialog(this,"Produto alterado com sucesso!");
+            }else{
+                JOptionPane.showMessageDialog(this,"Falha na alteração!");
+            }
+            
+        }
             	ValidadorProduto validar = new ValidadorProduto();
     	
     	//Validação dos campos obrigatorios
