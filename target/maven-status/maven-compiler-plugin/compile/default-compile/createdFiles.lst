@@ -4,7 +4,9 @@ edu\sp\senac\projetointegradorII\TelaProduto$6.class
 edu\sp\senac\projetointegradorII\model\RelatorioAnalitico.class
 edu\sp\senac\projetointegradorII\validadores\ValidadorProduto.class
 edu\sp\senac\projetointegradorII\validadores\ValidadorCliente.class
+edu\sp\senac\projetointegradorII\TelaCliente$26.class
 edu\sp\senac\projetointegradorII\TelaProduto$3.class
+edu\sp\senac\projetointegradorII\TelaProduto$19.class
 edu\sp\senac\projetointegradorII\DAO\TelaProdutoDAO.class
 edu\sp\senac\projetointegradorII\TelaCliente$16.class
 edu\sp\senac\projetointegradorII\TelaCliente$13.class
@@ -14,6 +16,7 @@ edu\sp\senac\projetointegradorII\TelaProduto.class
 edu\sp\senac\projetointegradorII\TelaProduto$16.class
 edu\sp\senac\projetointegradorII\TelaCliente$23.class
 edu\sp\senac\projetointegradorII\TelaCliente.class
+edu\sp\senac\projetointegradorII\TelaProduto$21.class
 edu\sp\senac\projetointegradorII\TelaVenda$3.class
 edu\sp\senac\projetointegradorII\TelaVenda$6.class
 edu\sp\senac\projetointegradorII\TelaCliente$20.class
@@ -31,6 +34,7 @@ edu\sp\senac\projetointegradorII\TelaCliente$2.class
 edu\sp\senac\projetointegradorII\TelaCliente$11.class
 edu\sp\senac\projetointegradorII\TelaCliente$21.class
 edu\sp\senac\projetointegradorII\TelaCliente$18.class
+edu\sp\senac\projetointegradorII\TelaCliente$28.class
 edu\sp\senac\projetointegradorII\TelaRelatorio$4.class
 edu\sp\senac\projetointegradorII\TelaInicial$6.class
 edu\sp\senac\projetointegradorII\TelaCliente$9.class
@@ -42,6 +46,7 @@ edu\sp\senac\projetointegradorII\TelaProduto$11.class
 edu\sp\senac\projetointegradorII\TelaCliente$10.class
 edu\sp\senac\projetointegradorII\TelaInicial$5.class
 edu\sp\senac\projetointegradorII\TelaCliente$17.class
+edu\sp\senac\projetointegradorII\TelaProduto$23.class
 edu\sp\senac\projetointegradorII\TelaCliente$8.class
 edu\sp\senac\projetointegradorII\TelaCliente$22.class
 edu\sp\senac\projetointegradorII\TelaProduto$4.class
@@ -54,6 +59,7 @@ edu\sp\senac\projetointegradorII\TelaProduto$12.class
 edu\sp\senac\projetointegradorII\TelaProduto$15.class
 edu\sp\senac\projetointegradorII\TelaVenda$2.class
 edu\sp\senac\projetointegradorII\TelaRelatorio$9.class
+edu\sp\senac\projetointegradorII\TelaProduto$22.class
 edu\sp\senac\projetointegradorII\model\Venda.class
 edu\sp\senac\projetointegradorII\TelaRelatorio$1.class
 edu\sp\senac\projetointegradorII\TelaRelatorio$6.class
@@ -61,6 +67,7 @@ edu\sp\senac\projetointegradorII\TelaCliente$6.class
 edu\sp\senac\projetointegradorII\TelaProduto$5.class
 edu\sp\senac\projetointegradorII\TelaInicial$1.class
 edu\sp\senac\projetointegradorII\TelaCliente$15.class
+edu\sp\senac\projetointegradorII\TelaCliente$27.class
 edu\sp\senac\projetointegradorII\TelaProduto$2.class
 edu\sp\senac\projetointegradorII\TelaCliente$3.class
 edu\sp\senac\projetointegradorII\TelaInicial$7.class
@@ -68,6 +75,7 @@ edu\sp\senac\projetointegradorII\TelaCliente$12.class
 edu\sp\senac\projetointegradorII\TelaInicial$2.class
 edu\sp\senac\projetointegradorII\TelaCliente$14.class
 edu\sp\senac\projetointegradorII\TelaCliente$24.class
+edu\sp\senac\projetointegradorII\TelaProduto$20.class
 edu\sp\senac\projetointegradorII\validadores\ValidadorRelatorio.class
 edu\sp\senac\projetointegradorII\TelaRelatorio$10.class
 edu\sp\senac\projetointegradorII\TelaProduto$1.class

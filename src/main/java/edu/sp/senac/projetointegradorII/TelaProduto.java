@@ -484,7 +484,32 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCadatroProdutoActionPerformed
 
     private void btnBuscaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaProdutoActionPerformed
-         carregaTabela();  
+        
+       DefaultTableModel modelo = (DefaultTableModel) tbBuscaProduto.getModel();
+       modelo.setRowCount(0);
+       
+       tbBuscaProduto.getColumnModel().getColumn(0).setPreferredWidth(20);
+       tbBuscaProduto.getColumnModel().getColumn(1).setPreferredWidth(80);
+       tbBuscaProduto.getColumnModel().getColumn(2).setPreferredWidth(20);
+       
+       ArrayList<Produto> lista = TelaProdutoDAO.listar();
+       
+       for (Produto item : lista) {            
+            modelo.addRow(new String[]{String.valueOf(item.getNomeProduto()),
+                                       String.valueOf(item.getCodigoProduto()),
+                                       String.valueOf(item.getValorProduto()),
+                                       String.valueOf(item.getMarcaProduto()),
+                                       String.valueOf(item.getDescricaoProduto()),
+                                       String.valueOf(item.getDtCompraProduto()),
+                                       String.valueOf(item.getFornecedorProd()),
+                                       String.valueOf(item.getQuantProd()),
+                                       String.valueOf(item.getCategoriaProd()),
+                                       String.valueOf(item.getPrateleiraProd()),
+                                        
+                                    });
+        }
+       
+        carregaTabela();  
  
     }//GEN-LAST:event_btnBuscaProdutoActionPerformed
 
@@ -643,6 +668,7 @@ public class TelaProduto extends javax.swing.JFrame {
             boolean retorno = TelaProdutoDAO.salvar(objProduto);
             if(retorno){
 //                JOptionPane.showMessageDialog(this,"Produto gravado com sucesso!");
+                limparTexto();
             }else{
                 JOptionPane.showMessageDialog(this,"Falha na gravação!");
             }
@@ -772,50 +798,44 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirProdutoActionPerformed
 
     private void txtBuscaProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaProdutoKeyReleased
-//        
-//        String tipo="";
-//        String escolha = txtCadatroProduto.getSelectedItem().toString().trim();
-//        if (escolha.equals("Nome")) 
-//        {
-//            tipo= " "+"nome";
-//        }
-//        if (escolha.equals("Marca")) 
-//        {
-//            tipo= " "+"marca";
-//        }
-//        String arg = txtBuscaProduto.getText();
-//        
-//        
-//         DefaultTableModel mpl = (DefaultTableModel) tbBuscaProduto.getModel();
-//         int l=mpl.getRowCount();
-//         
-//         
-//         if (l>0) 
-//        {
-//            while (l>0) {                
-//                ((DefaultTableModel) tbBuscaProduto.getModel()).removeRow(l-1);
-//                l--;
-//            }
-//        }
-//         
-//         try 
-//        {
-//            ResultSet rs = TelaProdutoDAO.consultarPorNomeMarca(tipo, arg);
-//            DefaultTableModel mp = (DefaultTableModel) tbBuscaProduto.getModel();
-//            
-//            while (rs.next()) 
-//            {                
-//                
-//                String Coluna0=rs.getString("nome").trim();
-//                
-//                
-//                
-//                mp.addRow(new String[]{Coluna0});
-//            }
-//        } catch (SQLException erro) 
-//        {
-//            JOptionPane.showMessageDialog(this, "Ocorreu um erro:"+erro, "Preeencher Item",2);
-//        }
+        
+        String tipo = "";
+        String escolha = txtCadatroProduto.getSelectedItem().toString().trim();
+        
+        if (escolha.equals("Nome")) {
+            tipo = "" + "nome";
+        } 
+        if (escolha.equals("Marca")) {
+            tipo = "" + "marca";
+        }
+        
+        String arg = txtBuscaProduto.getText();
+        
+        DefaultTableModel dtm = (DefaultTableModel) tbBuscaProduto.getModel();
+        int l = dtm.getRowCount();
+        
+        if (l > 0) {
+            while (l > 0) {
+                ((DefaultTableModel) tbBuscaProduto.getModel()).removeRow(l-1);
+                
+            }
+        }
+        
+        try {
+            ResultSet rs = (ResultSet) TelaProdutoDAO.listarPorNome(tipo, arg);
+            DefaultTableModel mp = (DefaultTableModel) tbBuscaProduto.getModel();
+            
+            while (rs.next()) {
+                String Coluna0 = rs.getString("cod_cliente").toString().trim();
+                String Coluna1 = rs.getString("nome").toString().trim();
+                String Coluna2 = rs.getString("cpf").toString().trim();
+                
+                mp.addRow(new String[] {Coluna0, Coluna1, Coluna2});
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro: " + erro, "Preencher Item",2);
+        }
+        tbBuscaProduto.setAutoCreateRowSorter(true);
          
     }//GEN-LAST:event_txtBuscaProdutoKeyReleased
 

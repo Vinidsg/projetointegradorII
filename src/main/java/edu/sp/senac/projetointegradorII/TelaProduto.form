@@ -221,9 +221,9 @@
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Component id="btnInício" pref="92" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnExcluirProduto" pref="96" max="32767" attributes="0"/>
+                          <Component id="btnExcluirProduto" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnAlterarProd" pref="98" max="32767" attributes="0"/>
+                          <Component id="btnAlterarProd" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnCadastroProd" pref="93" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>

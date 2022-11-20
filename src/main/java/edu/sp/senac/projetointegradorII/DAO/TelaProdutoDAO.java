@@ -106,51 +106,18 @@ public class TelaProdutoDAO {
         return lista;
     }
 
-//    public static ArrayList<Produto> consultarPorNomeMarca() {
-//        
-//        
-//        Connection conexao = null;
-//        ArrayList<Produto> lista = new ArrayList<Produto>();
-//        
-//        try {
-//            //Implementar consulta à tabela NotaFiscal
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            
-//            //Abrir a conexão
-//            conexao = DriverManager.getConnection(url,login,senha);
-//            
-//            //Criar o comando SQL
-//            PreparedStatement comandoSQL =
-//            conexao.prepareStatement("SELECT * FROM Produto WHERE =?");
-//            
-//            //Executar o comando
-//            ResultSet rs = comandoSQL.executeQuery();
-//            
-//            if(rs!=null){
-//                while(rs.next()){
-//                    Produto novoObjeto = new Produto();
-//                    novoObjeto.setCodigoProduto(Integer.parseInt(rs.getString("cod_produto")));
-//                    novoObjeto.setNomeProduto(rs.getString("nome"));
-//                    novoObjeto.setValorProduto(rs.getDouble("valor"));
-//                    novoObjeto.setMarcaProduto(rs.getString("marca"));
-//                    novoObjeto.setDescricaoProduto(rs.getString("descricao"));
-//                    novoObjeto.setDtCompraProduto(rs.getDate("data_compra_produto"));
-//                    novoObjeto.setFornecedorProd(rs.getString("fornecedor"));
-//                    novoObjeto.setPrateleiraProd(rs.getString("prateleira"));
-//                    novoObjeto.setQuantProd(rs.getInt("qtd_produto"));
-//                    novoObjeto.setCategoriaProd(rs.getString("categoria"));
-//                    lista.add(novoObjeto);
-//                    
-//                }
-//            }                  
-//        } catch (ClassNotFoundException ex) {
-//            System.out.println(ex.getMessage());
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        
-//        return lista;
-//    }
+    public static ResultSet listarPorNome (String tipo, String arg) throws SQLException {
+        String argumento = tipo + " " + "like '" + arg + "%'";
+        
+        Connection conexao = null;
+        
+        PreparedStatement comandoSQL = conexao.prepareStatement("SELECT nome, cpf FROM cliente where " + argumento + "");
+//        comandoSQL.setString(1, "%" + Nome + "%");
+        ResultSet rs = comandoSQL.executeQuery();
+        
+        return rs;       
+        
+    }
        
     
 

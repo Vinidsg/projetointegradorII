@@ -643,7 +643,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jComboBox1" min="-2" pref="118" max="-2" attributes="0"/>
+                          <Component id="jcbTipoBusca" min="-2" pref="118" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtBusca" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -661,7 +661,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnOk" max="32767" attributes="0"/>
                       <Component id="txtBusca" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jcbTipoBusca" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="107" max="-2" attributes="0"/>
@@ -694,7 +694,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOkActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="jcbTipoBusca">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ce" green="d7" red="ea" type="rgb"/>
@@ -711,7 +711,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbTipoBuscaActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

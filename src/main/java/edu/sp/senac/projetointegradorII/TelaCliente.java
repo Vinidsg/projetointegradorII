@@ -8,6 +8,8 @@ import edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO;
 import edu.sp.senac.projetointegradorII.model.Cliente;
 import edu.sp.senac.projetointegradorII.validadores.ValidadorCliente;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -104,7 +106,7 @@ public class TelaCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtBusca = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbTipoBusca = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCliente = new javax.swing.JTable();
 
@@ -506,12 +508,12 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(234, 215, 206));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Nome Cliente", "CPF Cliente" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jcbTipoBusca.setBackground(new java.awt.Color(234, 215, 206));
+        jcbTipoBusca.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jcbTipoBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Nome Cliente", "CPF Cliente" }));
+        jcbTipoBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jcbTipoBuscaActionPerformed(evt);
             }
         });
 
@@ -553,7 +555,7 @@ public class TelaCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbTipoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtBusca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -567,7 +569,7 @@ public class TelaCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnOk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtBusca)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbTipoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
@@ -600,6 +602,33 @@ public class TelaCliente extends javax.swing.JFrame {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tbCliente.getModel();
+       modelo.setRowCount(0);
+       
+       tbCliente.getColumnModel().getColumn(0).setPreferredWidth(20);
+       tbCliente.getColumnModel().getColumn(1).setPreferredWidth(80);
+       tbCliente.getColumnModel().getColumn(2).setPreferredWidth(20);
+       
+       ArrayList<Cliente> lista = TelaClienteDAO.listar();
+       
+       for (Cliente item : lista) {            
+            modelo.addRow(new String[]{String.valueOf(item.getCod_cliente()),
+                                       String.valueOf(item.getNome()),
+                                       String.valueOf(item.getCpf()),
+                                       String.valueOf(item.getDataNasc()),
+                                       String.valueOf(item.getEmail()),
+                                       String.valueOf(item.getEstadoCivil()),
+                                       String.valueOf(item.getTel()),
+                                       String.valueOf(item.getSexo()),
+                                       String.valueOf(item.getEndereco()),
+                                       String.valueOf(item.getNumero()),
+                                       String.valueOf(item.getCEP()),
+                                       String.valueOf(item.getBairro()),
+                                       String.valueOf(item.getUF()),
+                                       String.valueOf(item.getCidade()),
+                                       String.valueOf(item.getNome()), 
+                                    });
+        }
        carregaTabela();     
     }//GEN-LAST:event_btnOkActionPerformed
 
@@ -935,7 +964,45 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void txtBuscaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyReleased
-        // TODO add your handling code here:
+        // TODO add your handling code here:,
+        
+       String tipo = "";
+        String escolha = jcbTipoBusca.getSelectedItem().toString().trim();
+        
+        if (escolha.equals("Nome Cliente")) {
+            tipo = "" + "nome";
+        } 
+        if (escolha.equals("CPF Cliente")) {
+            tipo = "" + "cpf";
+        }
+        
+        String arg = txtBusca.getText();
+        
+        DefaultTableModel dtm = (DefaultTableModel) tbCliente.getModel();
+        int l = dtm.getRowCount();
+        
+        if (l > 0) {
+            while (l > 0) {
+                ((DefaultTableModel) tbCliente.getModel()).removeRow(l-1);
+                
+            }
+        }
+        
+        try {
+            ResultSet rs = (ResultSet) TelaClienteDAO.listarPorNome(tipo, arg);
+            DefaultTableModel mp = (DefaultTableModel) tbCliente.getModel();
+            
+            while (rs.next()) {
+                String Coluna0 = rs.getString("cod_cliente").toString().trim();
+                String Coluna1 = rs.getString("nome").toString().trim();
+                String Coluna2 = rs.getString("cpf").toString().trim();
+                
+                mp.addRow(new String[] {Coluna0, Coluna1, Coluna2});
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro: " + erro, "Preencher Item",2);
+        }
+        tbCliente.setAutoCreateRowSorter(true);
     }//GEN-LAST:event_txtBuscaKeyReleased
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -946,9 +1013,9 @@ public class TelaCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jcbTipoBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTipoBuscaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jcbTipoBuscaActionPerformed
 
     private void limparTexto() {
         txtId.setText("");
@@ -1054,12 +1121,12 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<Object> jcbEstadoCivil;
     private javax.swing.JComboBox<String> jcbSexo;
+    private javax.swing.JComboBox<String> jcbTipoBusca;
     private javax.swing.JComboBox<String> jcbUF;
     private com.toedter.calendar.JDateChooser jdcDataNascimento;
     private javax.swing.JLabel lblBairro;

@@ -117,51 +117,18 @@ public class TelaClienteDAO {
         return lista;
      }
     
-    public static ArrayList<Cliente> listarPorNome(String Nome) {
+    public static ResultSet listarPorNome (String tipo, String arg) throws SQLException {
+        String argumento = tipo + " " + "like '" + arg + "%'";
         
         Connection conexao = null;
-        ArrayList<Cliente> lista = new ArrayList<Cliente>();
         
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            conexao = DriverManager.getConnection(url,login,senha);            
-            
-            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE nome LIKE ?");
-            comandoSQL.setString(1, "%" + Nome + "%");
-            ResultSet rs = comandoSQL.executeQuery();
-            
-            if(rs!=null){
-                while(rs.next()){
-                    Cliente novoObj = new Cliente();
-                    novoObj.setCod_cliente(rs.getInt("cod_cliente"));
-                    novoObj.setNome(rs.getString("nome"));
-                    novoObj.setCpf(rs.getString("Cpf"));
-                    novoObj.setDataNasc(rs.getDate("data_de_nascimento"));
-                    novoObj.setEmail(rs.getString("email"));
-                    novoObj.setEstadoCivil(rs.getString("estado_civil"));
-                    novoObj.setTel(rs.getString("telefone"));
-                    novoObj.setSexo(rs.getString("sexo"));
-                    novoObj.setEndereco(rs.getString("endereco"));
-                    novoObj.setNumero(rs.getString("numero"));
-                    novoObj.setCEP(rs.getString("cep"));
-                    novoObj.setBairro(rs.getString("bairro"));
-                    novoObj.setUF(rs.getString("UF"));
-                    novoObj.setCidade(rs.getString("cidade"));
-                    
-                    
-                    lista.add(novoObj);
-                }
-            }
+        PreparedStatement comandoSQL = conexao.prepareStatement("SELECT nome, cpf FROM cliente where " + argumento + "");
+//        comandoSQL.setString(1, "%" + Nome + "%");
+        ResultSet rs = comandoSQL.executeQuery();
         
-            } catch (ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        return rs;       
         
-        return lista;
-     }
+    }
     
     //Atualizar cliente 
     public static boolean atualizar(Cliente obj){
