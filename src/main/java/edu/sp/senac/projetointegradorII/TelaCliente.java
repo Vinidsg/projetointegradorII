@@ -743,6 +743,8 @@ public class TelaCliente extends javax.swing.JFrame {
             
         if(retorno) {
                 JOptionPane.showMessageDialog(this,"Cliente Cadastrado!");
+                TelaCliente cliente = new TelaCliente();
+                cliente.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this,"Falha no cadastro!");
             }

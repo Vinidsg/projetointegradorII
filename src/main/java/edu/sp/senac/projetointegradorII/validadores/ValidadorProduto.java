@@ -18,7 +18,8 @@ import javax.swing.JTextField;
  * @author vinic
  */
 public class ValidadorProduto {
-        private int cont;
+    
+    private int cont;
 
     public void ValidarVazio(JTextField txt) {
         try {
@@ -44,34 +45,29 @@ public class ValidadorProduto {
         
     }
     
-        public void ValidarVazioJCB(JComboBox txt) {
-        try {
-            if (txt.getSelectedItem().equals("Selecione...")) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            cont++;
-            txt.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.red));
-        }
-    }
-        
-        
-        public void ValidarVazioJDC(JDateChooser date){
-        Date text = date.getDate();
-               try {
-            if (text.equals("")) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            cont++;
-            date.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.red));
-        }
-        
-    }
-        
-        
-        
+    public void ValidarVazioJCB(JComboBox txt) {
 
+    try {
+        if (txt.getSelectedItem().equals("Selecione...")) {
+            throw new IllegalArgumentException();
+        }
+    } catch (IllegalArgumentException e) {
+        cont++;
+        txt.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.red));
+    }
+}
+        
+    public void ValidarVazioJDC(JDateChooser date){
+        
+    try {
+        if (date.getDate() == null) {
+            throw new IllegalArgumentException();
+        }
+    } catch (IllegalArgumentException e) {
+        cont++;
+        date.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.red));
+    }
+}
     public void mensagem() {
         if (cont == 0) {
             JOptionPane.showMessageDialog(null, "Produto cadastrado!");
@@ -79,6 +75,5 @@ public class ValidadorProduto {
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         }
-    }
-    
+    }   
 }

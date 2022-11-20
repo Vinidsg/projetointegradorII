@@ -48,18 +48,17 @@ public class ValidadorCliente {
         
     }
     
-        public void ValidarVazioJDC(JDateChooser date){
-        Date text = date.getDate();
-               try {
-            if (text.equals("")) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            cont++;
-            date.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.red));
-        }
+  public void ValidarVazioJDC(JDateChooser date){
         
+    try {
+        if (date.getDate() == null) {
+            throw new IllegalArgumentException();
+        }
+    } catch (IllegalArgumentException e) {
+        cont++;
+        date.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.red));
     }
+}
 
     public void mensagem() {
         if (cont != 0) {

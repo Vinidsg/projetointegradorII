@@ -247,24 +247,9 @@
                               <Component id="txtCodigoProduto" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtValorProduto" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblDtCompra" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblFornecedor" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
-                                          <Component id="txtFornecedorProd" min="-2" pref="180" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jdcDataCompraProduto" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblCategoria" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblQtde" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -275,6 +260,17 @@
                                       <Component id="txtPrateleiraProd" pref="180" max="32767" attributes="0"/>
                                       <Component id="txtQuantProd" max="32767" attributes="0"/>
                                       <Component id="txtCategoria" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblDtCompra" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblFornecedor" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtFornecedorProd" pref="180" max="32767" attributes="0"/>
+                                      <Component id="jdcDataCompraProduto" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -289,12 +285,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblDtCompra" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDtCompra" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jdcDataCompraProduto" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -477,6 +471,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCategoriaActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -580,6 +577,9 @@
           </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jdcDataCompraProduto">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jdcDataCompraProdutoMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNovo">
           <Properties>
