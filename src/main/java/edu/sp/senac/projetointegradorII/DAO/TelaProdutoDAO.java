@@ -4,13 +4,24 @@
  */
 package edu.sp.senac.projetointegradorII.DAO;
 
+<<<<<<< Updated upstream
+=======
+import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.login;
+import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.senha;
+import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.url;
+import edu.sp.senac.projetointegradorII.model.Cliente;
+import edu.sp.senac.projetointegradorII.model.Produto;
+>>>>>>> Stashed changes
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+<<<<<<< Updated upstream
 import edu.sp.senac.projetointegradorII.model.Produto;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+=======
+>>>>>>> Stashed changes
 
 /**
  *
@@ -228,5 +239,54 @@ public class TelaProdutoDAO {
         
         return retorno;
     
+<<<<<<< Updated upstream
     }
+=======
+        public static boolean salvar(Produto obj){
+        
+        Connection conexao = null;
+        boolean retorno = false;
+        
+        //Insert na tela de Cliente
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            conexao = DriverManager.getConnection(url,login,senha);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Produto ( cod_produto, nome, valor, marca, descricao, data_compra, fornecedor, categoria, prateleira, qtd_produto) VALUES(?,?,?,?,?,?,?,?,?,?)");
+           
+            comandoSQL.setInt(1, obj.getCodigoProduto());
+            comandoSQL.setString(1, obj.());
+            comandoSQL.setString(2,obj.getCpf());
+            comandoSQL.setDate(3,new java.sql.Date(obj.getDataNasc().getTime()));
+            comandoSQL.setString(4,obj.getEmail());
+            comandoSQL.setString(5,obj.getEstadoCivil());
+            comandoSQL.setString(6,obj.getTel());
+            comandoSQL.setString(7,obj.getSexo());
+            comandoSQL.setString(8,obj.getEndereco());
+            comandoSQL.setString(9,obj.getNumero());
+            comandoSQL.setString(10,obj.getCEP());
+            comandoSQL.setString(11,obj.getBairro());
+            comandoSQL.setString(12,obj.getUF());
+            comandoSQL.setString(13,obj.getCidade());
+            
+            
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            if(linhasAfetadas>0){
+               retorno = true;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return retorno;
+    }
+    
+    
+    
+>>>>>>> Stashed changes
 }
