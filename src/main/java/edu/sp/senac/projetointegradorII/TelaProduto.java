@@ -9,7 +9,14 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import edu.sp.senac.projetointegradorII.DAO.TelaProdutoDAO;
+import edu.sp.senac.projetointegradorII.model.Cliente;
 import edu.sp.senac.projetointegradorII.model.Produto;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,36 +24,39 @@ import edu.sp.senac.projetointegradorII.model.Produto;
  */
 public class TelaProduto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaProduto
-     */
+    Produto objProduto = null;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    
+    
     public TelaProduto() {
         initComponents();
         //Mudar ícone das telas
         ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
         this.setIconImage(img.getImage());
+        
+        desativaBtn();
+        desativaTxt();
     }
     
-    Produto objProduto = null;
-
-
     /**
     * Construtor que recebe parâmetros (Modo de Alteração)
     */
     public TelaProduto(Produto obj){
         initComponents();
         this.objProduto = obj;
-
+       
+        
         //Atribuo os valores do objeto aos campos do formulário
         this.txtNomeProduto.setText(String.valueOf(obj.getNomeProduto()));
         this.txtValorProduto.setText(String.valueOf(obj.getValorProduto()));
         this.txtMarcaProduto.setText(String.valueOf(obj.getMarcaProduto()));
         this.txtDescricaoProduto.setText(String.valueOf(obj.getDescricaoProduto()));
-        this.txtDtCompraProduto.setText(String.valueOf(obj.getDescricaoProduto()));
+        this.jdcDataCompraProduto.setDate((obj.getDtCompraProduto()));
         this.txtFornecedorProd.setText(String.valueOf(obj.getFornecedorProd()));
         this.txtCategoria.setSelectedItem(String.valueOf(obj.getCategoriaProd()));
-        this.txtPrateleiraProd.setText(String.valueOf(obj.getPrateleiraProd()));
-        
+        this.txtPrateleiraProd.setSelectedItem(String.valueOf(obj.getPrateleiraProd()));   
+        this.txtQuantProd.setText(String.valueOf(obj.getQuantProd()));
+   
         
     }
 
@@ -80,7 +90,6 @@ public class TelaProduto extends javax.swing.JFrame {
         lblDescricao = new javax.swing.JLabel();
         txtDescricaoProduto = new javax.swing.JTextField();
         lblDtCompra = new javax.swing.JLabel();
-        txtDtCompraProduto = new javax.swing.JFormattedTextField();
         lblFornecedor = new javax.swing.JLabel();
         txtFornecedorProd = new javax.swing.JTextField();
         lblQtde = new javax.swing.JLabel();
@@ -93,6 +102,8 @@ public class TelaProduto extends javax.swing.JFrame {
         btnExcluirProduto = new javax.swing.JButton();
         btnAlterarProd = new javax.swing.JButton();
         btnCadastroProd = new javax.swing.JButton();
+        jdcDataCompraProduto = new com.toedter.calendar.JDateChooser();
+        btnNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Produto");
@@ -102,7 +113,7 @@ public class TelaProduto extends javax.swing.JFrame {
 
         txtCadatroProduto.setBackground(new java.awt.Color(234, 215, 206));
         txtCadatroProduto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtCadatroProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Nome do Produto", "Código do Produto", "Marca" }));
+        txtCadatroProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Nome", "Marca" }));
         txtCadatroProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCadatroProdutoActionPerformed(evt);
@@ -112,6 +123,11 @@ public class TelaProduto extends javax.swing.JFrame {
         txtBuscaProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscaProdutoActionPerformed(evt);
+            }
+        });
+        txtBuscaProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscaProdutoKeyReleased(evt);
             }
         });
 
@@ -124,27 +140,31 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         });
 
-        tbBuscaProduto.setForeground(new java.awt.Color(255, 255, 255));
         tbBuscaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código do produto", "Nome do produto", "Quant. do produto"
+                "Código do produto", "Nome do produto", "Valor Produto", "Marca Produto", "Data Compra"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbBuscaProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBuscaProdutoMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbBuscaProduto);
@@ -197,6 +217,7 @@ public class TelaProduto extends javax.swing.JFrame {
         lblCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCodigo.setText("Código:*");
 
+        txtCodigoProduto.setEditable(false);
         txtCodigoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoProdutoActionPerformed(evt);
@@ -216,6 +237,7 @@ public class TelaProduto extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtValorProduto.setText("");
         txtValorProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorProdutoActionPerformed(evt);
@@ -242,12 +264,6 @@ public class TelaProduto extends javax.swing.JFrame {
 
         lblDtCompra.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDtCompra.setText("Data Compra:*");
-
-        try {
-            txtDtCompraProduto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         lblFornecedor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblFornecedor.setText("Fornecedor:*");
@@ -305,11 +321,21 @@ public class TelaProduto extends javax.swing.JFrame {
         btnExcluirProduto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/excluir.png"))); // NOI18N
         btnExcluirProduto.setText("Excluir");
+        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirProdutoActionPerformed(evt);
+            }
+        });
 
         btnAlterarProd.setBackground(new java.awt.Color(234, 215, 206));
         btnAlterarProd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAlterarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/editar-arquivo.png"))); // NOI18N
         btnAlterarProd.setText("Alterar");
+        btnAlterarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarProdActionPerformed(evt);
+            }
+        });
 
         btnCadastroProd.setBackground(new java.awt.Color(234, 215, 206));
         btnCadastroProd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -321,6 +347,16 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         });
 
+        btnNovo.setBackground(new java.awt.Color(234, 215, 206));
+        btnNovo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/novo.png"))); // NOI18N
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -328,15 +364,17 @@ public class TelaProduto extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(17, 17, 17)
                         .addComponent(btnInício, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(btnExcluirProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAlterarProd, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCadastroProd, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                        .addGap(74, 74, 74))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNovo)
+                        .addGap(35, 35, 35))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -358,10 +396,12 @@ public class TelaProduto extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblDtCompra)
                                     .addComponent(lblFornecedor))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFornecedorProd, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                    .addComponent(txtDtCompraProduto)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(0, 2, Short.MAX_VALUE)
+                                        .addComponent(txtFornecedorProd, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jdcDataCompraProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,12 +420,12 @@ public class TelaProduto extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblDtCompra)
-                        .addComponent(txtDtCompraProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblNome)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNome)))
+                    .addComponent(jdcDataCompraProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -415,7 +455,8 @@ public class TelaProduto extends javax.swing.JFrame {
                     .addComponent(btnExcluirProduto)
                     .addComponent(btnAlterarProd)
                     .addComponent(btnCadastroProd)
-                    .addComponent(btnInício))
+                    .addComponent(btnInício)
+                    .addComponent(btnNovo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -443,9 +484,39 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCadatroProdutoActionPerformed
 
     private void btnBuscaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaProdutoActionPerformed
-        // TODO add your handling code here:
+         carregaTabela();  
+ 
     }//GEN-LAST:event_btnBuscaProdutoActionPerformed
 
+     private void carregaTabela() {                                      
+        // TODO add your handling code here:
+       
+       DefaultTableModel modelo = (DefaultTableModel) tbBuscaProduto.getModel();
+       modelo.setRowCount(0);
+       
+       tbBuscaProduto.getColumnModel().getColumn(0).setPreferredWidth(20);
+       tbBuscaProduto.getColumnModel().getColumn(1).setPreferredWidth(80);
+       tbBuscaProduto.getColumnModel().getColumn(2).setPreferredWidth(20);
+       
+       ArrayList<Produto> lista = TelaProdutoDAO.listar();
+       
+       for (Produto item : lista) {            
+            modelo.addRow(new String[]{String.valueOf(item.getCodigoProduto()),
+                                       String.valueOf(item.getNomeProduto()),
+                                       String.valueOf(item.getValorProduto()),
+                                       String.valueOf(item.getMarcaProduto()),
+                                       String.valueOf(item.getDescricaoProduto()),
+                                       String.valueOf(item.getDtCompraProduto()),
+                                       String.valueOf(item.getFornecedorProd()),
+                                       String.valueOf(item.getCategoriaProd()),
+                                       String.valueOf(item.getPrateleiraProd()),
+                                       String.valueOf(item.getQuantProd()),
+                                    });
+        }       
+    }
+    
+    
+    
     private void txtBuscaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaProdutoActionPerformed
@@ -490,16 +561,16 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoProdutoKeyTyped
 
     private void txtMarcaProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaProdutoKeyTyped
-        if(txtMarcaProduto.getText().length()>=20){
+        if(txtMarcaProduto.getText().length()>=30){
            evt.consume();
-           JOptionPane.showMessageDialog(this,"Máximo de 20 caracteres atingido!");
+           JOptionPane.showMessageDialog(this,"Máximo de 30 caracteres atingido!");
         }
     }//GEN-LAST:event_txtMarcaProdutoKeyTyped
 
     private void txtDescricaoProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoProdutoKeyTyped
-        if(txtDescricaoProduto.getText().length()>=50){
+        if(txtDescricaoProduto.getText().length()>=30){
            evt.consume();
-           JOptionPane.showMessageDialog(this,"Máximo de 50 caracteres atingido!");
+           JOptionPane.showMessageDialog(this,"Máximo de 30 caracteres atingido!");
         }
     }//GEN-LAST:event_txtDescricaoProdutoKeyTyped
 
@@ -537,16 +608,41 @@ public class TelaProduto extends javax.swing.JFrame {
     private void btnCadastroProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProdActionPerformed
         // TODO add your handling code here:
         
+        ValidadorProduto validar = new ValidadorProduto();
+    	
+    	//Validação dos campos obrigatorios
+    	validar.ValidarVazio(txtNomeProduto);
+        validar.ValidarVazioJ(txtValorProduto);
+        validar.ValidarVazio(txtMarcaProduto);
+        validar.ValidarVazio(txtDescricaoProduto);
+        validar.ValidarVazio(txtFornecedorProd);
+        validar.ValidarVazio(txtQuantProd);
+        validar.ValidarVazioJDC(jdcDataCompraProduto);
+        validar.ValidarVazioJCB(txtCategoria);
+        validar.ValidarVazioJCB(txtPrateleiraProd);
+        validar.mensagem();
+        
+        
         if(this.objProduto == null){
             //Modo de inclusão
             //TODO: Chamar a DAO de inclusão (método salvar)
-            int codigoProduto = Integer.parseInt(txtCodigoProduto.getText());
-            int valorProduto = Integer.parseInt(txtValorProduto.getText());
             
-            objProduto = new Produto(codigoProduto,valorProduto);
+            String nomeProduto = (txtNomeProduto.getText());
+            double valorProduto = Double.parseDouble(txtValorProduto.getText());
+            String marcaProduto = (txtMarcaProduto.getText());
+            String marcaDescricaoProduto = (txtDescricaoProduto.getText());
+            Date dataCompraProduto = jdcDataCompraProduto.getDate();
+            String fornecedorProduto = (txtFornecedorProd.getText());
+            String categoriaProduto = (txtCategoria.getSelectedItem().toString());
+            String prateleiraProduto = (txtPrateleiraProd.getSelectedItem().toString());
+            int qtdProduto = Integer.parseInt(txtQuantProd.getText());
+            
+            
+           objProduto = new Produto(nomeProduto, valorProduto, marcaProduto, marcaDescricaoProduto, dataCompraProduto, fornecedorProduto, categoriaProduto, prateleiraProduto, qtdProduto);
+ 
             boolean retorno = TelaProdutoDAO.salvar(objProduto);
             if(retorno){
-                JOptionPane.showMessageDialog(this,"Produto gravado com sucesso!");
+//                JOptionPane.showMessageDialog(this,"Produto gravado com sucesso!");
             }else{
                 JOptionPane.showMessageDialog(this,"Falha na gravação!");
             }
@@ -568,22 +664,218 @@ public class TelaProduto extends javax.swing.JFrame {
             }
             
         }
-            	ValidadorProduto validar = new ValidadorProduto();
-    	
-    	//Validação dos campos obrigatorios
-    	validar.ValidarVazio(txtNomeProduto);
-        validar.ValidarVazio(txtCodigoProduto);
-        validar.ValidarVazioJ(txtValorProduto);
-        validar.ValidarVazio(txtMarcaProduto);
-        validar.ValidarVazio(txtDescricaoProduto);
-        validar.ValidarVazio(txtFornecedorProd);
-        validar.ValidarVazio(txtQuantProd);
-        validar.ValidarVazioJ(txtDtCompraProduto);
-        validar.ValidarVazioJCB(txtCategoria);
-        validar.ValidarVazioJCB(txtPrateleiraProd);
-        validar.mensagem();
+            	
     }//GEN-LAST:event_btnCadastroProdActionPerformed
 
+    private void btnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdActionPerformed
+        
+        
+        int index = tbBuscaProduto.getSelectedRow();
+        objProduto = TelaProdutoDAO.listar().get(index);
+        
+        switch(JOptionPane.showConfirmDialog(null, "Confirma alteração?", "Alteração de Dados", JOptionPane.YES_NO_OPTION)) {
+            case 0:
+                objProduto.setNomeProduto(txtNomeProduto.getText());
+                objProduto.setValorProduto(Double.parseDouble(txtValorProduto.getText()));
+                objProduto.setMarcaProduto(txtMarcaProduto.getText());
+                objProduto.setDescricaoProduto(txtDescricaoProduto.getText());
+                objProduto.setDtCompraProduto(jdcDataCompraProduto.getDate());
+                objProduto.setFornecedorProd(txtFornecedorProd.getText());
+                objProduto.setCategoriaProd(txtCategoria.getSelectedItem().toString());
+                objProduto.setPrateleiraProd(txtPrateleiraProd.getSelectedItem().toString());
+                objProduto.setQuantProd(Integer.parseInt(txtQuantProd.getText()));
+                
+
+                TelaProdutoDAO.atualizar(objProduto);
+
+                boolean retorno = TelaProdutoDAO.atualizar(objProduto);
+
+                    if(retorno){
+                        JOptionPane.showMessageDialog(this,"Produto alterado com sucesso!");
+                    } else{
+                        JOptionPane.showMessageDialog(this,"Falha na alteração!");
+                    }
+                
+                carregaTabela();
+                limparTexto();
+                
+            break;
+            
+            case 1:
+                JOptionPane.showMessageDialog(null, "Nenhuma alteração foi feita!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                limparTexto();
+            break;
+        }
+        
+        
+    }//GEN-LAST:event_btnAlterarProdActionPerformed
+
+    private void tbBuscaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscaProdutoMouseClicked
+       int index = tbBuscaProduto.getSelectedRow();
+        
+        objProduto = TelaProdutoDAO.listar().get(index);
+         
+        txtCodigoProduto.setText(String.valueOf(objProduto.getCodigoProduto()));
+        txtNomeProduto.setText(objProduto.getNomeProduto());
+        txtValorProduto.setText(Double.toString(objProduto.getValorProduto()));
+        txtMarcaProduto.setText(objProduto.getMarcaProduto());
+        txtDescricaoProduto.setText(objProduto.getDescricaoProduto()); 
+        jdcDataCompraProduto.setDate(objProduto.getDtCompraProduto());
+        txtFornecedorProd.setText(objProduto.getFornecedorProd());
+        txtCategoria.setSelectedItem(objProduto.getCategoriaProd());
+        txtPrateleiraProd.setSelectedItem(objProduto.getPrateleiraProd());
+        txtQuantProd.setText(String.valueOf(objProduto.getQuantProd()));
+
+         btnAlterarProd.setEnabled(true);
+         btnExcluirProduto.setEnabled(true);
+          ativaTxt();
+    }//GEN-LAST:event_tbBuscaProdutoMouseClicked
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        // TODO add your handling code here:
+
+        limparTexto();
+        ativaBtn();
+        ativaTxt();
+        btnAlterarProd.setEnabled(false);
+        btnExcluirProduto.setEnabled(false);
+        btnCadastroProd.setEnabled(true);
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdutoActionPerformed
+        
+        
+        int linha = tbBuscaProduto.getSelectedRow();
+        int id = Integer.parseInt(tbBuscaProduto.getValueAt(linha, 0).toString());
+        
+        switch(JOptionPane.showConfirmDialog(null, "Confirma exclusão?", "Exclusão de Dados", JOptionPane.YES_NO_OPTION)) {
+            case 0:
+                boolean retorno = TelaProdutoDAO.excluir(id);
+               
+                if(retorno){
+                    JOptionPane.showMessageDialog(this, "Cliente excluído!");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Falha na exclusão!");
+                }
+
+                carregaTabela();
+                limparTexto();
+             break;
+             
+             case 1:
+                JOptionPane.showMessageDialog(null, "Nenhuma exclusão foi feita!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                limparTexto();
+            break;
+        }
+        
+        
+    }//GEN-LAST:event_btnExcluirProdutoActionPerformed
+
+    private void txtBuscaProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaProdutoKeyReleased
+//        
+//        String tipo="";
+//        String escolha = txtCadatroProduto.getSelectedItem().toString().trim();
+//        if (escolha.equals("Nome")) 
+//        {
+//            tipo= " "+"nome";
+//        }
+//        if (escolha.equals("Marca")) 
+//        {
+//            tipo= " "+"marca";
+//        }
+//        String arg = txtBuscaProduto.getText();
+//        
+//        
+//         DefaultTableModel mpl = (DefaultTableModel) tbBuscaProduto.getModel();
+//         int l=mpl.getRowCount();
+//         
+//         
+//         if (l>0) 
+//        {
+//            while (l>0) {                
+//                ((DefaultTableModel) tbBuscaProduto.getModel()).removeRow(l-1);
+//                l--;
+//            }
+//        }
+//         
+//         try 
+//        {
+//            ResultSet rs = TelaProdutoDAO.consultarPorNomeMarca(tipo, arg);
+//            DefaultTableModel mp = (DefaultTableModel) tbBuscaProduto.getModel();
+//            
+//            while (rs.next()) 
+//            {                
+//                
+//                String Coluna0=rs.getString("nome").trim();
+//                
+//                
+//                
+//                mp.addRow(new String[]{Coluna0});
+//            }
+//        } catch (SQLException erro) 
+//        {
+//            JOptionPane.showMessageDialog(this, "Ocorreu um erro:"+erro, "Preeencher Item",2);
+//        }
+         
+    }//GEN-LAST:event_txtBuscaProdutoKeyReleased
+
+    
+    private void limparTexto() {
+       
+        txtNomeProduto.setText("");
+        txtValorProduto.setText("");
+        txtMarcaProduto.setText("");
+        txtDescricaoProduto.setText("");
+        jdcDataCompraProduto.setDate(null);
+        txtFornecedorProd.setText("");
+        txtCategoria.setSelectedItem("Selecione...");
+        txtPrateleiraProd.setSelectedItem("Selecione...");
+        txtQuantProd.setText("");
+        
+    }
+    
+  
+    
+    private void desativaBtn() {
+        btnCadastroProd.setEnabled(false);
+        btnAlterarProd.setEnabled(false);
+        btnExcluirProduto.setEnabled(false);           
+    }
+    
+        private void ativaBtn() {
+        btnCadastroProd.setEnabled(false);
+        btnAlterarProd.setEnabled(false);
+        //btnExcluirProduto.setEnabled(false);          
+    }
+    
+    private void desativaTxt () {
+        txtNomeProduto.setEnabled(false);
+        txtValorProduto.setEnabled(false);
+        txtMarcaProduto.setEnabled(false);
+        txtDescricaoProduto.setEnabled(false);
+        jdcDataCompraProduto.setEnabled(false);
+        txtFornecedorProd.setEnabled(false);
+        txtCategoria.setEnabled(false);
+        txtPrateleiraProd.setEnabled(false);
+        txtQuantProd.setEnabled(false);
+        
+    }
+    
+        private void ativaTxt () {
+        txtNomeProduto.setEnabled(true);
+        txtValorProduto.setEnabled(true);
+        txtMarcaProduto.setEnabled(true);
+        txtDescricaoProduto.setEnabled(true);
+        jdcDataCompraProduto.setEnabled(true);
+        txtFornecedorProd.setEnabled(true);
+        txtCategoria.setEnabled(true);
+        txtPrateleiraProd.setEnabled(true);
+        txtQuantProd.setEnabled(true);
+    }
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -625,9 +917,11 @@ public class TelaProduto extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastroProd;
     private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnInício;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jdcDataCompraProduto;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescricao;
@@ -644,7 +938,6 @@ public class TelaProduto extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtCategoria;
     private javax.swing.JTextField txtCodigoProduto;
     private javax.swing.JTextField txtDescricaoProduto;
-    private javax.swing.JFormattedTextField txtDtCompraProduto;
     private javax.swing.JTextField txtFornecedorProd;
     private javax.swing.JTextField txtMarcaProduto;
     private javax.swing.JTextField txtNomeProduto;

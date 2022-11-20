@@ -100,11 +100,10 @@
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
+              <StringArray count="3">
                 <StringItem index="0" value="Selecione..."/>
-                <StringItem index="1" value="Nome do Produto"/>
-                <StringItem index="2" value="C&#xf3;digo do Produto"/>
-                <StringItem index="3" value="Marca"/>
+                <StringItem index="1" value="Nome"/>
+                <StringItem index="2" value="Marca"/>
               </StringArray>
             </Property>
           </Properties>
@@ -118,6 +117,7 @@
         <Component class="javax.swing.JTextField" name="txtBuscaProduto">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscaProdutoActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscaProdutoKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscaProduto">
@@ -145,18 +145,27 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tbBuscaProduto">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="7">
+                  <Table columnCount="5" rowCount="7">
                     <Column editable="false" title="C&#xf3;digo do produto" type="java.lang.Object"/>
                     <Column editable="false" title="Nome do produto" type="java.lang.Object"/>
-                    <Column editable="false" title="Quant. do produto" type="java.lang.Object"/>
+                    <Column editable="false" title="Valor Produto" type="java.lang.Object"/>
+                    <Column editable="true" title="Marca Produto" type="java.lang.Object"/>
+                    <Column editable="true" title="Data Compra" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -178,6 +187,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbBuscaProdutoMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -206,15 +218,17 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Component id="btnInício" pref="92" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnExcluirProduto" pref="96" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnAlterarProd" pref="98" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnCadastroProd" pref="93" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -240,10 +254,13 @@
                                       <Component id="lblDtCompra" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblFornecedor" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtFornecedorProd" pref="180" max="32767" attributes="0"/>
-                                      <Component id="txtDtCompraProduto" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                                          <Component id="txtFornecedorProd" min="-2" pref="180" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jdcDataCompraProduto" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -272,14 +289,14 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDtCompra" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDtCompraProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblDtCompra" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jdcDataCompraProduto" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -315,6 +332,7 @@
                       <Component id="btnAlterarProd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCadastroProd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnInício" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -345,6 +363,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigoProduto">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoProdutoActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoProdutoKeyTyped"/>
@@ -363,6 +384,7 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="####" subtype="-1" type="5"/>
             </Property>
+            <Property name="text" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorProdutoActionPerformed"/>
@@ -401,16 +423,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Data Compra:*"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtDtCompraProduto">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="##/##/####" subtype="-1" type="5"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="TelaProduto_jFormattedTextField1"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblFornecedor">
           <Properties>
@@ -529,6 +541,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirProdutoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAlterarProd">
           <Properties>
@@ -543,6 +558,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Alterar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarProdActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastroProd">
           <Properties>
@@ -559,6 +577,25 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastroProdActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jdcDataCompraProduto">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnNovo">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ce" green="d7" red="ea" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icons/novo.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Novo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

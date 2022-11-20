@@ -192,7 +192,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Nome ", "Data da Compra", "Valor Produto"
+                "Nº Venda", "Nome ", "Data da Compra", "Valor Produto"
             }
         ) {
             Class[] types = new Class [] {

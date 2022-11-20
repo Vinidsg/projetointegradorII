@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author vinic
+ * @author matheus
  */
 public class TelaClienteDAO {
     
@@ -33,7 +33,7 @@ public class TelaClienteDAO {
         
         //Insert na tela de Cliente
         try {
-            
+           
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             conexao = DriverManager.getConnection(url,login,senha);
@@ -59,6 +59,7 @@ public class TelaClienteDAO {
             int linhasAfetadas = comandoSQL.executeUpdate();
             if(linhasAfetadas>0){
                retorno = true;
+            
             }
             
         } catch (ClassNotFoundException ex) {

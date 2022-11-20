@@ -4,6 +4,8 @@
  */
 package edu.sp.senac.projetointegradorII.model;
 
+import java.util.Date;
+
 /**
  *
  * @author William
@@ -12,21 +14,39 @@ public class Produto {
     
     private int codigoProduto;
     private String descricaoProduto;
-    private int dtCompraProduto;
+    private Date dtCompraProduto;
     private String fornecedorProd;
     private String marcaProduto;
     private String nomeProduto;
     private String prateleiraProd;
     private int quantProd;
-    private int valorProduto;
+    private double valorProduto;
     private String categoriaProd;
     
     public Produto(){    
     }
 
-    public Produto(int codigoProduto, int valorProduto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Produto(String nomeProduto, double valorProduto, String marcaProduto, String descricaoProduto, Date dtCompraProduto, String fornecedorProd, String categoriaProd , String prateleiraProd, int quantProd) {
+        
+        this.nomeProduto = nomeProduto;
+        this.valorProduto = valorProduto;
+        this.marcaProduto = marcaProduto;
+        this.descricaoProduto = descricaoProduto;
+        this.dtCompraProduto = dtCompraProduto;
+        this.fornecedorProd = fornecedorProd;
+        this.categoriaProd = categoriaProd; 
+        this.prateleiraProd = prateleiraProd;
+        this.quantProd = quantProd;
+        
+       
     }
+
+   
+ 
+//    
+//    public Produto(int codigoProduto, int valorProduto) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
     
     public int getCodigoProduto(){
         return codigoProduto;
@@ -40,10 +60,10 @@ public class Produto {
     public void setDescricaoProduto(String descricaoProduto){
         this.descricaoProduto = descricaoProduto;
     }
-    public int getDtCompraProduto(){
+    public Date getDtCompraProduto(){
         return dtCompraProduto;
     }
-    public void setDtCompraProduto(int dtCompraProduto){
+        public void setDtCompraProduto(Date dtCompraProduto){
         this.dtCompraProduto = dtCompraProduto;
     }
     public String getFornecedorProd(){
@@ -76,10 +96,10 @@ public class Produto {
     public void setQuantProd(int quantProd){
         this.quantProd = quantProd;
     }
-    public int getValorProduto(){
+    public double getValorProduto(){
         return valorProduto;
     }
-    public void setValorProduto(int valorProduto){
+    public void setValorProduto(double valorProduto){
         this.valorProduto = valorProduto;
     }
     
