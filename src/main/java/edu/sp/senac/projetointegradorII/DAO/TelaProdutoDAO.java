@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import edu.sp.senac.projetointegradorII.model.Produto;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class TelaProdutoDAO {
             
             //Abrir a conexão
             conexao = DriverManager.getConnection(url,login,senha);
-            
+                
             //Criar o comando sql
             PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Produto (nome,valor,marca,"
                     + "descricao,data_compra_produto,fornecedor,categoria,prateleira,qtd_produto) VALUES(?,?,?,?,?,?,?,?,?)");
@@ -59,6 +60,35 @@ public class TelaProdutoDAO {
         }
         
         return retorno;
+    }
+    
+    public static Produto consultarPorID(int ID) {
+        Produto produtoRetorno = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexao = DriverManager.getConnection(url,login,senha);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM Produto WHERE cod_produto = ?");
+            comandoSQL.setInt(1, ID);
+            
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                if (rs .next()) {
+                    produtoRetorno = new Produto();
+                    produtoRetorno.setNomeProduto(rs.getString("nome"));
+                    produtoRetorno.setValorProduto(rs.getDouble("valor"));
+                    produtoRetorno.setQuantProd(rs.getInt("qtd_produto"));
+                }
+            }
+            
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return produtoRetorno;
+        
     }
     
     public static ArrayList<Produto> listar(){
@@ -148,6 +178,40 @@ public class TelaProdutoDAO {
             comandoSQL.setString(8,obj.getPrateleiraProd());
             comandoSQL.setInt(9,obj.getQuantProd());
             comandoSQL.setInt(10,obj.getCodigoProduto());
+                       
+            //Executar o comando
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            if(linhasAfetadas>0){
+               retorno = true;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return retorno;
+    }
+    
+    public static boolean atualizarEstoque(Produto obj){
+        
+        Connection conexao = null;
+        boolean retorno = false;
+        
+        try {
+            
+            //TODO: Implementar insert na tabela NotaFiscal
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            //Abrir a conexão
+            conexao = DriverManager.getConnection(url,login,senha);
+            
+            //Criar o comando sql
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE Produto SET qtd_produto = ? WHERE cod_produto = ?");
+            
+            comandoSQL.setInt(1,obj.getQuantProd());
+            comandoSQL.setInt(2,obj.getCodigoProduto());
                        
             //Executar o comando
             int linhasAfetadas = comandoSQL.executeUpdate();

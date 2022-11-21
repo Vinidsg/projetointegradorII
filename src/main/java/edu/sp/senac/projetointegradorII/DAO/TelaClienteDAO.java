@@ -71,6 +71,34 @@ public class TelaClienteDAO {
         return retorno;
     }
     
+     public static Cliente consultarPorCPF(String cpf) {
+        Cliente clienteRetorno = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexao = DriverManager.getConnection(url,login,senha);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM Cliente WHERE cpf = ?");
+            comandoSQL.setString(1, cpf);
+            
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                if (rs .next()) {
+                    clienteRetorno = new Cliente();
+                    clienteRetorno.setNome(rs.getString("nome"));
+                    
+                }
+            }
+            
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return clienteRetorno;
+        
+    }
+    
     public static ArrayList<Cliente> listar() {
         
         Connection conexao = null;

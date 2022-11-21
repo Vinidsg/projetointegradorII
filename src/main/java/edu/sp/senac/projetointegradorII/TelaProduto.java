@@ -144,16 +144,10 @@ public class TelaProduto extends javax.swing.JFrame {
 
         tbBuscaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Código do produto", "Nome do produto", "Valor Produto", "Marca Produto", "Data Compra"
+                "Código do produto", "Nome do produto", "Valor Produto", "Marca Produto", "Descrição"
             }
         ) {
             boolean[] canEdit = new boolean [] {

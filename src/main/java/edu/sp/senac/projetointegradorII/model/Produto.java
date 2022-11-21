@@ -22,8 +22,16 @@ public class Produto {
     private int quantProd;
     private double valorProduto;
     private String categoriaProd;
+   
     
     public Produto(){    
+    }
+    
+    public Produto( int codigoProduto, String descricaoProduto, double valorProduto) {
+        
+        this.codigoProduto = codigoProduto;
+        this.descricaoProduto = descricaoProduto;        
+        this.valorProduto = valorProduto;
     }
 
     public Produto(String nomeProduto, double valorProduto, String marcaProduto, String descricaoProduto, Date dtCompraProduto, String fornecedorProd, String categoriaProd , String prateleiraProd, int quantProd) {

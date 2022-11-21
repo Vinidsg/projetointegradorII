@@ -4,6 +4,7 @@
  */
 package edu.sp.senac.projetointegradorII.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -15,6 +16,7 @@ public class Venda {
     private int NVenda;
     private Date DataVenda;
     private String BuscarCliente;
+    private String NomeCliente;
     private String Vendedor;
     private int Estoque;
     private String Produto;
@@ -27,6 +29,25 @@ public class Venda {
     private int Unid;
     private double PrecoVenda;
     private double TotalUnitario;
+    private ArrayList<Produto> listaItens = null;
+
+    public String getNomeCliente() {
+        return NomeCliente;
+    }
+
+    public void setNomeCliente(String NomeCliente) {
+        this.NomeCliente = NomeCliente;
+    }
+    
+    
+
+    public ArrayList<Produto> getListaItens() {
+        return listaItens;
+    }
+
+    public void setListaItens(ArrayList<Produto> listaItens) {
+        this.listaItens = listaItens;
+    }
     
     public Venda(){
         

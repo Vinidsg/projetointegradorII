@@ -35,6 +35,7 @@ public class TelaCliente extends javax.swing.JFrame {
         
         desativaBtn();
         desativaTxt();
+        carregaTabela();
         
         
     }
@@ -519,13 +520,7 @@ public class TelaCliente extends javax.swing.JFrame {
 
         tbCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Cód", "Nome", "CPF", "Dt Nasc", "E-mail"
