@@ -6,7 +6,6 @@ package edu.sp.senac.projetointegradorII.DAO;
 
 import edu.sp.senac.projetointegradorII.model.Cliente;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -71,7 +70,7 @@ public class TelaClienteDAO {
         return retorno;
     }
     
-     public static Cliente consultarPorCPF(String cpf) {
+    public static Cliente consultarPorCPF(String cpf) {
         Cliente clienteRetorno = null;
         
         try {
@@ -158,20 +157,6 @@ public class TelaClienteDAO {
         
     }
     
-    private double verificarCPFCadastrado(String cpf, Connection conexao, Cliente obj) throws SQLException{
-    String query = "SELECT id FROM clientes WHERE cpf = ?";
-    try(PreparedStatement ps = conexao.prepareStatement(query)){
-        ps.setString(1, obj.getCpf());
-        try(ResultSet rs = ps.executeQuery()){
-            if(rs.next()){
-                return rs.getInt("id");
-            }
-        }
-    }
-        return 0;
-    
-}
-    
     //Atualizar cliente 
     public static boolean atualizar(Cliente obj){
         
@@ -242,6 +227,5 @@ public class TelaClienteDAO {
         }
         
         return retorno;
-    }  
-    
+    }
 }

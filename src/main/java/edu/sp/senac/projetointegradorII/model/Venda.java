@@ -30,6 +30,31 @@ public class Venda {
     private double PrecoVenda;
     private double TotalUnitario;
     private ArrayList<Produto> listaItens = null;
+    private Date de;
+    private Date ate;
+
+    public Date getDe() {
+        return de;
+    }
+
+    public void setDe(Date de) {
+        this.de = de;
+    }
+
+    public Date getAte() {
+        return ate;
+    }
+
+    public void setAte(Date ate) {
+        this.ate = ate;
+    }
+
+    public Venda(Date de, Date ate) {
+        this.de = de;
+        this.ate = ate;
+    }
+    
+    
 
     public String getNomeCliente() {
         return NomeCliente;

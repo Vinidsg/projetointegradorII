@@ -37,6 +37,7 @@ public class TelaProduto extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
         this.setIconImage(img.getImage());
         
+        carregaTabela();
         desativaBtn();
         desativaTxt();
     }
@@ -487,30 +488,6 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCadatroProdutoActionPerformed
 
     private void btnBuscaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaProdutoActionPerformed
-        
-       DefaultTableModel modelo = (DefaultTableModel) tbBuscaProduto.getModel();
-       modelo.setRowCount(0);
-       
-       tbBuscaProduto.getColumnModel().getColumn(0).setPreferredWidth(20);
-       tbBuscaProduto.getColumnModel().getColumn(1).setPreferredWidth(80);
-       tbBuscaProduto.getColumnModel().getColumn(2).setPreferredWidth(20);
-       
-       ArrayList<Produto> lista = TelaProdutoDAO.listar();
-       
-       for (Produto item : lista) {            
-            modelo.addRow(new String[]{String.valueOf(item.getNomeProduto()),
-                                       String.valueOf(item.getCodigoProduto()),
-                                       String.valueOf(item.getValorProduto()),
-                                       String.valueOf(item.getMarcaProduto()),
-                                       String.valueOf(item.getDescricaoProduto()),
-                                       String.valueOf(item.getDtCompraProduto()),
-                                       String.valueOf(item.getFornecedorProd()),
-                                       String.valueOf(item.getQuantProd()),
-                                       String.valueOf(item.getCategoriaProd()),
-                                       String.valueOf(item.getPrateleiraProd()),
-                                        
-                                    });
-        }
        
         carregaTabela();  
  
@@ -868,6 +845,7 @@ public class TelaProduto extends javax.swing.JFrame {
         txtCategoria.setSelectedItem("Selecione...");
         txtPrateleiraProd.setSelectedItem("Selecione...");
         txtQuantProd.setText("");
+        txtCodigoProduto.setText("");
         
     }
     

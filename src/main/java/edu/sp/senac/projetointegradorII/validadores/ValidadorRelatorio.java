@@ -10,9 +10,8 @@ package edu.sp.senac.projetointegradorII.validadores;
  *
  * @author vinic
  */
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
@@ -51,6 +50,18 @@ public class ValidadorRelatorio {
         
     }
     
+    public void ValidarVazioJDC(JDateChooser date){
+        
+    try {
+        if (date.getDate() == null) {
+            throw new IllegalArgumentException();
+        }
+    } catch (IllegalArgumentException e) {
+        cont++;
+        date.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.red));
+    }
+}
+    
     public void mensagem() {
         if (cont != 0) {
             JOptionPane.showMessageDialog(null, "Preencha os dois campos!");
@@ -58,43 +69,37 @@ public class ValidadorRelatorio {
         } 
     }
     
-    public void findDifference(String txtDe, String txtAte)
+    public void findDifference(Date jdcDe, Date jdcAte)
     {
-  
-        // SimpleDateFormat converts the
-        // string format to date object
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-  
-        // Try Block
-        try {
-  
-            // parse method is used to parse
-            // the text from a string to
-            // produce the date
-            Date d1 = sdf.parse(txtDe);
-            Date d2 = sdf.parse(txtAte);
-  
-            // Calucalte time difference
-            // in milliseconds
-            long difference_In_Time = d2.getTime() - d1.getTime();
-           
-            long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
-            
-            if ((difference_In_Days + 1) <= 30) {
-                JOptionPane.showMessageDialog(null, "Relatório gerado!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Digite um período inferior a 30 dias!\n" + "Quantidade de dias solicitado: " + (difference_In_Days + 1));
-            }
-            
-                
 
-        }
-  
-        // Catch the Exception
-        catch (ParseException e) {
-            e.printStackTrace();
+        Date d1 = jdcDe;
+        Date d2 = jdcAte;
+
+        long difference_In_Time = d2.getTime() - d1.getTime();
+        
+        long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
+        
+        if ((difference_In_Days + 1) <= 30) {
+            JOptionPane.showMessageDialog(null, "Relatório gerado!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite um período inferior a 30 dias!\n" + "Quantidade de dias solicitado: " + (difference_In_Days + 1));
         }
     }
+    
+    public static double objectToDouble(Object Obj) {
+        double NumInt = Double.parseDouble(objectToString(Obj));
+        return NumInt;
+    }
+    
+    public static String objectToString(Object Obj) {
+        String Str = "";
+        if (Obj != null) {
+            Str = Obj.toString();
+        }
+        return Str;
+    }
+    
+    
     
     
 }

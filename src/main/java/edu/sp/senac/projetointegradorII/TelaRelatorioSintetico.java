@@ -4,6 +4,11 @@
  */
 package edu.sp.senac.projetointegradorII;
 
+import com.toedter.calendar.JDateChooser;
+import edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO;
+import edu.sp.senac.projetointegradorII.DAO.TelaRelatorioSinteticoDAO;
+import edu.sp.senac.projetointegradorII.model.Cliente;
+import edu.sp.senac.projetointegradorII.model.Venda;
 import edu.sp.senac.projetointegradorII.validadores.ValidadorRelatorio;
 import java.awt.Color;
 import java.awt.Font;
@@ -14,30 +19,33 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 /**
  *
  * @author Matheus Lima
  */
-public class TelaRelatorio extends javax.swing.JFrame {
-
+public class TelaRelatorioSintetico extends javax.swing.JFrame {
+    Venda objVenda = null;
     /**
      * Creates new form TelaRelatorio
      */
-    public TelaRelatorio() {
+    public TelaRelatorioSintetico() {
         initComponents();
-        formatarCampoDataDe(); // Criação de formatação para padrão de data JFormattedField
-        formatarCampoDataAte();
+//        formatarCampoDataDe(); // Criação de formatação para padrão de data JFormattedField
+//        formatarCampoDataAte();
         //Mudar ícone das telas
         ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
         this.setIconImage(img.getImage());
+        
     }   
 
     /**
@@ -47,27 +55,27 @@ public class TelaRelatorio extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
-    private void formatarCampoDataDe()          // Criação de formatação para padrão de data JFormattedField
-    {
-        try {
-            MaskFormatter mask = new MaskFormatter("##-##-####");
-            mask.install(txtDe);
-            
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Informe a data corretamente", "Erro", JOptionPane.ERROR);
-        }
-    }
-    
-    private void formatarCampoDataAte()          // Criação de formatação para padrão de data JFormattedField
-    {
-        try {
-            MaskFormatter mask = new MaskFormatter("##-##-####");     
-            mask.install(txtAte);
-            
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Informe a data corretamente", "Erro", JOptionPane.ERROR);
-        }
-    }
+//    private void formatarCampoDataDe()          // Criação de formatação para padrão de data JFormattedField
+//    {
+//        try {
+//            MaskFormatter mask = new MaskFormatter("##-##-####");
+//            mask.install(txtDe);
+//            
+//        } catch (ParseException ex) {
+//            JOptionPane.showMessageDialog(null, "Informe a data corretamente", "Erro", JOptionPane.ERROR);
+//        }
+//    }
+//    
+//    private void formatarCampoDataAte()          // Criação de formatação para padrão de data JFormattedField
+//    {
+//        try {
+//            MaskFormatter mask = new MaskFormatter("##-##-####");     
+//            mask.install(txtAte);
+//            
+//        } catch (ParseException ex) {
+//            JOptionPane.showMessageDialog(null, "Informe a data corretamente", "Erro", JOptionPane.ERROR);
+//        }
+//    }
     
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,8 +85,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JToggleButton();
         lblDe = new javax.swing.JLabel();
         lblAte = new javax.swing.JLabel();
-        txtDe = new javax.swing.JFormattedTextField();
-        txtAte = new javax.swing.JFormattedTextField();
+        jdcDe = new com.toedter.calendar.JDateChooser();
+        jdcAte = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         table = new javax.swing.JScrollPane();
         tbRelatorioSintetico = new javax.swing.JTable();
@@ -117,60 +125,35 @@ public class TelaRelatorio extends javax.swing.JFrame {
         lblAte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendario.png"))); // NOI18N
         lblAte.setText("Até:");
 
-        txtDe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
-        txtDe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDeActionPerformed(evt);
-            }
-        });
-        txtDe.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                numerico(evt);
-                date(evt);
-            }
-        });
-
-        txtAte.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-y"))));
-        txtAte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAteActionPerformed(evt);
-            }
-        });
-        txtAte.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                numerico(evt);
-                date(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblDe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDe, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jdcDe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblAte)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAte, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jdcAte, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(269, 269, 269)
                 .addComponent(btnConsultar)
-                .addGap(277, 277, 277))
+                .addGap(293, 293, 293))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDe)
-                    .addComponent(lblAte)
-                    .addComponent(txtDe)
-                    .addComponent(txtAte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDe)
+                        .addComponent(lblAte))
+                    .addComponent(jdcDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdcAte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -180,16 +163,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         tbRelatorioSintetico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nº Venda", "Nome ", "Data da Compra", "Valor Produto"
@@ -213,7 +187,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
         tbRelatorioSintetico.setFocusable(false);
         tbRelatorioSintetico.setRowHeight(25);
         tbRelatorioSintetico.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        tbRelatorioSintetico.setShowHorizontalLines(true);
         tbRelatorioSintetico.getTableHeader().setReorderingAllowed(false);
         table.setViewportView(tbRelatorioSintetico);
 
@@ -232,6 +205,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtTotal.setEditable(false);
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/money-bag.png"))); // NOI18N
@@ -276,12 +254,15 @@ public class TelaRelatorio extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnMaisDetalhes)
-                    .addComponent(btnInicio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(btnMaisDetalhes)
+                            .addComponent(btnInicio))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtTotal))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -309,50 +290,38 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
         ValidadorRelatorio validar = new ValidadorRelatorio();
-        validar.ValidarVazioJ(txtDe);
-        validar.ValidarVazioJ(txtAte);
+        validar.ValidarVazioJDC(jdcDe);
+        validar.ValidarVazioJDC(jdcAte);
         validar.mensagem();
+        validar.findDifference(jdcDe.getDate(), jdcAte.getDate());
+
+        carregaTabela(jdcDe.getDate(), jdcAte.getDate());
         
-        validar.findDifference(txtDe.getText(), txtAte.getText());
+        Totais();
         
     }//GEN-LAST:event_btnConsultarActionPerformed
 
-    private void numerico(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numerico
-        char c  = evt.getKeyChar();
-     
-        if ((c<'0')||(c>'9') && (c!=KeyEvent.VK_BACK_SPACE))
-        {
-            evt.consume();
-            //JOptionPane.showMessageDialog(this,"Digite apenas números!");
-        }
-        
-        
-        
-        
-    }//GEN-LAST:event_numerico
-
-    private void date(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_date
-        
+    private void carregaTabela(Date de, Date ate) {                                      
+        // TODO add your handling code here:
        
-
-           // if(txtDeData.getText().length()>=6)
-//        {
-//            evt.consume();
-//            JOptionPane.showMessageDialog(this,"Máximo de 6 caractéres atingido");
-//        }
-
-        
-    }//GEN-LAST:event_date
-
-    private void txtDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtDeActionPerformed
-
-    private void txtAteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAteActionPerformed
-
+       DefaultTableModel modelo = (DefaultTableModel) tbRelatorioSintetico.getModel();
+       modelo.setRowCount(0);
+       
+       tbRelatorioSintetico.getColumnModel().getColumn(0).setPreferredWidth(20);
+       tbRelatorioSintetico.getColumnModel().getColumn(1).setPreferredWidth(80);
+       tbRelatorioSintetico.getColumnModel().getColumn(2).setPreferredWidth(20);
+       
+       ArrayList<Venda> lista = TelaRelatorioSinteticoDAO.listar(de, ate);
+       
+       for (Venda item : lista) {            
+            modelo.addRow(new String[]{String.valueOf(item.getNVenda()),
+                                       String.valueOf(item.getNomeCliente()),
+                                       String.valueOf(item.getDataVenda()),
+                                       String.valueOf(item.getValor()),      
+                                    });
+        }       
+    }
+    
     private void btnMaisDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisDetalhesActionPerformed
         // TODO add your handling code here:
         TelaRelatorioAnalitico relatorioAnalitico = new TelaRelatorioAnalitico();
@@ -369,6 +338,22 @@ public class TelaRelatorio extends javax.swing.JFrame {
         
             }//GEN-LAST:event_btnValidadorRangeData
 
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+        Totais();
+    }//GEN-LAST:event_txtTotalActionPerformed
+
+    private void Totais() {
+        int Numero = tbRelatorioSintetico.getRowCount();
+        int Somaquant = 0;
+        
+        for (int i = 0; i < Numero; i++) {
+            Somaquant += ValidadorRelatorio.objectToDouble(tbRelatorioSintetico.getValueAt(i, 3));
+        }
+        
+        txtTotal.setText("" + Somaquant);
+    }
+    
     public void tabel() {
 
         initComponents();
@@ -400,20 +385,21 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaRelatorioSintetico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaRelatorioSintetico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaRelatorioSintetico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaRelatorioSintetico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaRelatorio().setVisible(true);
+                new TelaRelatorioSintetico().setVisible(true);
             }
         });
     }
@@ -426,12 +412,12 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private com.toedter.calendar.JDateChooser jdcAte;
+    private com.toedter.calendar.JDateChooser jdcDe;
     private javax.swing.JLabel lblAte;
     private javax.swing.JLabel lblDe;
     private javax.swing.JScrollPane table;
     private javax.swing.JTable tbRelatorioSintetico;
-    private javax.swing.JFormattedTextField txtAte;
-    private javax.swing.JFormattedTextField txtDe;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

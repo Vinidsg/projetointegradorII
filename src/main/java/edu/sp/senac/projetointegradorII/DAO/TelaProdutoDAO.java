@@ -208,7 +208,7 @@ public class TelaProdutoDAO {
             conexao = DriverManager.getConnection(url,login,senha);
             
             //Criar o comando sql
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE Produto SET qtd_produto = ? WHERE cod_produto = ?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE Produto SET qtd_produto = qtd_produto - ? WHERE cod_produto = ?;");
             
             comandoSQL.setInt(1,obj.getQuantProd());
             comandoSQL.setInt(2,obj.getCodigoProduto());

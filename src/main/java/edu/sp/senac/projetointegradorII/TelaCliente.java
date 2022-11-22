@@ -7,6 +7,7 @@ package edu.sp.senac.projetointegradorII;
 import edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO;
 import edu.sp.senac.projetointegradorII.model.Cliente;
 import edu.sp.senac.projetointegradorII.validadores.ValidadorCliente;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +16,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -25,6 +28,8 @@ public class TelaCliente extends javax.swing.JFrame {
 
     Cliente objCliente = null;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    DefaultTableModel dtm = new DefaultTableModel();
+    TableRowSorter trs;
     
     
     public TelaCliente () {
@@ -216,6 +221,11 @@ public class TelaCliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCPFFocusLost(evt);
+            }
+        });
 
         jcbSexo.setBackground(new java.awt.Color(234, 215, 206));
         jcbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Masculino", "Feminino" }));
@@ -523,11 +533,11 @@ public class TelaCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cód", "Nome", "CPF", "Dt Nasc", "E-mail"
+                "Cód", "Nome", "CPF"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -596,34 +606,7 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscaActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) tbCliente.getModel();
-       modelo.setRowCount(0);
-       
-       tbCliente.getColumnModel().getColumn(0).setPreferredWidth(20);
-       tbCliente.getColumnModel().getColumn(1).setPreferredWidth(80);
-       tbCliente.getColumnModel().getColumn(2).setPreferredWidth(20);
-       
-       ArrayList<Cliente> lista = TelaClienteDAO.listar();
-       
-       for (Cliente item : lista) {            
-            modelo.addRow(new String[]{String.valueOf(item.getCod_cliente()),
-                                       String.valueOf(item.getNome()),
-                                       String.valueOf(item.getCpf()),
-                                       String.valueOf(item.getDataNasc()),
-                                       String.valueOf(item.getEmail()),
-                                       String.valueOf(item.getEstadoCivil()),
-                                       String.valueOf(item.getTel()),
-                                       String.valueOf(item.getSexo()),
-                                       String.valueOf(item.getEndereco()),
-                                       String.valueOf(item.getNumero()),
-                                       String.valueOf(item.getCEP()),
-                                       String.valueOf(item.getBairro()),
-                                       String.valueOf(item.getUF()),
-                                       String.valueOf(item.getCidade()),
-                                       String.valueOf(item.getNome()), 
-                                    });
-        }
+
        carregaTabela();     
     }//GEN-LAST:event_btnOkActionPerformed
 
@@ -632,6 +615,9 @@ public class TelaCliente extends javax.swing.JFrame {
        
        DefaultTableModel modelo = (DefaultTableModel) tbCliente.getModel();
        modelo.setRowCount(0);
+       
+           
+
        
        tbCliente.getColumnModel().getColumn(0).setPreferredWidth(20);
        tbCliente.getColumnModel().getColumn(1).setPreferredWidth(80);
@@ -693,9 +679,22 @@ public class TelaCliente extends javax.swing.JFrame {
     
     private void txtBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyTyped
         // TODO add your handling code here:
+
+        txtBusca.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent ke) {
+                trs.setRowFilter(RowFilter.regexFilter("(?i)" + txtBusca.getText(), 1));
+            }
+        });
+            
+        trs = new TableRowSorter(dtm);
+        tbCliente.setRowSorter(trs);
+        
+        
         if(txtBusca.getText().length()>=50){
             evt.consume();
         }
+        
     }//GEN-LAST:event_txtBuscaKeyTyped
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -952,7 +951,7 @@ public class TelaCliente extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
-        
+
         limparTexto();
         ativaBtn();
         ativaTxt();
@@ -962,12 +961,11 @@ public class TelaCliente extends javax.swing.JFrame {
 
     private void txtBuscaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyReleased
         // TODO add your handling code here:,
-        
-       String tipo = "";
+        String tipo = "";
         String escolha = jcbTipoBusca.getSelectedItem().toString().trim();
         
         if (escolha.equals("Nome Cliente")) {
-            tipo = "" + "nome";
+            tipo = "" + "nome";   
         } 
         if (escolha.equals("CPF Cliente")) {
             tipo = "" + "cpf";
@@ -975,30 +973,31 @@ public class TelaCliente extends javax.swing.JFrame {
         
         String arg = txtBusca.getText();
         
-        DefaultTableModel dtm = (DefaultTableModel) tbCliente.getModel();
-        int l = dtm.getRowCount();
+        DefaultTableModel mp1 = (DefaultTableModel) tbCliente.getModel();
+        int l = mp1.getRowCount();
         
         if (l > 0) {
-            while (l > 0) {
+            while (l < 0) {
                 ((DefaultTableModel) tbCliente.getModel()).removeRow(l-1);
-                
-            }
+                l--;
+        }
+
         }
         
         try {
-            ResultSet rs = (ResultSet) TelaClienteDAO.listarPorNome(tipo, arg);
+            ResultSet rs = TelaClienteDAO.listarPorNome(tipo, arg);
             DefaultTableModel mp = (DefaultTableModel) tbCliente.getModel();
             
             while (rs.next()) {
                 String Coluna0 = rs.getString("cod_cliente").toString().trim();
                 String Coluna1 = rs.getString("nome").toString().trim();
                 String Coluna2 = rs.getString("cpf").toString().trim();
-                
                 mp.addRow(new String[] {Coluna0, Coluna1, Coluna2});
             }
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(this, "Ocorreu um erro: " + erro, "Preencher Item",2);
+            JOptionPane.showMessageDialog(null, erro);
         }
+        //tamanhocolunas();
         tbCliente.setAutoCreateRowSorter(true);
     }//GEN-LAST:event_txtBuscaKeyReleased
 
@@ -1013,6 +1012,20 @@ public class TelaCliente extends javax.swing.JFrame {
     private void jcbTipoBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTipoBuscaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbTipoBuscaActionPerformed
+
+    private void txtCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCPFFocusLost
+        // TODO add your handling code here:
+        
+        if(!txtCPF.getText().trim().equals("")){
+            String id = txtCPF.getText();
+            Cliente prod = TelaClienteDAO.consultarPorCPF(id);
+
+            if (prod != null) {
+                JOptionPane.showMessageDialog(null, "CPF já cadastrado!"); 
+                limparTexto();
+            } 
+        }
+    }//GEN-LAST:event_txtCPFFocusLost
 
     private void limparTexto() {
         txtId.setText("");

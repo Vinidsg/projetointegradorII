@@ -211,7 +211,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        TelaRelatorio relatorio = new TelaRelatorio();
+        TelaRelatorioSintetico relatorio = new TelaRelatorioSintetico();
         relatorio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
