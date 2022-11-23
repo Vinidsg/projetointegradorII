@@ -480,7 +480,7 @@ public class TelaVenda extends javax.swing.JFrame {
         validador.mensagem();
         
         ArrayList<Produto> listaItens = new ArrayList<Produto>();
-        if(tbVenda.getRowCount()>0){
+        if(tbVenda.getRowCount() > 0){
                 for(int i=0;i<tbVenda.getRowCount();i++){
                     Produto item = new Produto();
 
@@ -494,44 +494,57 @@ public class TelaVenda extends javax.swing.JFrame {
                 }
         }
         
-        int estoque = Integer.parseInt(txtEstoque.getText()); 
-        int estoqueSaida = Integer.parseInt(txtQtde.getValue().toString());
-        int estoqueTotal = estoque - estoqueSaida;
         
+        
+        
+ 
         
         txtTotal1.setText(String.valueOf(valorTotal));
-        txtCarrinho.setText(Integer.toString(qtdeTotal));
-
-        Produto objProduto = new Produto();
-        objProduto.setQuantProd(estoqueTotal);
-        
-        int cod_produto = Integer.parseInt(txtProduto.getText());
-        objProduto.setCodigoProduto(cod_produto);
-        
-        boolean retorno1 = TelaProdutoDAO.atualizarEstoque(objProduto); 
+        txtCarrinho.setText(Integer.toString(qtdeTotal));        
         
         Double valor = Double.parseDouble(txtTotal1.getText());
         Date DataVenda = jdcDataVenda.getDate();
         String cpfVenda = txtBuscarCliente.getText();
-        String nome = txtNomeCliente.getText();
+        String nomeCliente = txtNomeCliente.getText();
+        String nomeProduto = txtDescricaoProduto.getText();
         
         Venda objVenda = new Venda();
         objVenda.setTotal(valor);
         objVenda.setListaItens(listaItens);
         objVenda.setDataVenda(DataVenda);
         objVenda.setBuscarCliente(cpfVenda);
-        objVenda.setNomeCliente(nome); 
+        objVenda.setNomeCliente(nomeCliente);
+        
+        Produto objProduto = new Produto();
+        objProduto.setNomeProduto(nomeProduto);
 
         boolean retorno = TelaVendaDAO.salvar(objVenda);
         if (retorno){
             JOptionPane.showMessageDialog(this, "Venda feita com sucesso!");
             limparTextoGeral();
+            AtualizaEstoque();
             
         } else{
             JOptionPane.showMessageDialog(this, "Falha na gravação!");
         }        
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
+    private void AtualizaEstoque() {
+        
+        int estoqueSaida;
+        int cod_produto;
+        
+        for (int i = 0; i < tbVenda.getRowCount(); i++) {
+            cod_produto = ValidadorVenda.objectToInt(tbVenda.getValueAt(i, 0));
+            estoqueSaida = ValidadorVenda.objectToInt(tbVenda.getValueAt(i, 2));
+            
+            Produto objProduto = new Produto();
+            objProduto.setCodigoProduto(cod_produto);
+            objProduto.setQuantProd(estoqueSaida);
+            boolean retorno1 = TelaProdutoDAO.atualizarEstoque(objProduto);
+        }
+    }
+    
     private void txtVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVendaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtVendaActionPerformed
@@ -725,7 +738,9 @@ public class TelaVenda extends javax.swing.JFrame {
         txtTotal1.setText(""); 
         
         DefaultTableModel modelo = (DefaultTableModel) tbVenda.getModel();
-        modelo.removeRow(0);       
+        for (int i = 0; i < tbVenda.getRowCount(); i++) {
+            modelo.removeRow(i);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

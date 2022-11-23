@@ -1,10 +1,13 @@
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaRelatorioAnalitico.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaProduto.java
-C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaRelatorio.java
+C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\itemVenda.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\Cliente.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\Venda.java
+C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaRelatorioSintetico.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\validadores\ValidadorRelatorio.java
+C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\validadores\ValidadorVenda.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\background\FundoTela.java
+C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\DAO\TelaRelatorioSinteticoDAO.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\DAO\TelaClienteDAO.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaVenda.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\DAO\TelaProdutoDAO.java
@@ -14,5 +17,6 @@ C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\Produto.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\model\RelatorioAnalitico.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaCliente.java
+C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\DAO\TelaRelatorioAnaliticoDAO.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\DAO\TelaVendaDAO.java
 C:\Users\vinic\OneDrive\Documentos\GitHub\projetointegradorII\src\main\java\edu\sp\senac\projetointegradorII\TelaInicial.java

@@ -4,7 +4,13 @@
  */
 package edu.sp.senac.projetointegradorII;
 
+import edu.sp.senac.projetointegradorII.DAO.TelaRelatorioAnaliticoDAO;
+import edu.sp.senac.projetointegradorII.model.Cliente;
+import edu.sp.senac.projetointegradorII.model.Venda;
+import edu.sp.senac.projetointegradorII.model.itemVenda;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,6 +18,8 @@ import javax.swing.ImageIcon;
  */
 public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
+    itemVenda objItemVenda = null;
+    
     /**
      * Creates new form TelaRelatorioAnalitico
      */
@@ -19,7 +27,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         initComponents();
         //Mudar ícone das telas
         ImageIcon img = new ImageIcon("src/main/resources/icons/musica.png");
-        this.setIconImage(img.getImage());
+        this.setIconImage(img.getImage());    
     }
 
     /**
@@ -32,7 +40,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tbRelatorioAnalitico = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         txtAnaliticoNome = new javax.swing.JTextField();
@@ -41,6 +49,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblNome = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
         lblValorTotal = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
 
@@ -49,50 +58,23 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
         tbRelatorioAnalitico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Produto", "Quantidade", "Valor Unitário"
+                "ID do Produto", "Nome do Produto", "Quantidade", "Valor Unitário"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tbRelatorioAnalitico);
+        ));
+        jScrollPane2.setViewportView(tbRelatorioAnalitico);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(272, 272, 272))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel2.setBackground(new java.awt.Color(251, 250, 248));
@@ -116,6 +98,14 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblValorTotal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/receive-amount.png"))); // NOI18N
         lblValorTotal.setText("Valor Total:");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/marketing-de-busca.png"))); // NOI18N
+        jButton1.setText("Filtrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -124,19 +114,20 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAnaliticoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblValorTotal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAnaliticoValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(lblData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAnaliticoData, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAnaliticoNome)))
-                .addGap(18, 18, 18)
-                .addComponent(lblValorTotal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAnaliticoValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -151,7 +142,8 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnaliticoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblData))
+                    .addComponent(lblData)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -199,7 +191,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -208,17 +200,6 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
-        TelaRelatorioSintetico relatorio = new TelaRelatorioSintetico();
-        relatorio.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -250,19 +231,63 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        TelaRelatorioSintetico relatorio = new TelaRelatorioSintetico();
+        relatorio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        carregaTabela(txtAnaliticoNome.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+   
+    
+    /**
+     * @param args the command line arguments
+     */
+
+    
+     private void carregaTabela(String nome) {                                      
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tbRelatorioAnalitico.getModel();
+        modelo.setRowCount(0);
+
+        tbRelatorioAnalitico.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tbRelatorioAnalitico.getColumnModel().getColumn(1).setPreferredWidth(80);
+        tbRelatorioAnalitico.getColumnModel().getColumn(2).setPreferredWidth(20);
+        tbRelatorioAnalitico.getColumnModel().getColumn(3).setPreferredWidth(20);
+
+        ArrayList<itemVenda> lista = TelaRelatorioAnaliticoDAO.listar(nome);
+
+       
+        for (itemVenda item : lista) {            
+             modelo.addRow(new String[]{String.valueOf(item.getCod_procudo()),
+                                        String.valueOf(item.getNome_produto()),
+                                        String.valueOf(item.getQtd()),
+                                        String.valueOf(item.getValor()),
+                                     });
+         }       
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblValorTotal;
     private javax.swing.JTable tbRelatorioAnalitico;
-    private javax.swing.JTextField txtAnaliticoData;
-    private javax.swing.JTextField txtAnaliticoNome;
+    public javax.swing.JTextField txtAnaliticoData;
+    public javax.swing.JTextField txtAnaliticoNome;
     private javax.swing.JTextField txtAnaliticoValorTotal;
     // End of variables declaration//GEN-END:variables
 }

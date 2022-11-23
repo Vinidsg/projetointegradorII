@@ -45,14 +45,14 @@ public class TelaVendaDAO {
                 if (rs .next()) {
                     
                     for (Produto item : obj.getListaItens()) {
-                        PreparedStatement comandoSQLItem = conexao.prepareStatement("INSERT INTO itemVenda (cod_produto, qtd, valor) VALUES (?,?,?)");
+                        PreparedStatement comandoSQLItem = conexao.prepareStatement("INSERT INTO itemVenda (cod_produto, qtd, valor, data_compra, nome, nome_produto) VALUES (?,?,?,?,?,?)");
                         
                         comandoSQLItem.setInt(1, item.getCodigoProduto());
                         comandoSQLItem.setInt(2, item.getQuantProd());
                         comandoSQLItem.setDouble(3,item.getValorProduto());
-                       
-                        
-                        
+                        comandoSQLItem.setDate(4, new java.sql.Date (obj.getDataVenda().getTime()));
+                        comandoSQLItem.setString(5,obj.getNomeCliente()); 
+                        comandoSQLItem.setString(6,item.getNomeProduto()); 
 
                         int linhasAfetadasItem = comandoSQLItem.executeUpdate();
                         if(linhasAfetadasItem>0){
@@ -60,13 +60,10 @@ public class TelaVendaDAO {
                         }
                     }
                 }
-            }
-            
+            } 
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         }
-        
         return retorno;
-        
     }   
 }

@@ -4,30 +4,17 @@
  */
 package edu.sp.senac.projetointegradorII;
 
-import com.toedter.calendar.JDateChooser;
-import edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO;
 import edu.sp.senac.projetointegradorII.DAO.TelaRelatorioSinteticoDAO;
-import edu.sp.senac.projetointegradorII.model.Cliente;
 import edu.sp.senac.projetointegradorII.model.Venda;
+import edu.sp.senac.projetointegradorII.model.itemVenda;
 import edu.sp.senac.projetointegradorII.validadores.ValidadorRelatorio;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JFormattedTextField;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -35,6 +22,8 @@ import javax.swing.text.MaskFormatter;
  */
 public class TelaRelatorioSintetico extends javax.swing.JFrame {
     Venda objVenda = null;
+    itemVenda objItemVenda = null;
+    
     /**
      * Creates new form TelaRelatorio
      */
@@ -88,7 +77,7 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         jdcDe = new com.toedter.calendar.JDateChooser();
         jdcAte = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
-        table = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tbRelatorioSintetico = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         txtTotal = new javax.swing.JTextField();
@@ -133,11 +122,11 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblDe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jdcDe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jdcDe, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblAte)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jdcAte, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jdcAte, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(269, 269, 269)
@@ -149,9 +138,9 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDe)
-                        .addComponent(lblAte))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblAte, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblDe))
                     .addComponent(jdcDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jdcAte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -166,39 +155,22 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nº Venda", "Nome ", "Data da Compra", "Valor Produto"
+                "Nº Venda", "Cliente", "Data da Compra", "Valor da Compra"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tbRelatorioSintetico.setFocusable(false);
-        tbRelatorioSintetico.setRowHeight(25);
-        tbRelatorioSintetico.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        tbRelatorioSintetico.getTableHeader().setReorderingAllowed(false);
-        table.setViewportView(tbRelatorioSintetico);
+        ));
+        jScrollPane1.setViewportView(tbRelatorioSintetico);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(table, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(table, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(251, 250, 248));
@@ -219,6 +191,11 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         btnMaisDetalhes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnMaisDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pesquisa.png"))); // NOI18N
         btnMaisDetalhes.setText("Mais Detalhes");
+        btnMaisDetalhes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMaisDetalhesMouseClicked(evt);
+            }
+        });
         btnMaisDetalhes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaisDetalhesActionPerformed(evt);
@@ -322,11 +299,24 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         }       
     }
     
+    
+    
     private void btnMaisDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisDetalhesActionPerformed
         // TODO add your handling code here:
-        TelaRelatorioAnalitico relatorioAnalitico = new TelaRelatorioAnalitico();
-        relatorioAnalitico.setVisible(true);
-        this.dispose();
+
+        int index = tbRelatorioSintetico.getSelectedRow();
+        
+        TableModel model = tbRelatorioSintetico.getModel();
+        
+        String nome = model.getValueAt(index, 1).toString();
+        String data = model.getValueAt(index, 2).toString();
+        
+        TelaRelatorioAnalitico relatorio = new TelaRelatorioAnalitico();
+        relatorio.setVisible(true);
+        
+        relatorio.txtAnaliticoNome.setText(nome);
+        relatorio.txtAnaliticoData.setText(data);
+
     }//GEN-LAST:event_btnMaisDetalhesActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
@@ -343,11 +333,20 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         Totais();
     }//GEN-LAST:event_txtTotalActionPerformed
 
+    private void btnMaisDetalhesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisDetalhesMouseClicked
+        // TODO add your handling code here:
+
+
+        
+                
+        
+    }//GEN-LAST:event_btnMaisDetalhesMouseClicked
+
     private void Totais() {
-        int Numero = tbRelatorioSintetico.getRowCount();
+        
         int Somaquant = 0;
         
-        for (int i = 0; i < Numero; i++) {
+        for (int i = 0; i < tbRelatorioSintetico.getRowCount(); i++) {
             Somaquant += ValidadorRelatorio.objectToDouble(tbRelatorioSintetico.getValueAt(i, 3));
         }
         
@@ -412,11 +411,11 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jdcAte;
     private com.toedter.calendar.JDateChooser jdcDe;
     private javax.swing.JLabel lblAte;
     private javax.swing.JLabel lblDe;
-    private javax.swing.JScrollPane table;
     private javax.swing.JTable tbRelatorioSintetico;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables

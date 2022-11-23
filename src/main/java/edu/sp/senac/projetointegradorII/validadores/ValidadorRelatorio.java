@@ -86,9 +86,21 @@ public class ValidadorRelatorio {
         }
     }
     
-    public static double objectToDouble(Object Obj) {
-        double NumInt = Double.parseDouble(objectToString(Obj));
+    public static int objectToInt(Object Obj) {
+        int NumInt = Integer.parseInt(objectToString(Obj));
         return NumInt;
+    }
+    
+    public static double objectToDouble(Object Obj) {
+        String Str = Obj.toString();
+        double NumDouble = Double.parseDouble(Str);
+        return NumDouble;
+    }
+    
+    public static boolean objectToBoolean(Object Obj) {
+        String CadBool = objectToString(Obj);
+        Boolean bool = Boolean.valueOf(CadBool);
+        return bool;
     }
     
     public static String objectToString(Object Obj) {

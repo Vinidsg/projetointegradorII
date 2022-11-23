@@ -191,7 +191,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void SinteticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SinteticoActionPerformed
         // TODO add your handling code here:
-        TelaRelatorio sintetico = new TelaRelatorio();
+        TelaRelatorioSintetico sintetico = new TelaRelatorioSintetico();
         sintetico.setVisible(true);
     }//GEN-LAST:event_SinteticoActionPerformed
 

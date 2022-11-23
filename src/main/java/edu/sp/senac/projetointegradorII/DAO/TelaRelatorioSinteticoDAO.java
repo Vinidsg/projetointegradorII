@@ -24,6 +24,10 @@ import java.util.Date;
  */
 public class TelaRelatorioSinteticoDAO {
     
+    static String URL = "jdbc:mysql://localhost:3306/lojainstrumentomusical";
+    static String Login = "root";
+    static String Senha = "";
+    
     public static ArrayList<Venda> listar(Date jdcDe, Date jdcAte) {
         
         Connection conexao = null;

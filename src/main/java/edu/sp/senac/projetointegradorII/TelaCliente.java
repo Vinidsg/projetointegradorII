@@ -360,8 +360,8 @@ public class TelaCliente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(lblDataNasc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jdcDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -625,6 +625,7 @@ public class TelaCliente extends javax.swing.JFrame {
        
        ArrayList<Cliente> lista = TelaClienteDAO.listar();
        
+       
        for (Cliente item : lista) {            
             modelo.addRow(new String[]{String.valueOf(item.getCod_cliente()),
                                        String.valueOf(item.getNome()),
@@ -699,51 +700,7 @@ public class TelaCliente extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        ValidadorCliente validar = new ValidadorCliente();
-
-        //Validação dos campos obrigatorios
-        validar.ValidarVazio(txtNome);
-        validar.ValidarVazio(txtEmail);
-        validar.ValidarVazio(txtEndereco);
-        validar.ValidarVazio(txtBairro);
-        validar.ValidarVazio(txtCidade);
-        validar.ValidarVazioJ(txtCPF);
-        validar.ValidarVazioJDC(jdcDataNascimento);
-        validar.ValidarVazioJ(txtTel);
-        validar.ValidarVazioJ(txtCEP);
-        validar.ValidarVazioJCB(jcbEstadoCivil);
-        validar.ValidarVazioJCB(jcbUF);
-        validar.ValidarVazioJCB(jcbSexo);
-        validar.mensagem();
-
-        if (this.objCliente == null) {
-            
-            String Nome = (txtNome.getText());
-            String Cpf = (txtCPF.getText());
-            Date data = jdcDataNascimento.getDate();
-            String Email = (txtEmail.getText());
-            String EstadoCivil = (jcbEstadoCivil.getSelectedItem().toString());
-            String Tel = (txtTel.getText());
-            String Sexo = (jcbSexo.getSelectedItem().toString());
-            String Endereco = (txtEndereco.getText());
-            String Numero = (txtN.getText());
-            String CEP = (txtCEP.getText());
-            String Bairro = (txtBairro.getText());
-            String UF = (jcbUF.getSelectedItem().toString());
-            String Cidade = (txtCidade.getText());
-                
-            objCliente = new Cliente(Nome, Cpf, data, Email, EstadoCivil, Tel, Sexo, Endereco, Numero, CEP, Bairro, UF, Cidade);
-            boolean retorno = TelaClienteDAO.salvar(objCliente);
-            
-        if(retorno) {
-                JOptionPane.showMessageDialog(this,"Cliente Cadastrado!");
-                TelaCliente cliente = new TelaCliente();
-                cliente.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this,"Falha no cadastro!");
-            }
-        }           
-        limparTexto();
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed

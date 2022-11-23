@@ -108,8 +108,7 @@ public class TelaClienteDAO {
             
             conexao = DriverManager.getConnection(url,login,senha);            
             
-            PreparedStatement comandoSQL =
-            conexao.prepareStatement("SELECT * FROM cliente");           
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM cliente");           
             ResultSet rs = comandoSQL.executeQuery();
             
             if(rs!=null){
