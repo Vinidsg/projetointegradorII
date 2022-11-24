@@ -6,7 +6,7 @@ package edu.sp.senac.projetointegradorII.views;
 
 import edu.sp.senac.projetointegradorII.DAO.TelaRelatorioSinteticoDAO;
 import edu.sp.senac.projetointegradorII.model.Venda;
-import edu.sp.senac.projetointegradorII.validadores.ValidadorRelatorio;
+import edu.sp.senac.projetointegradorII.validadores.Validador;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -246,10 +246,10 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
     */
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-        ValidadorRelatorio validar = new ValidadorRelatorio();
-        validar.ValidarVazioJDC(jdcDe);
-        validar.ValidarVazioJDC(jdcAte);
-        validar.mensagem();
+        Validador validador = new Validador();
+        validador.ValidarVazioJDC(jdcDe);
+        validador.ValidarVazioJDC(jdcAte);
+        validador.mensagem();
         
         Date d1 = jdcAte.getDate();
         Date d2 = jdcDe.getDate();
@@ -294,8 +294,6 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         }       
     }
     
-    
-    
     private void btnMaisDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisDetalhesActionPerformed
         // TODO add your handling code here:
 
@@ -337,7 +335,7 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         int Somaquant = 0;
         
         for (int i = 0; i < tbRelatorioSintetico.getRowCount(); i++) {
-            Somaquant += ValidadorRelatorio.objectToDouble(tbRelatorioSintetico.getValueAt(i, 3));
+            Somaquant += Validador.objectToDouble(tbRelatorioSintetico.getValueAt(i, 3));
         }
         
         txtTotal.setText("" + Somaquant);
@@ -353,8 +351,6 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         tbRelatorioSintetico.getTableHeader().setBackground(new Color(32,136,203));
         tbRelatorioSintetico.getTableHeader().setForeground(new Color(255,255,255));
         tbRelatorioSintetico.setRowHeight(25);
-
-
 }
     
     /**

@@ -148,9 +148,7 @@ public class TelaProdutoDAO {
         return rs;       
         
     }
-       
     
-
     public static boolean atualizar(Produto obj){
         
         Connection conexao = null;

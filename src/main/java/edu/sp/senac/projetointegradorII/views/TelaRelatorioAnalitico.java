@@ -6,7 +6,7 @@ package edu.sp.senac.projetointegradorII.views;
 
 import edu.sp.senac.projetointegradorII.DAO.TelaRelatorioAnaliticoDAO;
 import edu.sp.senac.projetointegradorII.model.itemVenda;
-import edu.sp.senac.projetointegradorII.validadores.ValidadorRelatorio;
+import edu.sp.senac.projetointegradorII.validadores.Validador;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
-    itemVenda objItemVenda = null;
+    
     
     /**
      * Creates new form TelaRelatorioAnalitico
@@ -264,24 +264,20 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
     
     private void Totais() {
         
-        double ValorUnitario = 0;
-        int Somaquant = 0;
+        double ValorUnitario;
+        int Somaquant;
         double ValorTotal = 0;
         
         for (int i = 0; i < tbRelatorioAnalitico.getRowCount(); i++) {
-            ValorUnitario = ValidadorRelatorio.objectToDouble(tbRelatorioAnalitico.getValueAt(i, 3));
-            Somaquant = ValidadorRelatorio.objectToInt(tbRelatorioAnalitico.getValueAt(i, 2));
+            ValorUnitario = Validador.objectToDouble(tbRelatorioAnalitico.getValueAt(i, 3));
+            Somaquant = Validador.objectToInt(tbRelatorioAnalitico.getValueAt(i, 2));
             ValorTotal += Somaquant * ValorUnitario;
         }  
         txtAnaliticoValorTotal.setText("" + ValorTotal);
     }
-   
-    
     /**
      * @param args the command line arguments
      */
-
-    
      private void carregaTabela(String nome, String dataCompra) {                                      
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) tbRelatorioAnalitico.getModel();

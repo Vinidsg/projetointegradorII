@@ -6,7 +6,7 @@ package edu.sp.senac.projetointegradorII.views;
 
 import edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO;
 import edu.sp.senac.projetointegradorII.model.Cliente;
-import edu.sp.senac.projetointegradorII.validadores.ValidadorCliente;
+import edu.sp.senac.projetointegradorII.validadores.Validador;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
@@ -671,7 +671,7 @@ public class TelaCliente extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
 
-        ValidadorCliente validar = new ValidadorCliente();
+        Validador validar = new Validador();
 
         //Validação dos campos obrigatorios
         validar.ValidarVazio(txtNome);

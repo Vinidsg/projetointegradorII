@@ -4,7 +4,7 @@
  */
 package edu.sp.senac.projetointegradorII.views;
 
-import edu.sp.senac.projetointegradorII.validadores.ValidadorProduto;
+import edu.sp.senac.projetointegradorII.validadores.Validador;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -606,19 +606,19 @@ public class TelaProduto extends javax.swing.JFrame {
     private void btnCadastroProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProdActionPerformed
         // TODO add your handling code here:
         int continuar;
-        ValidadorProduto validar = new ValidadorProduto();
+        Validador validador = new Validador();
 
         //Validação dos campos obrigatorios
-        validar.ValidarVazio(txtNomeProduto);
-        validar.ValidarVazioJ(txtValorProduto);
-        validar.ValidarVazio(txtMarcaProduto);
-        validar.ValidarVazio(txtDescricaoProduto);
-        validar.ValidarVazio(txtFornecedorProd);
-        validar.ValidarVazio(txtQuantProd);
-        validar.ValidarVazioJDC(jdcDataCompraProduto);
-        validar.ValidarVazioJCB(txtCategoria);
-        validar.ValidarVazioJCB(txtPrateleiraProd);
-        validar.mensagem();
+        validador.ValidarVazio(txtNomeProduto);
+        validador.ValidarVazioJ(txtValorProduto);
+        validador.ValidarVazio(txtMarcaProduto);
+        validador.ValidarVazio(txtDescricaoProduto);
+        validador.ValidarVazio(txtFornecedorProd);
+        validador.ValidarVazio(txtQuantProd);
+        validador.ValidarVazioJDC(jdcDataCompraProduto);
+        validador.ValidarVazioJCB(txtCategoria);
+        validador.ValidarVazioJCB(txtPrateleiraProd);
+        validador.mensagem();
 
 
         if(this.objProduto == null){

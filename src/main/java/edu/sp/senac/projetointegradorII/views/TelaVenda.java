@@ -10,7 +10,7 @@ import edu.sp.senac.projetointegradorII.DAO.TelaVendaDAO;
 import edu.sp.senac.projetointegradorII.model.Cliente;
 import edu.sp.senac.projetointegradorII.model.Produto;
 import edu.sp.senac.projetointegradorII.model.Venda;
-import edu.sp.senac.projetointegradorII.validadores.ValidadorVenda;
+import edu.sp.senac.projetointegradorII.validadores.Validador;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -476,7 +476,7 @@ public class TelaVenda extends javax.swing.JFrame {
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
 
         
-        ValidadorVenda validador = new ValidadorVenda();
+        Validador validador = new Validador();
         validador.ValidarVazioJDC(jdcDataVenda);
         validador.ValidarVazioJ(txtBuscarCliente);
         validador.ValidarVazio(txtNomeCliente);
@@ -519,8 +519,10 @@ public class TelaVenda extends javax.swing.JFrame {
         boolean retorno = TelaVendaDAO.salvar(objVenda);
         if (retorno){
             AtualizaEstoque();
+            limparTextoGeral();
             JOptionPane.showMessageDialog(this, "Venda feita com sucesso!");
-            limparTextoGeral();           
+            valorTotal = 0;
+            qtdeTotal = 0;        
             
         } else{
             JOptionPane.showMessageDialog(this, "Falha na gravação!");
@@ -533,8 +535,8 @@ public class TelaVenda extends javax.swing.JFrame {
         int cod_produto;
         
         for (int i = 0; i < tbVenda.getRowCount(); i++) {
-            cod_produto = ValidadorVenda.objectToInt(tbVenda.getValueAt(i, 0));
-            estoqueSaida = ValidadorVenda.objectToInt(tbVenda.getValueAt(i, 2));
+            cod_produto = Validador.objectToInt(tbVenda.getValueAt(i, 0));
+            estoqueSaida = Validador.objectToInt(tbVenda.getValueAt(i, 2));
             
             Produto objProduto = new Produto();
             objProduto.setCodigoProduto(cod_produto);
@@ -565,7 +567,7 @@ public class TelaVenda extends javax.swing.JFrame {
     private void btnInterirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterirActionPerformed
         // TODO add your handling code here:
         
-        ValidadorVenda validador = new ValidadorVenda();
+        Validador validador = new Validador();
         validador.ValidarVazio(txtProduto);
         validador.ValidarVazio(txtDescricaoProduto);
         validador.ValidarVazioJS(txtQtde);
@@ -653,20 +655,24 @@ public class TelaVenda extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-         int linha = tbVenda.getSelectedRow();
-        int id = Integer.parseInt(tbVenda.getValueAt(linha, 0).toString());
+        int linha = tbVenda.getSelectedRow();
         
-        int cod_produto = Integer.parseInt(txtProduto.getText());
-        String descricao = txtDescricaoProduto.getText();
-        int qtd = Integer.parseInt(txtQtde.getValue().toString());
-        double valor = Double.parseDouble(txtValor.getText());
-
-        //TODO: implementar validação de idProduto > 0 e quantidade de produto > 0
-       
+        int qtdTb = Integer.parseInt(tbVenda.getValueAt(linha, 2).toString());
+        double valorTb = Double.parseDouble(tbVenda.getValueAt(linha, 3).toString());
+        
+        int qtd = Integer.parseInt(txtCarrinho.getText());
+        double valor = Integer.parseInt(txtTotal1.getText());
+        
+        int valorLinha = (int) (qtdTb * valorTb);
+        valorTotal = (int) (valor - valorLinha);
+        
+        qtdeTotal = qtd - qtdTb;
+        
+        txtTotal1.setText(String.valueOf(valorTotal));
+        txtCarrinho.setText(Integer.toString(qtdeTotal));
+        
         DefaultTableModel modelo = (DefaultTableModel) tbVenda.getModel();
-        modelo.removeRow(linha);
-//                                    
-
+        modelo.removeRow(linha); 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void txtBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarClienteActionPerformed
@@ -723,10 +729,10 @@ public class TelaVenda extends javax.swing.JFrame {
         txtQtde.setValue(0);
         txtValor.setText("");
         txtEstoque.setText("");
-       
+               
     }
     
-        private void limparTextoGeral() {
+    private void limparTextoGeral() {
             
         jdcDataVenda.setDate(null);
         txtBuscarCliente.setText("");

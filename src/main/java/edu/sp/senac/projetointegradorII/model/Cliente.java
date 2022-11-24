@@ -46,7 +46,7 @@ public class Cliente {
         this.Cidade = Cidade;       
     }
     
-        public Cliente(int cod_cliente, String Nome, String Cpf, Date dataNasc, String Email, String EstadoCivil, String Tel, String Sexo, String Endereco, String Numero, String CEP, String Bairro, String UF, String Cidade) {
+    public Cliente(int cod_cliente, String Nome, String Cpf, Date dataNasc, String Email, String EstadoCivil, String Tel, String Sexo, String Endereco, String Numero, String CEP, String Bairro, String UF, String Cidade) {
         
         this.codCliente = cod_cliente;    
         this.Nome = Nome;
@@ -79,6 +79,7 @@ public class Cliente {
     public void setBuscar(String Buscar){
         this.Buscar = Buscar;
     }
+    
     public String getNome(){
         return Nome;
     }
@@ -122,6 +123,7 @@ public class Cliente {
     public String getCEP(){
         return CEP;
     }
+    
     public void setCEP(String CEP){
         this.CEP = CEP;
     }

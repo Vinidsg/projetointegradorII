@@ -7,8 +7,6 @@ package edu.sp.senac.projetointegradorII.DAO;
 import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.login;
 import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.senha;
 import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.url;
-import edu.sp.senac.projetointegradorII.model.Cliente;
-import edu.sp.senac.projetointegradorII.model.Venda;
 import edu.sp.senac.projetointegradorII.model.itemVenda;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *

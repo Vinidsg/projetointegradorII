@@ -42,7 +42,7 @@ CREATE TABLE cliente (
 );
 
 CREATE TABLE itemVenda (
-    idItemVenda int not null auto_increment,
+    idItemVenda int not null auto_increment primary key,
     cod_produto int,
     valor double not null,
     qtd int,
@@ -50,15 +50,3 @@ CREATE TABLE itemVenda (
     data_compra date,
     nome_produto varchar(60)
 );
-
-select * from Venda;
-select * from cliente;
-select * from Produto;
-select * from itemVenda;
-
-UPDATE Produto SET qtd_produto = qtd_produto - ? WHERE cod_produto = ?;
-
-select * from Venda where data_venda = "2022-11-09" and nome = "Mateus Felipe";
-
-select nome, data_compra, cod_produto, nome_produto, qtd, valor from itemvenda where nome = "Mateus Felipe";
-

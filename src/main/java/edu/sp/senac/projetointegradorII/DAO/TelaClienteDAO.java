@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -18,8 +17,6 @@ import java.util.ArrayList;
  * @author matheus
  */
 public class TelaClienteDAO {
-    
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     
     public static String url = "jdbc:mysql://localhost:3306/lojainstrumentomusical";
     public static String login = "root";

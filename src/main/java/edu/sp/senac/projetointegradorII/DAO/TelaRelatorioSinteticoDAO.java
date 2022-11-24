@@ -4,11 +4,9 @@
  */
 package edu.sp.senac.projetointegradorII.DAO;
 
-import com.toedter.calendar.JDateChooser;
 import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.login;
 import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.senha;
 import static edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO.url;
-import edu.sp.senac.projetointegradorII.model.Cliente;
 import edu.sp.senac.projetointegradorII.model.Venda;
 import java.sql.Connection;
 import java.sql.DriverManager;
