@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package edu.sp.senac.projetointegradorII;
+package edu.sp.senac.projetointegradorII.views;
 
 import edu.sp.senac.projetointegradorII.background.FundoTela;
 import java.awt.GridLayout;
@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author vinic
+ * @author Vinicius Garcia
  */
 public class TelaInicial extends javax.swing.JFrame {
 
@@ -19,6 +19,11 @@ public class TelaInicial extends javax.swing.JFrame {
      * Creates new form TelaInicial
      */
     
+    /**
+     * 
+     * Tela inicial onde contém os métodos que chamam as demais telas do programa.
+     * 
+     */
     FundoTela tela;
     
     public TelaInicial() {

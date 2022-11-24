@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package edu.sp.senac.projetointegradorII;
+package edu.sp.senac.projetointegradorII.views;
 
 import edu.sp.senac.projetointegradorII.DAO.TelaRelatorioAnaliticoDAO;
-import edu.sp.senac.projetointegradorII.model.Cliente;
-import edu.sp.senac.projetointegradorII.model.Venda;
 import edu.sp.senac.projetointegradorII.model.itemVenda;
+import edu.sp.senac.projetointegradorII.validadores.ValidadorRelatorio;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -49,7 +48,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblNome = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
         lblValorTotal = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnFiltrar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
 
@@ -85,6 +84,11 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         txtAnaliticoData.setEditable(false);
 
         txtAnaliticoValorTotal.setEditable(false);
+        txtAnaliticoValorTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnaliticoValorTotalActionPerformed(evt);
+            }
+        });
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/do-utilizador.png"))); // NOI18N
@@ -98,11 +102,16 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblValorTotal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/receive-amount.png"))); // NOI18N
         lblValorTotal.setText("Valor Total:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/marketing-de-busca.png"))); // NOI18N
-        jButton1.setText("Filtrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/marketing-de-busca.png"))); // NOI18N
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFiltrarMouseClicked(evt);
+            }
+        });
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnFiltrarActionPerformed(evt);
             }
         });
 
@@ -127,7 +136,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAnaliticoData, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnFiltrar)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -143,7 +152,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnaliticoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblData)
-                    .addComponent(jButton1))
+                    .addComponent(btnFiltrar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -234,16 +243,38 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
     
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        TelaRelatorioSintetico relatorio = new TelaRelatorioSintetico();
-        relatorio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
         // TODO add your handling code here:
-        carregaTabela(txtAnaliticoNome.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
 
+    }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    private void txtAnaliticoValorTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnaliticoValorTotalActionPerformed
+        // TODO add your handling code here:
+        Totais();
+    }//GEN-LAST:event_txtAnaliticoValorTotalActionPerformed
+
+    private void btnFiltrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrarMouseClicked
+        // TODO add your handling code here:
+        carregaTabela(txtAnaliticoNome.getText(), txtAnaliticoData.getText());
+        Totais();
+    }//GEN-LAST:event_btnFiltrarMouseClicked
+    
+    private void Totais() {
+        
+        double ValorUnitario = 0;
+        int Somaquant = 0;
+        double ValorTotal = 0;
+        
+        for (int i = 0; i < tbRelatorioAnalitico.getRowCount(); i++) {
+            ValorUnitario = ValidadorRelatorio.objectToDouble(tbRelatorioAnalitico.getValueAt(i, 3));
+            Somaquant = ValidadorRelatorio.objectToInt(tbRelatorioAnalitico.getValueAt(i, 2));
+            ValorTotal += Somaquant * ValorUnitario;
+        }  
+        txtAnaliticoValorTotal.setText("" + ValorTotal);
+    }
    
     
     /**
@@ -251,7 +282,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
      */
 
     
-     private void carregaTabela(String nome) {                                      
+     private void carregaTabela(String nome, String dataCompra) {                                      
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) tbRelatorioAnalitico.getModel();
         modelo.setRowCount(0);
@@ -261,7 +292,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         tbRelatorioAnalitico.getColumnModel().getColumn(2).setPreferredWidth(20);
         tbRelatorioAnalitico.getColumnModel().getColumn(3).setPreferredWidth(20);
 
-        ArrayList<itemVenda> lista = TelaRelatorioAnaliticoDAO.listar(nome);
+        ArrayList<itemVenda> lista = TelaRelatorioAnaliticoDAO.listar(nome, dataCompra);
 
        
         for (itemVenda item : lista) {            
@@ -276,8 +307,8 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

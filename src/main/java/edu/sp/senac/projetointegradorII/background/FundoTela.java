@@ -11,7 +11,13 @@ import javax.swing.JDesktopPane;
 
 /**
  *
- * @author vinic
+ * @author Vinicius Garcia
+ */
+
+/**
+ * 
+ * Método que configura a imagem de fundo da <b>tela inicial<b>
+ *
  */
 public class FundoTela extends JDesktopPane {
     private Image imagem;

@@ -30,7 +30,7 @@ public class Cliente {
     public Cliente(){     
     }
 
-    public Cliente(String Nome, String Cpf, Date dataNasc, String Email, String EstadoCivil, String Tel, String Sexo, String Endereco, String Numero, String CEP, String Bairro, String UF, String Cidade) {
+    public Cliente(String Nome, String Cpf, Date dataNasc, String Email, String EstadoCivil, String Tel, String Sexo, String Endereco, String Numero, String Bairro, String CEP, String UF, String Cidade) {
         this.Nome = Nome;
         this.Cpf = Cpf;
         this.dataNasc = dataNasc;

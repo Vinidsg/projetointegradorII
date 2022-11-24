@@ -2,34 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package edu.sp.senac.projetointegradorII;
+package edu.sp.senac.projetointegradorII.views;
 
-import com.toedter.calendar.JDateChooser;
 import edu.sp.senac.projetointegradorII.validadores.ValidadorProduto;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import edu.sp.senac.projetointegradorII.DAO.TelaProdutoDAO;
 import edu.sp.senac.projetointegradorII.model.Produto;
-import java.awt.Color;
-import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author William
+ * @author William Queiroz
  */
 public class TelaProduto extends javax.swing.JFrame {
 
     Produto objProduto = null;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    
     
     public TelaProduto() {
         initComponents();
@@ -44,10 +37,10 @@ public class TelaProduto extends javax.swing.JFrame {
     
     /**
     * Construtor que recebe parâmetros (Modo de Alteração)
+     * @param obj
     */
     public TelaProduto(Produto obj){
         this.objProduto = obj;
-       
         
         //Atribuo os valores do objeto aos campos do formulário
         this.txtNomeProduto.setText(String.valueOf(obj.getNomeProduto()));
@@ -58,9 +51,7 @@ public class TelaProduto extends javax.swing.JFrame {
         this.txtFornecedorProd.setText(String.valueOf(obj.getFornecedorProd()));
         this.txtCategoria.setSelectedItem(String.valueOf(obj.getCategoriaProd()));
         this.txtPrateleiraProd.setSelectedItem(String.valueOf(obj.getPrateleiraProd()));   
-        this.txtQuantProd.setText(String.valueOf(obj.getQuantProd()));
-   
-        
+        this.txtQuantProd.setText(String.valueOf(obj.getQuantProd()));   
     }
 
     /**
@@ -148,11 +139,11 @@ public class TelaProduto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código do produto", "Nome do produto", "Valor Produto", "Marca Produto", "Descrição"
+                "Código", "Nome do produto", "Valor", "Estoque"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -502,6 +493,7 @@ public class TelaProduto extends javax.swing.JFrame {
        tbBuscaProduto.getColumnModel().getColumn(0).setPreferredWidth(20);
        tbBuscaProduto.getColumnModel().getColumn(1).setPreferredWidth(80);
        tbBuscaProduto.getColumnModel().getColumn(2).setPreferredWidth(20);
+       tbBuscaProduto.getColumnModel().getColumn(3).setPreferredWidth(20);
        
        ArrayList<Produto> lista = TelaProdutoDAO.listar();
        
@@ -509,13 +501,14 @@ public class TelaProduto extends javax.swing.JFrame {
             modelo.addRow(new String[]{String.valueOf(item.getCodigoProduto()),
                                        String.valueOf(item.getNomeProduto()),
                                        String.valueOf(item.getValorProduto()),
+                                        String.valueOf(item.getQuantProd()),
                                        String.valueOf(item.getMarcaProduto()),
                                        String.valueOf(item.getDescricaoProduto()),
                                        String.valueOf(item.getDtCompraProduto()),
                                        String.valueOf(item.getFornecedorProd()),
                                        String.valueOf(item.getCategoriaProd()),
                                        String.valueOf(item.getPrateleiraProd()),
-                                       String.valueOf(item.getQuantProd()),
+                                      
                                     });
         }       
     }
@@ -647,38 +640,16 @@ public class TelaProduto extends javax.swing.JFrame {
 
             boolean retorno = TelaProdutoDAO.salvar(objProduto);
             if(retorno){
-//                JOptionPane.showMessageDialog(this,"Produto gravado com sucesso!");
-                  limparTexto();
-//                    TelaProduto produto = new TelaProduto();
-//                    produto.setVisible(true);
-            }else{
+                carregaTabela();
+                limparTexto();
+            } else{
                 JOptionPane.showMessageDialog(this,"Falha na gravação!");
             }
-
-        }else{
-            //Modo de alteração
-            //TODO: Chamar a DAO de alteração (método alterar)
-            int codigoProduto = Integer.parseInt(txtCodigoProduto.getText());
-            int valorProduto = Integer.parseInt(txtValorProduto.getText());
-
-            objProduto.setCodigoProduto(codigoProduto);
-            objProduto.setValorProduto(valorProduto);
-
-            boolean retorno = TelaProdutoDAO.atualizar(objProduto);
-            if(retorno){
-                JOptionPane.showMessageDialog(this,"Produto alterado com sucesso!");
-            }else{
-                JOptionPane.showMessageDialog(this,"Falha na alteração!");
-            }
-
         }
-        
-   
-        
     }//GEN-LAST:event_btnCadastroProdActionPerformed
 
     private void btnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdActionPerformed
-        
+    
         
         int index = tbBuscaProduto.getSelectedRow();
         objProduto = TelaProdutoDAO.listar().get(index);
@@ -702,26 +673,22 @@ public class TelaProduto extends javax.swing.JFrame {
 
                     if(retorno){
                         JOptionPane.showMessageDialog(this,"Produto alterado com sucesso!");
+                        carregaTabela();
+                        limparTexto();
                     } else{
                         JOptionPane.showMessageDialog(this,"Falha na alteração!");
                     }
-                
-                carregaTabela();
-                limparTexto();
-                
             break;
             
             case 1:
                 JOptionPane.showMessageDialog(null, "Nenhuma alteração foi feita!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 limparTexto();
             break;
-        }
-        
-        
+        } 
     }//GEN-LAST:event_btnAlterarProdActionPerformed
 
     private void tbBuscaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscaProdutoMouseClicked
-       int index = tbBuscaProduto.getSelectedRow();
+        int index = tbBuscaProduto.getSelectedRow();
         
         objProduto = TelaProdutoDAO.listar().get(index);
          
@@ -735,10 +702,11 @@ public class TelaProduto extends javax.swing.JFrame {
         txtCategoria.setSelectedItem(objProduto.getCategoriaProd());
         txtPrateleiraProd.setSelectedItem(objProduto.getPrateleiraProd());
         txtQuantProd.setText(String.valueOf(objProduto.getQuantProd()));
-
-         btnAlterarProd.setEnabled(true);
-         btnExcluirProduto.setEnabled(true);
-          ativaTxt();
+        
+        btnAlterarProd.setEnabled(true);
+        btnExcluirProduto.setEnabled(true);
+        
+        ativaTxt();
     }//GEN-LAST:event_tbBuscaProdutoMouseClicked
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -764,15 +732,14 @@ public class TelaProduto extends javax.swing.JFrame {
                
                 if(retorno){
                     JOptionPane.showMessageDialog(this, "Produto excluído!");
+                    carregaTabela();
+                    limparTexto();
                 }else{
                     JOptionPane.showMessageDialog(this, "Falha na exclusão!");
                 }
-
-                carregaTabela();
-                limparTexto();
-             break;
+            break;
              
-             case 1:
+            case 1:
                 JOptionPane.showMessageDialog(null, "Nenhuma exclusão foi feita!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 limparTexto();
             break;

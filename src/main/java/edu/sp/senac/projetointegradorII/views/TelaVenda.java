@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package edu.sp.senac.projetointegradorII;
+package edu.sp.senac.projetointegradorII.views;
 
 import edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO;
 import edu.sp.senac.projetointegradorII.DAO.TelaProdutoDAO;
@@ -11,7 +11,6 @@ import edu.sp.senac.projetointegradorII.model.Cliente;
 import edu.sp.senac.projetointegradorII.model.Produto;
 import edu.sp.senac.projetointegradorII.model.Venda;
 import edu.sp.senac.projetointegradorII.validadores.ValidadorVenda;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -333,6 +332,11 @@ public class TelaVenda extends javax.swing.JFrame {
 
         txtCarrinho.setEditable(false);
         txtCarrinho.setToolTipText("");
+        txtCarrinho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCarrinhoActionPerformed(evt);
+            }
+        });
 
         lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -488,16 +492,10 @@ public class TelaVenda extends javax.swing.JFrame {
                     item.setNomeProduto(tbVenda.getValueAt(i, 1).toString());
                     item.setQuantProd(Integer.parseInt(tbVenda.getValueAt(i, 2).toString()));
                     item.setValorProduto(Double.parseDouble(tbVenda.getValueAt(i, 3).toString()));
-
                     
                     listaItens.add(item);
                 }
         }
-        
-        
-        
-        
- 
         
         txtTotal1.setText(String.valueOf(valorTotal));
         txtCarrinho.setText(Integer.toString(qtdeTotal));        
@@ -520,9 +518,9 @@ public class TelaVenda extends javax.swing.JFrame {
 
         boolean retorno = TelaVendaDAO.salvar(objVenda);
         if (retorno){
-            JOptionPane.showMessageDialog(this, "Venda feita com sucesso!");
-            limparTextoGeral();
             AtualizaEstoque();
+            JOptionPane.showMessageDialog(this, "Venda feita com sucesso!");
+            limparTextoGeral();           
             
         } else{
             JOptionPane.showMessageDialog(this, "Falha na gravação!");
@@ -541,7 +539,7 @@ public class TelaVenda extends javax.swing.JFrame {
             Produto objProduto = new Produto();
             objProduto.setCodigoProduto(cod_produto);
             objProduto.setQuantProd(estoqueSaida);
-            boolean retorno1 = TelaProdutoDAO.atualizarEstoque(objProduto);
+            TelaProdutoDAO.atualizarEstoque(objProduto);
         }
     }
     
@@ -583,6 +581,7 @@ public class TelaVenda extends javax.swing.JFrame {
         
         int quantidade = Integer.parseInt(txtQtde.getValue().toString());
         int estoque = Integer.parseInt(txtEstoque.getText());
+        
         
         if (quantidade <= estoque) {
             
@@ -678,6 +677,10 @@ public class TelaVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorActionPerformed
 
+    private void txtCarrinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarrinhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarrinhoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -738,9 +741,7 @@ public class TelaVenda extends javax.swing.JFrame {
         txtTotal1.setText(""); 
         
         DefaultTableModel modelo = (DefaultTableModel) tbVenda.getModel();
-        for (int i = 0; i < tbVenda.getRowCount(); i++) {
-            modelo.removeRow(i);
-        }
+        modelo.setRowCount(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

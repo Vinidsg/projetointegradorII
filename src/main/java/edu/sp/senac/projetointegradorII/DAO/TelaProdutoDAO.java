@@ -116,12 +116,12 @@ public class TelaProdutoDAO {
                     novoObjeto.setCodigoProduto(Integer.parseInt(rs.getString("cod_produto")));
                     novoObjeto.setNomeProduto(rs.getString("nome"));
                     novoObjeto.setValorProduto(rs.getDouble("valor"));
+                    novoObjeto.setQuantProd(rs.getInt("qtd_produto"));
                     novoObjeto.setMarcaProduto(rs.getString("marca"));
                     novoObjeto.setDescricaoProduto(rs.getString("descricao"));
                     novoObjeto.setDtCompraProduto(rs.getDate("data_compra_produto"));
                     novoObjeto.setFornecedorProd(rs.getString("fornecedor"));
                     novoObjeto.setPrateleiraProd(rs.getString("prateleira"));
-                    novoObjeto.setQuantProd(rs.getInt("qtd_produto"));
                     novoObjeto.setCategoriaProd(rs.getString("categoria"));
                     lista.add(novoObjeto);
                     
@@ -208,8 +208,7 @@ public class TelaProdutoDAO {
             conexao = DriverManager.getConnection(url,login,senha);
             
             //Criar o comando sql
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE Produto SET qtd_produto = qtd_produto - ? WHERE cod_produto = ?;");
-            
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE Produto SET qtd_produto = qtd_produto - ? WHERE cod_produto = ?");
             comandoSQL.setInt(1,obj.getQuantProd());
             comandoSQL.setInt(2,obj.getCodigoProduto());
                        

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package edu.sp.senac.projetointegradorII;
+package edu.sp.senac.projetointegradorII.views;
 
 import edu.sp.senac.projetointegradorII.DAO.TelaClienteDAO;
 import edu.sp.senac.projetointegradorII.model.Cliente;
@@ -22,7 +22,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author vinicius
+ * @author Vinicius Lima
  */
 public class TelaCliente extends javax.swing.JFrame {
 
@@ -30,7 +30,6 @@ public class TelaCliente extends javax.swing.JFrame {
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     DefaultTableModel dtm = new DefaultTableModel();
     TableRowSorter trs;
-    
     
     public TelaCliente () {
         initComponents();
@@ -40,9 +39,7 @@ public class TelaCliente extends javax.swing.JFrame {
         
         desativaBtn();
         desativaTxt();
-        carregaTabela();
-        
-        
+        carregaTabela(); 
     }
     
     public TelaCliente(Cliente obj) {
@@ -418,7 +415,7 @@ public class TelaCliente extends javax.swing.JFrame {
                                 .addComponent(lblUF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jcbUF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -576,8 +573,8 @@ public class TelaCliente extends javax.swing.JFrame {
                     .addComponent(txtBusca)
                     .addComponent(jcbTipoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -610,6 +607,11 @@ public class TelaCliente extends javax.swing.JFrame {
        carregaTabela();     
     }//GEN-LAST:event_btnOkActionPerformed
 
+    /**
+     * Método que busca no banco de dados e carrega tabela de clientes cadastrados 
+     * @param - Jtable
+     * 
+     */
     private void carregaTabela() {                                      
         // TODO add your handling code here:
        
@@ -625,38 +627,6 @@ public class TelaCliente extends javax.swing.JFrame {
        
        ArrayList<Cliente> lista = TelaClienteDAO.listar();
        
-       
-       for (Cliente item : lista) {            
-            modelo.addRow(new String[]{String.valueOf(item.getCod_cliente()),
-                                       String.valueOf(item.getNome()),
-                                       String.valueOf(item.getCpf()),
-                                       String.valueOf(item.getDataNasc()),
-                                       String.valueOf(item.getEmail()),
-                                       String.valueOf(item.getEstadoCivil()),
-                                       String.valueOf(item.getTel()),
-                                       String.valueOf(item.getSexo()),
-                                       String.valueOf(item.getEndereco()),
-                                       String.valueOf(item.getNumero()),
-                                       String.valueOf(item.getCEP()),
-                                       String.valueOf(item.getBairro()),
-                                       String.valueOf(item.getUF()),
-                                       String.valueOf(item.getCidade()),
-                                       String.valueOf(item.getNome()), 
-                                    });
-        }       
-    }
-    
-    private void carregaTabelaPorNome(String Nome) {                                      
-        // TODO add your handling code here:
-       
-       DefaultTableModel modelo = (DefaultTableModel) tbCliente.getModel();
-       modelo.setRowCount(0);
-       
-       tbCliente.getColumnModel().getColumn(0).setPreferredWidth(20);
-       tbCliente.getColumnModel().getColumn(1).setPreferredWidth(80);
-       tbCliente.getColumnModel().getColumn(2).setPreferredWidth(20);
-       
-       ArrayList<Cliente> lista = TelaClienteDAO.listar();
        
        for (Cliente item : lista) {            
             modelo.addRow(new String[]{String.valueOf(item.getCod_cliente()),
@@ -700,7 +670,56 @@ public class TelaCliente extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        
+
+        ValidadorCliente validar = new ValidadorCliente();
+
+        //Validação dos campos obrigatorios
+        validar.ValidarVazio(txtNome);
+        validar.ValidarVazioJDC(jdcDataNascimento);
+        validar.ValidarVazio(txtEmail);
+        validar.ValidarVazioJCB(jcbEstadoCivil);
+        validar.ValidarVazioJ(txtTel);
+        validar.ValidarVazioJ(txtCPF);
+        validar.ValidarVazioJCB(jcbSexo);
+        validar.ValidarVazio(txtEndereco);
+        validar.ValidarVazio(txtN);
+        validar.ValidarVazio(txtBairro);
+        validar.ValidarVazioJ(txtCEP);
+        validar.ValidarVazio(txtCidade);
+        validar.ValidarVazioJCB(jcbUF);
+        validar.mensagem();
+
+
+        if(this.objCliente == null){
+            //Modo de inclusão
+            //TODO: Chamar a DAO de inclusão (método salvar)
+
+            String Nome = (txtNome.getText());
+            Date dataNasc = (jdcDataNascimento.getDate());
+            String Email = (txtEmail.getText());
+            String EstadoCivil = (jcbEstadoCivil.getSelectedItem().toString());
+            String Tel = (txtTel.getText());
+            String Cpf = (txtCPF.getText());
+            String Sexo = (jcbSexo.getSelectedItem().toString());
+            String Endereco = (txtEndereco.getText());
+            String Numero = (txtN.getText());
+            String Bairro = (txtBairro.getText());
+            String CEP = (txtCEP.getText());
+            String Cidade = (txtCidade.getText());
+            String UF = (jcbUF.getSelectedItem().toString());
+            
+            objCliente = new Cliente(Nome, Cpf, dataNasc, Email, EstadoCivil, Tel, Sexo, Endereco, Numero, Bairro, CEP , UF, Cidade);
+
+            boolean retorno = TelaClienteDAO.salvar(objCliente);
+            if(retorno){
+                JOptionPane.showMessageDialog(this,"Cliente Cadastrado!");
+                limparTexto();
+                carregaTabela();
+                desativaBtn();
+            }else{
+                JOptionPane.showMessageDialog(this,"Falha na gravação!");
+            }
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -730,12 +749,14 @@ public class TelaCliente extends javax.swing.JFrame {
 
                     if(retorno){
                         JOptionPane.showMessageDialog(this,"Cliente alterado com sucesso!");
+                        carregaTabela();
+                        limparTexto();
+                        desativaBtn();
                     } else{
                         JOptionPane.showMessageDialog(this,"Falha na alteração!");
                     }
                 
-                carregaTabela();
-                limparTexto();
+
                 
             break;
             
@@ -744,8 +765,6 @@ public class TelaCliente extends javax.swing.JFrame {
                 limparTexto();
             break;
         }
-        
-
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
@@ -766,7 +785,7 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCidadeKeyTyped
 
     private void txtCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCidadeActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtCidadeActionPerformed
 
     private void jcbUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbUFActionPerformed
@@ -860,12 +879,12 @@ public class TelaCliente extends javax.swing.JFrame {
                
                 if(retorno){
                     JOptionPane.showMessageDialog(this, "Cliente excluído!");
+                    carregaTabela();
+                    limparTexto();
+                    desativaBtn();
                 }else{
                     JOptionPane.showMessageDialog(this, "Falha na exclusão!");
                 }
-
-                carregaTabela();
-                limparTexto();
              break;
              
              case 1:
@@ -984,6 +1003,11 @@ public class TelaCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCPFFocusLost
 
+    /**
+     * Método que limpa os campos de texto da tela 
+     * @param - JTextField, JFormattedTextField, JDateChooser, JComboBox, JSpinner
+     * 
+     */    
     private void limparTexto() {
         txtId.setText("");
         txtNome.setText("");
@@ -1001,18 +1025,33 @@ public class TelaCliente extends javax.swing.JFrame {
         jcbUF.setSelectedItem("-");
     }
     
+    /**
+     * Método que desativa os botões da tela 
+     * @param - JButton
+     * 
+     */
     private void desativaBtn() {
         btnSalvar.setEnabled(false);
         btnAlterar.setEnabled(false);
         btnExcluir.setEnabled(false);           
     }
     
-        private void ativaBtn() {
+    /**
+     * Método que ativa os botões da tela 
+     * @param - JButton
+     * 
+     */
+    private void ativaBtn() {
         btnSalvar.setEnabled(true);
         btnAlterar.setEnabled(true);
         btnExcluir.setEnabled(true);           
     }
     
+    /**
+     * Método que desativa os campos de texto da tela 
+     * @param - JTextField, JFormattedTextField, JDateChooser, JComboBox, JSpinner
+     * 
+     */  
     private void desativaTxt () {
         txtNome.setEnabled(false);
         jdcDataNascimento.setEnabled(false);
@@ -1028,8 +1067,13 @@ public class TelaCliente extends javax.swing.JFrame {
         txtCidade.setEnabled(false);
         jcbUF.setEnabled(false);
     }
-    
-        private void ativaTxt () {
+
+    /**
+     * Método que ativa os campos de texto da tela 
+     * @param - JTextField, JFormattedTextField, JDateChooser, JComboBox, JSpinner
+     * 
+     */ 
+    private void ativaTxt () {
         txtNome.setEnabled(true);
         jdcDataNascimento.setEnabled(true);
         txtEmail.setEnabled(true);

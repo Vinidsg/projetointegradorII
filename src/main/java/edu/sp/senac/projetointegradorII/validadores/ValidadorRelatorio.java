@@ -8,16 +8,13 @@ package edu.sp.senac.projetointegradorII.validadores;
 
 /**
  *
- * @author vinic
+ * @author Vinicius Garcia
  */
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
-import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-
-
 
 public class ValidadorRelatorio {
     private int cont = 0;
@@ -34,8 +31,6 @@ public class ValidadorRelatorio {
         }
         
     }
-    
-    
     
     public void ValidarVazioJ(JFormattedTextField txt){
         String text = txt.getText().replace(".", "").replace("-", "").replace("/", "").replace("(", "").replace(")", "").trim();
@@ -69,23 +64,6 @@ public class ValidadorRelatorio {
         } 
     }
     
-    public void findDifference(Date jdcDe, Date jdcAte)
-    {
-
-        Date d1 = jdcDe;
-        Date d2 = jdcAte;
-
-        long difference_In_Time = d2.getTime() - d1.getTime();
-        
-        long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
-        
-        if ((difference_In_Days + 1) <= 30) {
-            JOptionPane.showMessageDialog(null, "Relatório gerado!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Digite um período inferior a 30 dias!\n" + "Quantidade de dias solicitado: " + (difference_In_Days + 1));
-        }
-    }
-    
     public static int objectToInt(Object Obj) {
         int NumInt = Integer.parseInt(objectToString(Obj));
         return NumInt;
@@ -110,8 +88,4 @@ public class ValidadorRelatorio {
         }
         return Str;
     }
-    
-    
-    
-    
 }

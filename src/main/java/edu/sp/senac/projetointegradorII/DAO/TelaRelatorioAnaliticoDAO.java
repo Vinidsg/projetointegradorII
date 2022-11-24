@@ -24,7 +24,7 @@ import java.util.Date;
  */
 public class TelaRelatorioAnaliticoDAO {
     
-    public static ArrayList<itemVenda> listar(String nome) {
+    public static ArrayList<itemVenda> listar(String nome, String dataCompra) {
         
         Connection conexao = null;
         ArrayList<itemVenda> lista = new ArrayList<>();
@@ -34,8 +34,9 @@ public class TelaRelatorioAnaliticoDAO {
             
             conexao = DriverManager.getConnection(url,login,senha);            
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("select nome, data_compra, cod_produto, nome_produto, qtd, valor from itemvenda where nome = ?"); 
+            PreparedStatement comandoSQL = conexao.prepareStatement("select nome, data_compra, cod_produto, nome_produto, qtd, valor from itemvenda where nome = ? and data_compra = ?"); 
             comandoSQL.setString(1, nome);
+            comandoSQL.setString(2, dataCompra);
             ResultSet rs = comandoSQL.executeQuery();
             
             if(rs!=null){

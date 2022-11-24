@@ -56,8 +56,7 @@ public class ValidadorVenda {
         
     }
     
-  public void ValidarVazioJDC(JDateChooser date){
-        
+  public void ValidarVazioJDC(JDateChooser date){  
     try {
         if (date.getDate() == null) {
             throw new IllegalArgumentException();
@@ -68,10 +67,10 @@ public class ValidadorVenda {
     }
 }
   
-      public void ValidarVazioJS(JSpinner txt){
-          
+      public void ValidarVazioJS(JSpinner txt){ 
+          String text = txt.getValue().toString();
           try {
-            if (txt.equals("")) {
+            if (text.equals("0")) {
                 throw new IllegalArgumentException();
             }
           } catch (IllegalArgumentException e) {
