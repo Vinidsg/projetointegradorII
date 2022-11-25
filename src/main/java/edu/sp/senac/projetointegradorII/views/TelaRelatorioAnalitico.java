@@ -103,6 +103,8 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblValorTotal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/receive-amount.png"))); // NOI18N
         lblValorTotal.setText("Valor Total:");
 
+        btnFiltrar.setBackground(new java.awt.Color(234, 215, 206));
+        btnFiltrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/marketing-de-busca.png"))); // NOI18N
         btnFiltrar.setText("Filtrar");
         btnFiltrar.addMouseListener(new java.awt.event.MouseAdapter() {

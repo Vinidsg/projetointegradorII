@@ -587,7 +587,7 @@ public class TelaVenda extends javax.swing.JFrame {
         int estoque = Integer.parseInt(txtEstoque.getText());
         
         
-        if (quantidade <= estoque) {
+        if (quantidade <= estoque && quantidade != 0) {
             
             DefaultTableModel modelo = (DefaultTableModel) tbVenda.getModel();
             modelo.addRow(new String[]{
@@ -610,7 +610,7 @@ public class TelaVenda extends javax.swing.JFrame {
         limparTexto();
         
         } else {
-            JOptionPane.showMessageDialog(null, "Erro na compra, escolha uma quantidade inferior ao disponível em estoque!");
+            JOptionPane.showMessageDialog(null, "Erro na compra, escolha uma quantidade menor ao disponível em estoque e diferente de Zero");
         }
     }//GEN-LAST:event_btnInterirActionPerformed
 
