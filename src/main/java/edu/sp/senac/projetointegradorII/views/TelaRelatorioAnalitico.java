@@ -10,6 +10,7 @@ import edu.sp.senac.projetointegradorII.validadores.Validador;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -282,6 +283,9 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) tbRelatorioAnalitico.getModel();
         modelo.setRowCount(0);
+        
+        TableRowSorter sorter = new TableRowSorter(modelo);
+        tbRelatorioAnalitico.setRowSorter(sorter);
 
         tbRelatorioAnalitico.getColumnModel().getColumn(0).setPreferredWidth(20);
         tbRelatorioAnalitico.getColumnModel().getColumn(1).setPreferredWidth(80);

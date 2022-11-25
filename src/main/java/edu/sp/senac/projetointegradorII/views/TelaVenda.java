@@ -552,6 +552,8 @@ public class TelaVenda extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Compra Cancelada!");
+        valorTotal = 0;
+        qtdeTotal = 0; 
         limparTextoGeral();
     }//GEN-LAST:event_btnCancelarActionPerformed
 

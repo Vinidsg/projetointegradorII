@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -476,6 +477,13 @@ public class TelaProduto extends javax.swing.JFrame {
 
     private void txtCadatroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCadatroProdutoActionPerformed
         // TODO add your handling code here:
+        if (txtCadatroProduto.getSelectedItem().toString() != "Selecione...") {
+            txtBuscaProduto.setEditable(true);
+            txtBuscaProduto.setEnabled(true);
+        } else {
+            txtBuscaProduto.setEditable(false);
+            txtBuscaProduto.setEnabled(false);
+        }
     }//GEN-LAST:event_txtCadatroProdutoActionPerformed
 
     private void btnBuscaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaProdutoActionPerformed
@@ -490,7 +498,10 @@ public class TelaProduto extends javax.swing.JFrame {
        DefaultTableModel modelo = (DefaultTableModel) tbBuscaProduto.getModel();
        modelo.setRowCount(0);
        
-       tbBuscaProduto.getColumnModel().getColumn(0).setPreferredWidth(20);
+       TableRowSorter sorter = new TableRowSorter(modelo);
+       tbBuscaProduto.setRowSorter(sorter);
+       
+       tbBuscaProduto.getColumnModel().getColumn(0).setPreferredWidth(1);
        tbBuscaProduto.getColumnModel().getColumn(1).setPreferredWidth(80);
        tbBuscaProduto.getColumnModel().getColumn(2).setPreferredWidth(20);
        tbBuscaProduto.getColumnModel().getColumn(3).setPreferredWidth(20);
@@ -501,7 +512,7 @@ public class TelaProduto extends javax.swing.JFrame {
             modelo.addRow(new String[]{String.valueOf(item.getCodigoProduto()),
                                        String.valueOf(item.getNomeProduto()),
                                        String.valueOf(item.getValorProduto()),
-                                        String.valueOf(item.getQuantProd()),
+                                       String.valueOf(item.getQuantProd()),
                                        String.valueOf(item.getMarcaProduto()),
                                        String.valueOf(item.getDescricaoProduto()),
                                        String.valueOf(item.getDtCompraProduto()),
@@ -642,6 +653,7 @@ public class TelaProduto extends javax.swing.JFrame {
             if(retorno){
                 carregaTabela();
                 limparTexto();
+                JOptionPane.showMessageDialog(null, "Produto cadastrado!");
             } else{
                 JOptionPane.showMessageDialog(this,"Falha na gravação!");
             }
@@ -688,32 +700,87 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarProdActionPerformed
 
     private void tbBuscaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBuscaProdutoMouseClicked
-        int index = tbBuscaProduto.getSelectedRow();
+        String tipo = "";
         
-        objProduto = TelaProdutoDAO.listar().get(index);
-         
-        txtCodigoProduto.setText(String.valueOf(objProduto.getCodigoProduto()));
-        txtNomeProduto.setText(objProduto.getNomeProduto());
-        txtValorProduto.setText(Double.toString(objProduto.getValorProduto()));
-        txtMarcaProduto.setText(objProduto.getMarcaProduto());
-        txtDescricaoProduto.setText(objProduto.getDescricaoProduto()); 
-        jdcDataCompraProduto.setDate(objProduto.getDtCompraProduto());
-        txtFornecedorProd.setText(objProduto.getFornecedorProd());
-        txtCategoria.setSelectedItem(objProduto.getCategoriaProd());
-        txtPrateleiraProd.setSelectedItem(objProduto.getPrateleiraProd());
-        txtQuantProd.setText(String.valueOf(objProduto.getQuantProd()));
+        String escolha = txtCadatroProduto.getSelectedItem().toString().trim();
         
-        btnAlterarProd.setEnabled(true);
-        btnExcluirProduto.setEnabled(true);
+        if(escolha.equals("Nome")) {
+            tipo = " " + "nome";
+        }
+        if(escolha.equals("Marca")) {
+            tipo = " " + "marca";
+        }
         
-        ativaTxt();
+        if (tipo != "") {
+            int index = tbBuscaProduto.getSelectedRow();
+            
+            String arg = txtBuscaProduto.getText();
+        
+            Produto lista = TelaProdutoDAO.listarPorArgumento(tipo, arg).get(index);
+
+            txtCodigoProduto.setText(String.valueOf(lista.getCodigoProduto()));
+            txtNomeProduto.setText(lista.getNomeProduto());
+            txtValorProduto.setText(Double.toString(lista.getValorProduto()));
+            txtMarcaProduto.setText(lista.getMarcaProduto());
+            txtDescricaoProduto.setText(lista.getDescricaoProduto()); 
+            jdcDataCompraProduto.setDate(lista.getDtCompraProduto());
+            txtFornecedorProd.setText(lista.getFornecedorProd());
+            txtCategoria.setSelectedItem(lista.getCategoriaProd());
+            txtPrateleiraProd.setSelectedItem(lista.getPrateleiraProd());
+            txtQuantProd.setText(String.valueOf(lista.getQuantProd()));
+
+            ativaTxt();
+            btnCadastroProd.setEnabled(false);
+            btnAlterarProd.setEnabled(true);
+            btnExcluirProduto.setEnabled(true);
+            
+        } else {
+            int index = tbBuscaProduto.getSelectedRow();
+            
+            objProduto = TelaProdutoDAO.listar().get(index);
+
+            txtCodigoProduto.setText(String.valueOf(objProduto.getCodigoProduto()));
+            txtNomeProduto.setText(objProduto.getNomeProduto());
+            txtValorProduto.setText(Double.toString(objProduto.getValorProduto()));
+            txtMarcaProduto.setText(objProduto.getMarcaProduto());
+            txtDescricaoProduto.setText(objProduto.getDescricaoProduto()); 
+            jdcDataCompraProduto.setDate(objProduto.getDtCompraProduto());
+            txtFornecedorProd.setText(objProduto.getFornecedorProd());
+            txtCategoria.setSelectedItem(objProduto.getCategoriaProd());
+            txtPrateleiraProd.setSelectedItem(objProduto.getPrateleiraProd());
+            txtQuantProd.setText(String.valueOf(objProduto.getQuantProd()));
+
+            ativaTxt();
+            btnCadastroProd.setEnabled(false);
+            btnAlterarProd.setEnabled(true);
+            btnExcluirProduto.setEnabled(true);
+        }
+
+//        int index = tbBuscaProduto.getSelectedRow();
+//        
+//        objProduto = TelaProdutoDAO.listar().get(index);
+//         
+//        txtCodigoProduto.setText(String.valueOf(objProduto.getCodigoProduto()));
+//        txtNomeProduto.setText(objProduto.getNomeProduto());
+//        txtValorProduto.setText(Double.toString(objProduto.getValorProduto()));
+//        txtMarcaProduto.setText(objProduto.getMarcaProduto());
+//        txtDescricaoProduto.setText(objProduto.getDescricaoProduto()); 
+//        jdcDataCompraProduto.setDate(objProduto.getDtCompraProduto());
+//        txtFornecedorProd.setText(objProduto.getFornecedorProd());
+//        txtCategoria.setSelectedItem(objProduto.getCategoriaProd());
+//        txtPrateleiraProd.setSelectedItem(objProduto.getPrateleiraProd());
+//        txtQuantProd.setText(String.valueOf(objProduto.getQuantProd()));
+//        
+//        btnAlterarProd.setEnabled(true);
+//        btnExcluirProduto.setEnabled(true);
+//        
+//        ativaTxt();
     }//GEN-LAST:event_tbBuscaProdutoMouseClicked
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
 
         limparTexto();
-        ativaBtn();
         ativaTxt();
         btnAlterarProd.setEnabled(false);
         btnExcluirProduto.setEnabled(false);
@@ -749,45 +816,51 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirProdutoActionPerformed
 
     private void txtBuscaProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaProdutoKeyReleased
-        
         String tipo = "";
+        
         String escolha = txtCadatroProduto.getSelectedItem().toString().trim();
         
-        if (escolha.equals("Nome")) {
-            tipo = "" + "nome";
-        } 
-        if (escolha.equals("Marca")) {
-            tipo = "" + "marca";
+        if(escolha.equals("Nome")) {
+            tipo = " " + "nome";
+        }
+        if(escolha.equals("Marca")) {
+            tipo = " " + "marca";
         }
         
         String arg = txtBuscaProduto.getText();
         
-        DefaultTableModel dtm = (DefaultTableModel) tbBuscaProduto.getModel();
-        int l = dtm.getRowCount();
+        DefaultTableModel mp1 = (DefaultTableModel) tbBuscaProduto.getModel();
+        int l = mp1.getRowCount();
         
-        if (l > 0) {
+        TableRowSorter sorter = new TableRowSorter(mp1);
+        tbBuscaProduto.setRowSorter(sorter);
+        
+        if(l>0) {
             while (l > 0) {
                 ((DefaultTableModel) tbBuscaProduto.getModel()).removeRow(l-1);
-                
+                l--;
             }
         }
         
-        try {
-            ResultSet rs = (ResultSet) TelaProdutoDAO.listarPorNome(tipo, arg);
-            DefaultTableModel mp = (DefaultTableModel) tbBuscaProduto.getModel();
-            
-            while (rs.next()) {
-                String Coluna0 = rs.getString("cod_produto").toString().trim();
-                String Coluna1 = rs.getString("nome").toString().trim();
-                String Coluna2 = rs.getString("cpf").toString().trim();
-                
-                mp.addRow(new String[] {Coluna0, Coluna1, Coluna2});
-            }
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(this, "Ocorreu um erro: " + erro, "Preencher Item",2);
-        }
-        tbBuscaProduto.setAutoCreateRowSorter(true);
-         
+        tbBuscaProduto.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tbBuscaProduto.getColumnModel().getColumn(1).setPreferredWidth(80);
+        tbBuscaProduto.getColumnModel().getColumn(2).setPreferredWidth(20);
+        
+        ArrayList<Produto> lista = TelaProdutoDAO.listarPorArgumento(tipo, arg);
+        
+        for (Produto item : lista) {            
+            mp1.addRow(new String[]{String.valueOf(item.getCodigoProduto()),
+                                    String.valueOf(item.getNomeProduto()),
+                                    String.valueOf(item.getValorProduto()),
+                                    String.valueOf(item.getQuantProd()),
+                                    String.valueOf(item.getMarcaProduto()),
+                                    String.valueOf(item.getDescricaoProduto()),
+                                    String.valueOf(item.getDtCompraProduto()),
+                                    String.valueOf(item.getFornecedorProd()),
+                                    String.valueOf(item.getCategoriaProd()),
+                                    String.valueOf(item.getPrateleiraProd()),
+                    });
+        }  
     }//GEN-LAST:event_txtBuscaProdutoKeyReleased
 
     private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
@@ -821,13 +894,14 @@ public class TelaProduto extends javax.swing.JFrame {
     private void desativaBtn() {
         btnCadastroProd.setEnabled(false);
         btnAlterarProd.setEnabled(false);
-        btnExcluirProduto.setEnabled(false);           
+        btnExcluirProduto.setEnabled(false);
+        txtBuscaProduto.setEnabled(false);
     }
     
         private void ativaBtn() {
-        btnCadastroProd.setEnabled(false);
-        btnAlterarProd.setEnabled(false);
-        //btnExcluirProduto.setEnabled(false);          
+        btnCadastroProd.setEnabled(true);
+        btnAlterarProd.setEnabled(true);
+        btnExcluirProduto.setEnabled(true);          
     }
     
     private void desativaTxt () {
@@ -840,6 +914,7 @@ public class TelaProduto extends javax.swing.JFrame {
         txtCategoria.setEnabled(false);
         txtPrateleiraProd.setEnabled(false);
         txtQuantProd.setEnabled(false);
+        txtBuscaProduto.setEnabled(false);
         
     }
     

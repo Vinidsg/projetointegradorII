@@ -140,18 +140,52 @@ public class TelaClienteDAO {
         return lista;
      }
     
-    public static ResultSet listarPorNome (String tipo, String arg) throws SQLException {
+    public static ArrayList<Cliente> listarPorArgumento(String tipo, String arg) {
         String argumento = tipo + " " + "like '" + arg + "%'";
         
         Connection conexao = null;
         
-        PreparedStatement comandoSQL = conexao.prepareStatement("SELECT nome, cpf FROM cliente where " + argumento + "");
-//        comandoSQL.setString(1, "%" + Nome + "%");
-        ResultSet rs = comandoSQL.executeQuery();
+        ArrayList<Cliente> lista = new ArrayList<Cliente>();
         
-        return rs;       
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url,login,senha);            
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT cod_cliente, nome, cpf, data_de_nascimento, email, estado_civil, telefone, sexo, endereco, numero, cep, bairro, UF, cidade FROM cliente where " + argumento + "");           
+            ResultSet rs = comandoSQL.executeQuery();
+            
+            if(rs!=null){
+                while(rs.next()){
+                    Cliente novoObj = new Cliente();
+                    novoObj.setCod_cliente(rs.getInt("cod_cliente"));
+                    novoObj.setNome(rs.getString("nome"));
+                    novoObj.setCpf(rs.getString("Cpf"));
+                    novoObj.setDataNasc(rs.getDate("data_de_nascimento"));
+                    novoObj.setEmail(rs.getString("email"));
+                    novoObj.setEstadoCivil(rs.getString("estado_civil"));
+                    novoObj.setTel(rs.getString("telefone"));
+                    novoObj.setSexo(rs.getString("sexo"));
+                    novoObj.setEndereco(rs.getString("endereco"));
+                    novoObj.setNumero(rs.getString("numero"));
+                    novoObj.setCEP(rs.getString("cep"));
+                    novoObj.setBairro(rs.getString("bairro"));
+                    novoObj.setUF(rs.getString("UF"));
+                    novoObj.setCidade(rs.getString("cidade"));
+                    
+                    
+                    lista.add(novoObj);
+                }
+            }
         
-    }
+            } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return lista;
+     }
     
     //Atualizar cliente 
     public static boolean atualizar(Cliente obj){

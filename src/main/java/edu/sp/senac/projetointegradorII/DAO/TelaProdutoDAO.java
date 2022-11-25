@@ -36,8 +36,7 @@ public class TelaProdutoDAO {
             conexao = DriverManager.getConnection(url,login,senha);
                 
             //Criar o comando sql
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Produto (nome,valor,marca,"
-                    + "descricao,data_compra_produto,fornecedor,categoria,prateleira,qtd_produto) VALUES(?,?,?,?,?,?,?,?,?)");
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Produto (nome,valor,marca,descricao,data_compra_produto,fornecedor,categoria,prateleira,qtd_produto) VALUES(?,?,?,?,?,?,?,?,?)");
             //comandoSQL.setInt(1,obj.getCodigoProduto());
             comandoSQL.setString(1,obj.getNomeProduto());
             comandoSQL.setDouble(2,obj.getValorProduto());
@@ -135,6 +134,48 @@ public class TelaProdutoDAO {
         
         return lista;
     }
+    
+    public static ArrayList<Produto> listarPorArgumento(String tipo, String arg) {
+        String argumento = tipo + " " + "like '" + arg + "%'";
+        
+        Connection conexao = null;
+        
+        ArrayList<Produto> lista = new ArrayList<Produto>();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url,login,senha);            
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT cod_produto, nome, valor, marca, descricao, data_compra_produto, fornecedor, categoria, prateleira, qtd_produto FROM produto where " + argumento + "");           
+            ResultSet rs = comandoSQL.executeQuery();
+            
+            if(rs!=null){
+                while(rs.next()){
+                    Produto novoObj = new Produto();
+                    novoObj.setCodigoProduto(Integer.parseInt(rs.getString("cod_produto")));
+                    novoObj.setNomeProduto(rs.getString("nome"));
+                    novoObj.setValorProduto(rs.getDouble("valor"));
+                    novoObj.setQuantProd(rs.getInt("qtd_produto"));
+                    novoObj.setMarcaProduto(rs.getString("marca"));
+                    novoObj.setDescricaoProduto(rs.getString("descricao"));
+                    novoObj.setDtCompraProduto(rs.getDate("data_compra_produto"));
+                    novoObj.setFornecedorProd(rs.getString("fornecedor"));
+                    novoObj.setPrateleiraProd(rs.getString("prateleira"));
+                    novoObj.setCategoriaProd(rs.getString("categoria"));
+                    
+                    lista.add(novoObj);
+                }
+            }
+        
+            } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return lista;
+     }
 
     public static ResultSet listarPorNome (String tipo, String arg) throws SQLException {
         String argumento = tipo + " " + "like '" + arg + "%'";

@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -278,6 +279,9 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
        
        DefaultTableModel modelo = (DefaultTableModel) tbRelatorioSintetico.getModel();
        modelo.setRowCount(0);
+       
+       TableRowSorter sorter = new TableRowSorter(modelo);
+       tbRelatorioSintetico.setRowSorter(sorter);
        
        tbRelatorioSintetico.getColumnModel().getColumn(0).setPreferredWidth(20);
        tbRelatorioSintetico.getColumnModel().getColumn(1).setPreferredWidth(80);
