@@ -495,7 +495,6 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
-        txtBusca.setForeground(new java.awt.Color(204, 204, 204));
         txtBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscaActionPerformed(evt);

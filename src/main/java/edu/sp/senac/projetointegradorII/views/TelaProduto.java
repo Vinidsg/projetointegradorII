@@ -79,7 +79,6 @@ public class TelaProduto extends javax.swing.JFrame {
         lblCodigo = new javax.swing.JLabel();
         txtCodigoProduto = new javax.swing.JTextField();
         lblValor = new javax.swing.JLabel();
-        txtValorProduto = new javax.swing.JFormattedTextField();
         lblMarca = new javax.swing.JLabel();
         txtMarcaProduto = new javax.swing.JTextField();
         lblDescricao = new javax.swing.JLabel();
@@ -99,6 +98,7 @@ public class TelaProduto extends javax.swing.JFrame {
         btnCadastroProd = new javax.swing.JButton();
         jdcDataCompraProduto = new com.toedter.calendar.JDateChooser();
         btnNovo = new javax.swing.JButton();
+        txtValorProduto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Produto");
@@ -182,7 +182,7 @@ public class TelaProduto extends javax.swing.JFrame {
                     .addComponent(btnBuscaProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCadatroProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -220,18 +220,6 @@ public class TelaProduto extends javax.swing.JFrame {
 
         lblValor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblValor.setText("Valor:*");
-
-        try {
-            txtValorProduto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtValorProduto.setText("");
-        txtValorProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorProdutoActionPerformed(evt);
-            }
-        });
 
         lblMarca.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblMarca.setText("Marca:*");
@@ -357,6 +345,17 @@ public class TelaProduto extends javax.swing.JFrame {
             }
         });
 
+        txtValorProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorProdutoActionPerformed(evt);
+            }
+        });
+        txtValorProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorProdutoKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -365,7 +364,7 @@ public class TelaProduto extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(btnInício, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                        .addComponent(btnInício, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(btnExcluirProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -385,11 +384,11 @@ public class TelaProduto extends javax.swing.JFrame {
                             .addComponent(lblNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDescricaoProduto)
+                            .addComponent(txtDescricaoProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addComponent(txtMarcaProduto, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtNomeProduto, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtCodigoProduto)
-                            .addComponent(txtValorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtValorProduto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -453,7 +452,7 @@ public class TelaProduto extends javax.swing.JFrame {
                     .addComponent(btnCadastroProd)
                     .addComponent(btnInício)
                     .addComponent(btnNovo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -610,10 +609,6 @@ public class TelaProduto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInícioActionPerformed
 
-    private void txtValorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorProdutoActionPerformed
-
     private void btnCadastroProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProdActionPerformed
         // TODO add your handling code here:
         int continuar;
@@ -621,7 +616,7 @@ public class TelaProduto extends javax.swing.JFrame {
 
         //Validação dos campos obrigatorios
         validador.ValidarVazio(txtNomeProduto);
-        validador.ValidarVazioJ(txtValorProduto);
+        validador.ValidarVazio(txtValorProduto);
         validador.ValidarVazio(txtMarcaProduto);
         validador.ValidarVazio(txtDescricaoProduto);
         validador.ValidarVazio(txtFornecedorProd);
@@ -873,6 +868,26 @@ public class TelaProduto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jdcDataCompraProdutoMouseClicked
 
+    private void txtValorProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorProdutoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if((txtValorProduto.getText().length()>=7)){
+            evt.consume();
+        }
+        if (((c<'0') || (c>'9')) && (c !=KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+            JOptionPane.showMessageDialog(this,"Somente números no campo valor!");
+        }
+        
+    }//GEN-LAST:event_txtValorProdutoKeyTyped
+
+    private void txtValorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorProdutoActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_txtValorProdutoActionPerformed
+
     
     private void limparTexto() {
        
@@ -1000,6 +1015,6 @@ public class TelaProduto extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomeProduto;
     private javax.swing.JComboBox<String> txtPrateleiraProd;
     private javax.swing.JTextField txtQuantProd;
-    private javax.swing.JFormattedTextField txtValorProduto;
+    private javax.swing.JTextField txtValorProduto;
     // End of variables declaration//GEN-END:variables
 }
