@@ -875,7 +875,7 @@ public class TelaProduto extends javax.swing.JFrame {
         if((txtValorProduto.getText().length()>=7)){
             evt.consume();
         }
-        if (((c<'0') || (c>'9')) && (c !=KeyEvent.VK_BACK_SPACE)){
+        if (((c<'0') || (c>'9')) && (c !=KeyEvent.VK_BACK_SPACE) && ((c == '.') || (c == ','))){
             evt.consume();
             JOptionPane.showMessageDialog(this,"Somente números no campo valor!");
         }
